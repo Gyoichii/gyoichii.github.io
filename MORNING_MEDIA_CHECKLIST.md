@@ -59,7 +59,7 @@ Optional: add `group-workflow.mp4` to replace the hero still with a walkthrough.
 
 Already populated: `public/media/wayjia/hero.webp`, `exploration.webp` and `credits.webp`, from the final-game press kit.
 
-Missing: `public/media/wayjia/gameplay.mp4`. Show thrust/inertia, radar/resonance, a region transition and a narrative moment. Preserve collaborator attribution.
+`public/media/wayjia/gameplay.mp4` is now populated from the supplied Drive recording. The complete 98.6-second video appears first in the Physics & exploration chapter, with a static poster and audio in the expanded viewer. The source was scaled to 1920 px wide and compressed for web delivery without temporal cuts; its original audio was retained. Preserve collaborator attribution when replacing it.
 
 ## Posters and formats
 

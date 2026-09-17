@@ -242,7 +242,7 @@ export const wayjia: Project = {
       detail:
         "The player controller applies mass-scaled forces and torque, limits linear and angular speed, and decays motion after input. A radar cooldown gates scan creation. Nearby-star interaction accumulates a hold duration, marks the star as activated and updates shared progression. Region-specific code adds underwater behavior, black-hole attraction and white-hole transitions.",
       tags: ["Forces & torque", "Radar", "Resonance"],
-      media: ["wayjia/hero", "wayjia/exploration"],
+      media: ["wayjia/gameplay", "wayjia/hero", "wayjia/exploration"],
     },
     {
       id: "rendering",
@@ -264,7 +264,7 @@ export const wayjia: Project = {
       detail:
         "The final local project contains the room flow, narrative controllers, audio playback and end-state objects. As producer, I coordinated the technical work with the team’s art and narrative. The final-game credits below preserve the wider contributors’ authorship.",
       tags: ["Game flow", "Dialogue & audio", "Production"],
-      media: ["wayjia/credits", "wayjia/gameplay"],
+      media: ["wayjia/credits"],
     },
   ],
 };

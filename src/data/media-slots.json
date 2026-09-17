@@ -209,10 +209,11 @@
       "fit": "contain"
     },
     "gameplay": {
-      "title": "A journey in motion",
-      "caption": "Thrust, radar, resonance and progression through the game's regions.",
+      "title": "WayJia gameplay",
+      "caption": "Gameplay capture: spacecraft flight, star interactions, dialogue and transitions between regions.",
       "hint": "Gameplay film",
-      "art": "space"
+      "art": "space",
+      "fit": "contain"
     }
   }
 }
