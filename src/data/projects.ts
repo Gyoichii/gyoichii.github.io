@@ -90,13 +90,13 @@ export const rivering: Project = {
     },
     {
       id: "cr-facing",
-      label: "Vertical aiming / Control Rotation",
+      label: "Vertical aiming / Control Rig",
       headline: "Aim above. Aim below.",
       summary:
-        "Control Rotation drives the up-and-down aiming adjustment shown here. Character facing follows the existing GASP / Mover orientation system; Rivering integrates the aiming behavior with its weapon and combat states.",
+        "Control Rig adds up-and-down aim correction to the animated pose. Character facing follows the existing GASP / Mover orientation system; Rivering connects the aiming layer to target data and combat state.",
       detail:
-        "CR means Control Rotation. This study focuses on aiming at different heights and the corresponding animation adjustment. GASP / Mover provides the base character-facing and locomotion path, while Rivering's combat state selects the applicable aiming, blocking and movement policies. Vertical aiming and horizontal body turning are separate responsibilities; this is not a claim of an original facing solver or verified muzzle accuracy.",
-      tags: ["Control Rotation", "Vertical aiming", "Animation integration"],
+        "CR means Control Rig here. The dedicated melee aiming rig consumes a target offset relative to the character root and applies bounded corrections on top of the authored animation. Body-part settings control the correction range and weight. GASP / Mover continues to handle base character facing, while Rivering integrates the aiming layer with combat state and target data. Pose correction alone does not establish exact weapon or muzzle alignment.",
+      tags: ["Control Rig", "Vertical aiming", "Animation integration"],
       media: ["rivering/cr-facing"],
     },
     {

@@ -32,7 +32,7 @@
     },
     "cr-facing": {
       "title": "Vertical aiming",
-      "caption": "Control Rotation-driven up-and-down aiming. Character facing uses the existing GASP / Mover system.",
+      "caption": "Control Rig-based up-and-down aim correction. Character facing uses the existing GASP / Mover system.",
       "hint": "Aim-height capture",
       "art": "motion"
     },
