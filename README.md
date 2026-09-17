@@ -34,7 +34,7 @@ npm start
 
 The viewer accepts MP4, WebM, GIF, WebP, JPG/JPEG and PNG. Video takes precedence over stills with the same basename; MP4 precedes WebM. Matching stills or `-poster` images supply video posters. Previews are muted, viewport-gated, paused offscreen/when the page is hidden, and disabled for reduced-motion/data-saver preferences. Pause controls stop previews. Expanded videos use native controls. Galleries support Escape, arrow keys, buttons, swipe and focus restoration. Missing media has designed placeholders.
 
-The large occlusion and sweep-debug GIFs use `preview: "poster"` in the media manifest: their full animations download only when explicitly opened. Other GIFs animate inline and support pause/reduced-motion posters.
+All GIFs loop inline automatically once lazy-loaded near the viewport. Opening the viewer is optional. Pause controls and reduced-motion preferences switch them to static posters.
 
 ## Publish
 

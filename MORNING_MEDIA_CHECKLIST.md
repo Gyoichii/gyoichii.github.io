@@ -69,7 +69,7 @@ For `combat-interaction.mp4`, add `combat-interaction-poster.webp` (or JPG/PNG).
 
 Selection order: MP4 → WebM → WebP → JPG → JPEG → PNG → GIF. MP4/WebM can coexist as browser alternatives. Remove an older higher-priority file if intending a different format to become primary. Names must be lowercase and are case-sensitive on the host.
 
-Reduced-motion users receive paused video. Add a static `-poster` for GIF; otherwise it shows an intentional paused placeholder and can be explicitly opened. Missing slots never generate broken image URLs.
+GIFs loop automatically inline as they load near the viewport. Gallery pause controls and reduced-motion preferences use the static `-poster`; without one, a paused placeholder is shown. Reduced-motion users also receive paused video. Missing slots never generate broken image URLs.
 
 ## Before sharing
 

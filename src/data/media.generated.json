@@ -80,7 +80,6 @@
     "id": "rivering/melee-sweep",
     "title": "Melee sweep / contact",
     "caption": "Weapon-sweep debug geometry during attacks, followed by contact and impact feedback.",
-    "preview": "poster",
     "hint": "Collision debug capture",
     "art": "sweep",
     "fit": "contain",
@@ -216,8 +215,7 @@
   "rivering/occlusion": {
     "id": "rivering/occlusion",
     "title": "Camera & occlusion",
-    "caption": "In-game walkthrough: walls and floors reveal the character moving through the building and stairwell. Open to play the full 51-second GIF.",
-    "preview": "poster",
+    "caption": "In-game walkthrough: walls and floors reveal the character moving through the building and stairwell.",
     "hint": "In-engine walkthrough",
     "art": "world",
     "fit": "contain",

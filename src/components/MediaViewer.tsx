@@ -15,7 +15,6 @@ export type MediaItem = {
   project: string;
   fit?: string;
   poster?: string;
-  preview?: "poster";
   sources: { src: string; type: string; mime: string }[];
 };
 function subscribeMotion(callback: () => void) {
@@ -172,7 +171,7 @@ export function MediaPreview({
   if (!source || failed) return <MediaPlaceholder item={item} />;
   if (source.type === "video")
     return <VideoPreview item={item} paused={paused} />;
-  const stillPreview = reduced || paused || item.preview === "poster";
+  const stillPreview = reduced || paused;
   if (source.type === "gif" && stillPreview && !item.poster)
     return (
       <MediaPlaceholder
