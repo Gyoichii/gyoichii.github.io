@@ -140,9 +140,10 @@ export const rivering: Project = {
       ],
       media: [
         "rivering/pcg-urban-village",
+        "rivering/pcg-dimensions",
+        "rivering/pcg-variants",
         "rivering/building-study",
         "rivering/module-kit",
-        "rivering/pcg-variants",
         "rivering/pcg-graph",
       ],
       diagram: "pcg",

@@ -16,7 +16,7 @@ export function ProjectCard({
   const hero = data[project.hero].sources.length
     ? data[project.hero]
     : project.slug === "rivering"
-      ? data["rivering/building-study"]
+      ? data["rivering/pcg-variants"]
       : data[project.hero];
   return (
     <article

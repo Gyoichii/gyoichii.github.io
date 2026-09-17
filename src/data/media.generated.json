@@ -65,20 +65,54 @@
   "rivering/occlusion": {
     "id": "rivering/occlusion",
     "title": "Camera & occlusion",
-    "caption": "Material visibility changes with the original query geometry retained.",
+    "caption": "In-game walkthrough: walls and floors reveal the character moving through the building and stairwell. Open to play the full 51-second GIF.",
+    "preview": "poster",
     "hint": "In-engine walkthrough",
     "art": "world",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/occlusion.gif",
+        "type": "gif",
+        "mime": "image/gif"
+      }
+    ],
+    "poster": "/media/rivering/occlusion-poster.webp"
   },
   "rivering/pcg-urban-village": {
     "id": "rivering/pcg-urban-village",
-    "title": "PCG urban village",
-    "caption": "Procedural building generation in Unreal Engine.",
+    "title": "Procedural building height",
+    "caption": "Unreal Editor capture: changing building height updates the floor stack, windows and rooftop structure.",
     "hint": "Generation walkthrough",
     "art": "world",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/pcg-urban-village.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/pcg-urban-village-poster.webp"
+  },
+  "rivering/pcg-dimensions": {
+    "id": "rivering/pcg-dimensions",
+    "title": "Building dimensions",
+    "caption": "Unreal Editor capture: interactive building-size changes update the modular envelope and facade. Full-length GIF from the supplied recording.",
+    "hint": "Parameter adjustment",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/pcg-dimensions.gif",
+        "type": "gif",
+        "mime": "image/gif"
+      }
+    ],
+    "poster": "/media/rivering/pcg-dimensions-poster.webp"
   },
   "rivering/building-study": {
     "id": "rivering/building-study",
@@ -117,11 +151,19 @@
   "rivering/pcg-variants": {
     "id": "rivering/pcg-variants",
     "title": "Building variants",
-    "caption": "Building dimensions, floors, window patterns and material variation.",
+    "caption": "Three generated buildings in Unreal Engine, showing different heights, window layouts and wall materials.",
     "hint": "Variant comparison",
     "art": "world",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/pcg-variants.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/pcg-variants.webp"
   },
   "rivering/pcg-graph": {
     "id": "rivering/pcg-graph",

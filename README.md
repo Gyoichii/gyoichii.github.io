@@ -34,6 +34,8 @@ npm start
 
 The viewer accepts MP4, WebM, GIF, WebP, JPG/JPEG and PNG. Video takes precedence over stills with the same basename; MP4 precedes WebM. Matching stills or `-poster` images supply video posters. Previews are muted, viewport-gated, paused offscreen/when the page is hidden, and disabled for reduced-motion/data-saver preferences. Pause controls stop previews. Expanded videos use native controls. Galleries support Escape, arrow keys, buttons, swipe and focus restoration. Missing media has designed placeholders.
 
+The long occlusion GIF uses `preview: "poster"` in the media manifest: its full animation downloads only when explicitly opened. The shorter building-dimensions GIF animates inline and supports pause/reduced-motion posters.
+
 ## Publish
 
 The `main` branch deploys via `.github/workflows/pages.yml`: clean install → verify → build → GitHub Pages. Review and commit only intended changes, push main, then check Actions. No custom domain or DNS changes are needed.
@@ -42,7 +44,7 @@ Another host can serve the entire `out/` directory at its domain root, preservin
 
 ## Provenance
 
-- Rivering: two existing Python/Blender asset-generation previews, resized to WebP and explicitly labelled asset studies, not in-engine captures. Current recordings remain to be supplied.
+- Rivering: owner-supplied Unreal captures show building-height changes (MP4), interactive dimensions (GIF), a complete in-game occlusion walkthrough (GIF), and three building variants (WebP). The variant image is also the home/project cover. Two earlier Python/Blender previews remain explicitly labelled asset studies. GIFs include static posters for pause and reduced-motion preferences.
 - Friday Night: six owner-supplied application screenshots with invite codes, account names, group identifiers, search input, and private comment text redacted using opaque pixel masks. Lossless WebP exports preserve all pixels outside the masks. The earlier public desktop/mobile login captures remain in the authentication gallery. Technical copy was checked against current private source without publishing it.
 - WayJia: three images from the team's final-game press kit. Credits and copy preserve collaborators' art, writing, audio and voice contributions. Reference shader algorithms are described as ported and adapted.
 - Manrope: self-hosted Latin variable font under SIL OFL; see `public/fonts/OFL.txt`.

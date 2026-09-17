@@ -17,19 +17,23 @@ Use current working captures. Prefer compressed 1080p H.264 MP4, about 10–20 s
 
 | Exact preferred path                           | What to show                                                                                                                              |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `public/media/rivering/hero.mp4`               | 15–30 second overview: movement, one combat exchange, environment. Replaces the asset-study fallback on home and project hero.            |
+| `public/media/rivering/hero.mp4`               | 15–30 second overview: movement, one combat exchange, environment. Replaces the current building-variant cover on home and project hero. |
 | `public/media/rivering/combat-interaction.mp4` | Attack → block → dash/targeting, with readable state changes.                                                                             |
 | `public/media/rivering/skill-vfx.mp4`          | Current skill such as Spin 360, trail timing and impact feedback.                                                                         |
 | `public/media/rivering/gasp-block.mp4`         | Block entry, walking/turning while blocking, exit.                                                                                        |
 | `public/media/rivering/melee-sweep.mp4`        | Accepted contacts and sweep debug geometry after the newest changes pass in-game acceptance.                                              |
 | `public/media/rivering/cr-facing.mp4`          | Aim at targets above and below the character to show the Control Rig-based vertical pose correction; body facing comes from GASP / Mover. |
 | `public/media/rivering/material-sphere.mp4`    | Controlled material turntable: wall blend and aged-glass controls.                                                                        |
-| `public/media/rivering/occlusion.mp4`          | Walk behind wall/roof, visibility window and retained collision.                                                                          |
-| `public/media/rivering/pcg-urban-village.mp4`  | Change building parameters/seed, regenerate, orbit or walk through result.                                                                |
-| `public/media/rivering/pcg-variants.webp`      | Clearly different building variants under comparable lighting.                                                                            |
 | `public/media/rivering/pcg-graph.webp`         | Legible PCG graph/debug layout without private desktop/account information.                                                               |
 
-Already populated: `building-study.webp` and `module-kit.webp`, labelled Blender asset previews. Update captions if replacing them with in-engine images.
+Already populated from the supplied Unreal captures:
+
+- `pcg-urban-village.mp4`: building-height changes, with a static poster.
+- `pcg-dimensions.gif`: complete building-size adjustment recording, with a static poster.
+- `occlusion.gif`: complete in-game building/stairwell walkthrough, with a static poster.
+- `pcg-variants.webp`: three generated buildings; also used on the homepage and project cover.
+
+`building-study.webp` and `module-kit.webp` remain labelled Blender asset previews. Update captions if replacing them with in-engine images.
 
 ## Friday Night
 

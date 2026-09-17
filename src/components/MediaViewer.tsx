@@ -15,6 +15,7 @@ export type MediaItem = {
   project: string;
   fit?: string;
   poster?: string;
+  preview?: "poster";
   sources: { src: string; type: string; mime: string }[];
 };
 function subscribeMotion(callback: () => void) {
@@ -171,7 +172,8 @@ export function MediaPreview({
   if (!source || failed) return <MediaPlaceholder item={item} />;
   if (source.type === "video")
     return <VideoPreview item={item} paused={paused} />;
-  if (source.type === "gif" && (reduced || paused) && !item.poster)
+  const stillPreview = reduced || paused || item.preview === "poster";
+  if (source.type === "gif" && stillPreview && !item.poster)
     return (
       <MediaPlaceholder
         item={{ ...item, hint: "Animation paused · open to play" }}
@@ -181,7 +183,7 @@ export function MediaPreview({
   return (
     <img
       src={
-        source.type === "gif" && (reduced || paused) ? item.poster : source.src
+        source.type === "gif" && stillPreview ? item.poster : source.src
       }
       alt={item.title}
       width={1600}
