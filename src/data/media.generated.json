@@ -1,0 +1,236 @@
+{
+  "rivering/hero": {
+    "id": "rivering/hero",
+    "title": "Project Rivering",
+    "caption": "Gameplay overview",
+    "hint": "Gameplay film",
+    "art": "world",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/combat-interaction": {
+    "id": "rivering/combat-interaction",
+    "title": "Combat interaction",
+    "caption": "Attack, block and targeting through a shared action state.",
+    "hint": "Gameplay capture",
+    "art": "combat",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/skill-vfx": {
+    "id": "rivering/skill-vfx",
+    "title": "Skills & VFX",
+    "caption": "Animation-driven trail windows and directional impact feedback.",
+    "hint": "Gameplay capture",
+    "art": "effects",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/gasp-block": {
+    "id": "rivering/gasp-block",
+    "title": "GASP block",
+    "caption": "Blocking while moving and turning in the GASP / Mover character.",
+    "hint": "Motion study",
+    "art": "motion",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/melee-sweep": {
+    "id": "rivering/melee-sweep",
+    "title": "Melee sweep / contact",
+    "caption": "Weapon pose history, swept queries and accepted contacts.",
+    "hint": "Collision debug capture",
+    "art": "sweep",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/cr-facing": {
+    "id": "rivering/cr-facing",
+    "title": "CR facing",
+    "caption": "Control Rotation targets, character yaw and animation-root orientation.",
+    "hint": "Orientation capture",
+    "art": "motion",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/material-sphere": {
+    "id": "rivering/material-sphere",
+    "title": "Material studies",
+    "caption": "Surface blending, weathering and independently controlled glass aging.",
+    "hint": "Look-development turntable",
+    "art": "material",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/occlusion": {
+    "id": "rivering/occlusion",
+    "title": "Camera & occlusion",
+    "caption": "Material visibility changes with the original query geometry retained.",
+    "hint": "In-engine walkthrough",
+    "art": "world",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/pcg-urban-village": {
+    "id": "rivering/pcg-urban-village",
+    "title": "PCG urban village",
+    "caption": "Procedural building generation in Unreal Engine.",
+    "hint": "Generation walkthrough",
+    "art": "world",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/building-study": {
+    "id": "rivering/building-study",
+    "title": "Modular building study",
+    "caption": "Blender asset-generation preview: fixed window modules and a complete building envelope. This is an asset study, not an in-engine screenshot.",
+    "hint": "Asset study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/building-study.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/building-study.webp"
+  },
+  "rivering/module-kit": {
+    "id": "rivering/module-kit",
+    "title": "A vocabulary of parts",
+    "caption": "Python / Blender tooling: installed frontage, window accessories and modular construction details.",
+    "hint": "Asset study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/module-kit.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/module-kit.webp"
+  },
+  "rivering/pcg-variants": {
+    "id": "rivering/pcg-variants",
+    "title": "Building variants",
+    "caption": "Building dimensions, floors, window patterns and material variation.",
+    "hint": "Variant comparison",
+    "art": "world",
+    "project": "rivering",
+    "sources": []
+  },
+  "rivering/pcg-graph": {
+    "id": "rivering/pcg-graph",
+    "title": "Inside the PCG graph",
+    "caption": "The native layout element, generated mesh points and component-owned output.",
+    "hint": "Graph / debug view",
+    "art": "world",
+    "project": "rivering",
+    "sources": []
+  },
+  "friday-night/desktop": {
+    "id": "friday-night/desktop",
+    "title": "Friday Night on desktop",
+    "caption": "The real public sign-in page at fridaynight.love, captured September 17, 2026. Application content requires an account.",
+    "hint": "Desktop screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/desktop.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/desktop.webp"
+  },
+  "friday-night/mobile": {
+    "id": "friday-night/mobile",
+    "title": "Friday Night on mobile",
+    "caption": "Public sign-in page at a 390 px viewport. Original Chinese-language interface.",
+    "hint": "Mobile screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/mobile.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/mobile.webp"
+  },
+  "friday-night/group-workflow": {
+    "id": "friday-night/group-workflow",
+    "title": "The shared movie night",
+    "caption": "Group discovery, selection and planning workflow.",
+    "hint": "Application walkthrough",
+    "art": "web",
+    "project": "friday-night",
+    "sources": []
+  },
+  "wayjia/hero": {
+    "id": "wayjia/hero",
+    "title": "WayJia — finding home",
+    "caption": "Final-game press-kit screenshot: a spacecraft, a black hole and a conversation in deep space.",
+    "hint": "Game screenshot",
+    "art": "space",
+    "project": "wayjia",
+    "sources": [
+      {
+        "src": "/media/wayjia/hero.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/wayjia/hero.webp"
+  },
+  "wayjia/exploration": {
+    "id": "wayjia/exploration",
+    "title": "Signals in the dark",
+    "caption": "Final-game press-kit screenshot: spacecraft movement and narrative exploration.",
+    "hint": "Game screenshot",
+    "art": "space",
+    "project": "wayjia",
+    "sources": [
+      {
+        "src": "/media/wayjia/exploration.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/wayjia/exploration.webp"
+  },
+  "wayjia/credits": {
+    "id": "wayjia/credits",
+    "title": "The people behind the journey",
+    "caption": "Final-game credits. Weihan Chen: engineer / programmer and game producer, with design and sound contributions. Art, writing, voices and music include contributions from the wider team and collaborators.",
+    "hint": "Credits screenshot",
+    "art": "space",
+    "fit": "contain",
+    "project": "wayjia",
+    "sources": [
+      {
+        "src": "/media/wayjia/credits.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/wayjia/credits.webp"
+  },
+  "wayjia/gameplay": {
+    "id": "wayjia/gameplay",
+    "title": "A journey in motion",
+    "caption": "Thrust, radar, resonance and progression through the game's regions.",
+    "hint": "Gameplay film",
+    "art": "space",
+    "project": "wayjia",
+    "sources": []
+  }
+}

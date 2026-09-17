@@ -1,0 +1,133 @@
+{
+  "rivering": {
+    "hero": {
+      "title": "Project Rivering",
+      "caption": "Gameplay overview",
+      "hint": "Gameplay film",
+      "art": "world"
+    },
+    "combat-interaction": {
+      "title": "Combat interaction",
+      "caption": "Attack, block and targeting through a shared action state.",
+      "hint": "Gameplay capture",
+      "art": "combat"
+    },
+    "skill-vfx": {
+      "title": "Skills & VFX",
+      "caption": "Animation-driven trail windows and directional impact feedback.",
+      "hint": "Gameplay capture",
+      "art": "effects"
+    },
+    "gasp-block": {
+      "title": "GASP block",
+      "caption": "Blocking while moving and turning in the GASP / Mover character.",
+      "hint": "Motion study",
+      "art": "motion"
+    },
+    "melee-sweep": {
+      "title": "Melee sweep / contact",
+      "caption": "Weapon pose history, swept queries and accepted contacts.",
+      "hint": "Collision debug capture",
+      "art": "sweep"
+    },
+    "cr-facing": {
+      "title": "CR facing",
+      "caption": "Control Rotation targets, character yaw and animation-root orientation.",
+      "hint": "Orientation capture",
+      "art": "motion"
+    },
+    "material-sphere": {
+      "title": "Material studies",
+      "caption": "Surface blending, weathering and independently controlled glass aging.",
+      "hint": "Look-development turntable",
+      "art": "material"
+    },
+    "occlusion": {
+      "title": "Camera & occlusion",
+      "caption": "Material visibility changes with the original query geometry retained.",
+      "hint": "In-engine walkthrough",
+      "art": "world"
+    },
+    "pcg-urban-village": {
+      "title": "PCG urban village",
+      "caption": "Procedural building generation in Unreal Engine.",
+      "hint": "Generation walkthrough",
+      "art": "world"
+    },
+    "building-study": {
+      "title": "Modular building study",
+      "caption": "Blender asset-generation preview: fixed window modules and a complete building envelope. This is an asset study, not an in-engine screenshot.",
+      "hint": "Asset study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "module-kit": {
+      "title": "A vocabulary of parts",
+      "caption": "Python / Blender tooling: installed frontage, window accessories and modular construction details.",
+      "hint": "Asset study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "pcg-variants": {
+      "title": "Building variants",
+      "caption": "Building dimensions, floors, window patterns and material variation.",
+      "hint": "Variant comparison",
+      "art": "world"
+    },
+    "pcg-graph": {
+      "title": "Inside the PCG graph",
+      "caption": "The native layout element, generated mesh points and component-owned output.",
+      "hint": "Graph / debug view",
+      "art": "world"
+    }
+  },
+  "friday-night": {
+    "desktop": {
+      "title": "Friday Night on desktop",
+      "caption": "The real public sign-in page at fridaynight.love, captured September 17, 2026. Application content requires an account.",
+      "hint": "Desktop screenshot",
+      "art": "web",
+      "fit": "contain"
+    },
+    "mobile": {
+      "title": "Friday Night on mobile",
+      "caption": "Public sign-in page at a 390 px viewport. Original Chinese-language interface.",
+      "hint": "Mobile screenshot",
+      "art": "web",
+      "fit": "contain"
+    },
+    "group-workflow": {
+      "title": "The shared movie night",
+      "caption": "Group discovery, selection and planning workflow.",
+      "hint": "Application walkthrough",
+      "art": "web"
+    }
+  },
+  "wayjia": {
+    "hero": {
+      "title": "WayJia — finding home",
+      "caption": "Final-game press-kit screenshot: a spacecraft, a black hole and a conversation in deep space.",
+      "hint": "Game screenshot",
+      "art": "space"
+    },
+    "exploration": {
+      "title": "Signals in the dark",
+      "caption": "Final-game press-kit screenshot: spacecraft movement and narrative exploration.",
+      "hint": "Game screenshot",
+      "art": "space"
+    },
+    "credits": {
+      "title": "The people behind the journey",
+      "caption": "Final-game credits. Weihan Chen: engineer / programmer and game producer, with design and sound contributions. Art, writing, voices and music include contributions from the wider team and collaborators.",
+      "hint": "Credits screenshot",
+      "art": "space",
+      "fit": "contain"
+    },
+    "gameplay": {
+      "title": "A journey in motion",
+      "caption": "Thrust, radar, resonance and progression through the game's regions.",
+      "hint": "Gameplay film",
+      "art": "space"
+    }
+  }
+}
