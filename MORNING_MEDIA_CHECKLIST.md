@@ -22,7 +22,7 @@ Use current working captures. Prefer compressed 1080p H.264 MP4, about 10–20 s
 | `public/media/rivering/skill-vfx.mp4`          | Current skill such as Spin 360, trail timing and impact feedback.                                                              |
 | `public/media/rivering/gasp-block.mp4`         | Block entry, walking/turning while blocking, exit.                                                                             |
 | `public/media/rivering/melee-sweep.mp4`        | Accepted contacts and sweep debug geometry after the newest changes pass in-game acceptance.                                   |
-| `public/media/rivering/cr-facing.mp4`          | Facing across action states; optional Control Rotation and actor/root yaw overlay.                                             |
+| `public/media/rivering/cr-facing.mp4`          | Aim at targets above and below the character to show the Control Rotation-driven vertical adjustment; body facing comes from GASP / Mover.                                             |
 | `public/media/rivering/material-sphere.mp4`    | Controlled material turntable: wall blend and aged-glass controls.                                                             |
 | `public/media/rivering/occlusion.mp4`          | Walk behind wall/roof, visibility window and retained collision.                                                               |
 | `public/media/rivering/pcg-urban-village.mp4`  | Change building parameters/seed, regenerate, orbit or walk through result.                                                     |

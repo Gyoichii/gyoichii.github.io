@@ -72,7 +72,7 @@ export const rivering: Project = {
       summary:
         "Blocking is a combat state with its own movement and orientation policy. The GASP / Mover character can retain grounded locomotion while ordinary movement-driven facing intent is suppressed.",
       detail:
-        "Combat state distinguishes block entry, loop and ending. The walking integration consumes an overridden desired facing and applies a bounded yaw response for blocking. Animation, actor orientation and Control Rotation are inspected separately, so a visually plausible pose is not mistaken for proof that all three are aligned. The dedicated recording slot is reserved for the current character in motion.",
+        "GASP / Mover supplies the underlying locomotion and character-facing system. Rivering integrates block entry, loop and ending with that existing path, selecting movement and facing policies for combat. The walking integration consumes a desired facing and applies a bounded yaw response during blocking. The contribution shown here is combat-state integration with GASP / Mover.",
       tags: ["GASP", "Mover", "Block state"],
       media: ["rivering/gasp-block"],
     },
@@ -90,13 +90,13 @@ export const rivering: Project = {
     },
     {
       id: "cr-facing",
-      label: "CR facing / character orientation",
-      headline: "Intent, body, and motion.",
+      label: "Vertical aiming / Control Rotation",
+      headline: "Aim above. Aim below.",
       summary:
-        "Control Rotation supplies a facing target; the actor and animation root each have their own orientation. Facing policies decide whether player intent is accepted, ignored or locked during an action.",
+        "Control Rotation drives the up-and-down aiming adjustment shown here. Character facing follows the existing GASP / Mover orientation system; Rivering integrates the aiming behavior with its weapon and combat states.",
       detail:
-        "The pawn records movement-derived desired yaw and exposes explicit lock and clear operations. Turning diagnostics compare Control Rotation, actor yaw, animation-root yaw and the walking mode’s overridden target. Here “CR” means Control Rotation. It is an orientation-control study, not a claim of completed procedural weapon aiming or a particular Control Rig implementation.",
-      tags: ["Control Rotation", "Facing intent", "Motion diagnostics"],
+        "CR means Control Rotation. This study focuses on aiming at different heights and the corresponding animation adjustment. GASP / Mover provides the base character-facing and locomotion path, while Rivering's combat state selects the applicable aiming, blocking and movement policies. Vertical aiming and horizontal body turning are separate responsibilities; this is not a claim of an original facing solver or verified muzzle accuracy.",
+      tags: ["Control Rotation", "Vertical aiming", "Animation integration"],
       media: ["rivering/cr-facing"],
     },
     {

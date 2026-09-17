@@ -31,9 +31,9 @@
       "art": "sweep"
     },
     "cr-facing": {
-      "title": "CR facing",
-      "caption": "Control Rotation targets, character yaw and animation-root orientation.",
-      "hint": "Orientation capture",
+      "title": "Vertical aiming",
+      "caption": "Control Rotation-driven up-and-down aiming. Character facing uses the existing GASP / Mover system.",
+      "hint": "Aim-height capture",
       "art": "motion"
     },
     "material-sphere": {
