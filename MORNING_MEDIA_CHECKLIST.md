@@ -18,12 +18,14 @@ Use current working captures. Prefer compressed 1080p H.264 MP4, about 10–20 s
 | Exact preferred path                           | What to show                                                                                                                              |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `public/media/rivering/hero.mp4`               | 15–30 second overview: movement, one combat exchange, environment. Replaces the current building-variant cover on home and project hero. |
-| `public/media/rivering/skill-vfx.mp4`          | Current skill such as Spin 360, trail timing and impact feedback.                                                                         |
-| `public/media/rivering/gasp-block.mp4`         | Block entry, walking/turning while blocking, exit.                                                                                        |
-| `public/media/rivering/melee-sweep.mp4`        | Accepted contacts and sweep debug geometry after the newest changes pass in-game acceptance.                                              |
-| `public/media/rivering/pcg-graph.webp`         | Legible PCG graph/debug layout without private desktop/account information.                                                               |
 
 Already populated from the supplied Unreal captures:
+
+- `skill-vfx.gif`: short spin-attack and trail demonstration.
+- `combat-contact.gif`: short close-range strike and hit feedback.
+- `melee-sweep.gif`: short weapon-sweep debug demonstration.
+- `gasp-block.mp4`: complete blocking movement/turning demonstration, with original audio.
+- `pcg-graph.webp`: lossless graph screenshot with building inputs and mesh/layout/manifest/diagnostic outputs.
 
 - `combat-interaction.mp4`: combat demo trimmed to source 8.00–44.40 s.
 - `cr-facing.mp4`: vertical-aim demonstration trimmed to source 0.65–19.20 s.

@@ -34,7 +34,7 @@ npm start
 
 The viewer accepts MP4, WebM, GIF, WebP, JPG/JPEG and PNG. Video takes precedence over stills with the same basename; MP4 precedes WebM. Matching stills or `-poster` images supply video posters. Previews are muted, viewport-gated, paused offscreen/when the page is hidden, and disabled for reduced-motion/data-saver preferences. Pause controls stop previews. Expanded videos use native controls. Galleries support Escape, arrow keys, buttons, swipe and focus restoration. Missing media has designed placeholders.
 
-The long occlusion GIF uses `preview: "poster"` in the media manifest: its full animation downloads only when explicitly opened. The shorter building-dimensions GIF animates inline and supports pause/reduced-motion posters.
+The large occlusion and sweep-debug GIFs use `preview: "poster"` in the media manifest: their full animations download only when explicitly opened. Other GIFs animate inline and support pause/reduced-motion posters.
 
 ## Publish
 
@@ -46,6 +46,7 @@ Another host can serve the entire `out/` directory at its domain root, preservin
 
 - Rivering: owner-supplied Unreal captures show building-height changes (MP4), interactive dimensions (GIF), a complete in-game occlusion walkthrough (GIF), and three building variants (WebP). The variant image is also the home/project cover. Two earlier Python/Blender previews remain explicitly labelled asset studies. GIFs include static posters for pause and reduced-motion preferences.
 - Additional Rivering media: combat, Control Rig vertical aiming, and building-occlusion MP4s with trimmed starts/ends; a complete material-instance recording retaining the final rotation adjustment; four glass/wall/parameter screenshots. All are supplied captures. The material recording is remuxed without re-encoding or temporal cuts.
+- Short Rivering recordings of skills/VFX, close-range hit feedback and sweep debugging are looping GIFs with static pause posters. The longer block-movement recording remains an MP4. The supplied PCG graph screenshot uses lossless WebP to preserve node labels.
 - Friday Night: six owner-supplied application screenshots with invite codes, account names, group identifiers, search input, and private comment text redacted using opaque pixel masks. Lossless WebP exports preserve all pixels outside the masks. The earlier public desktop/mobile login captures remain in the authentication gallery. Technical copy was checked against current private source without publishing it.
 - WayJia: three images from the team's final-game press kit and the owner-supplied gameplay recording, compressed for web playback without temporal cuts. Credits and copy preserve collaborators' art, writing, audio and voice contributions. Reference shader algorithms are described as ported and adapted.
 - Manrope: self-hosted Latin variable font under SIL OFL; see `public/fonts/OFL.txt`.

@@ -28,11 +28,36 @@
   "rivering/skill-vfx": {
     "id": "rivering/skill-vfx",
     "title": "Skills & VFX",
-    "caption": "Animation-driven trail windows and directional impact feedback.",
+    "caption": "Spin attack and follow-up strikes with synchronized weapon trails and impact feedback.",
     "hint": "Gameplay capture",
     "art": "effects",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/skill-vfx.gif",
+        "type": "gif",
+        "mime": "image/gif"
+      }
+    ],
+    "poster": "/media/rivering/skill-vfx-poster.webp"
+  },
+  "rivering/combat-contact": {
+    "id": "rivering/combat-contact",
+    "title": "Close-range hit feedback",
+    "caption": "A close-range strike and hit feedback in the combat test scene.",
+    "hint": "Gameplay capture",
+    "art": "combat",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/combat-contact.gif",
+        "type": "gif",
+        "mime": "image/gif"
+      }
+    ],
+    "poster": "/media/rivering/combat-contact-poster.webp"
   },
   "rivering/gasp-block": {
     "id": "rivering/gasp-block",
@@ -40,17 +65,34 @@
     "caption": "Blocking while moving and turning in the GASP / Mover character.",
     "hint": "Motion study",
     "art": "motion",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/gasp-block.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/gasp-block-poster.webp"
   },
   "rivering/melee-sweep": {
     "id": "rivering/melee-sweep",
     "title": "Melee sweep / contact",
-    "caption": "Weapon pose history, swept queries and accepted contacts.",
+    "caption": "Weapon-sweep debug geometry during attacks, followed by contact and impact feedback.",
+    "preview": "poster",
     "hint": "Collision debug capture",
     "art": "sweep",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/melee-sweep.gif",
+        "type": "gif",
+        "mime": "image/gif"
+      }
+    ],
+    "poster": "/media/rivering/melee-sweep-poster.webp"
   },
   "rivering/cr-facing": {
     "id": "rivering/cr-facing",
@@ -277,11 +319,19 @@
   "rivering/pcg-graph": {
     "id": "rivering/pcg-graph",
     "title": "Inside the PCG graph",
-    "caption": "The native layout element, generated mesh points and component-owned output.",
+    "caption": "City Village PCG graph: parcel input, building controls, mesh spawning, and layout, manifest and diagnostic outputs.",
     "hint": "Graph / debug view",
     "art": "world",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/pcg-graph.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/pcg-graph.webp"
   },
   "friday-night/movie-search": {
     "id": "friday-night/movie-search",

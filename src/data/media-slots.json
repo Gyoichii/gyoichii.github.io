@@ -15,21 +15,32 @@
     },
     "skill-vfx": {
       "title": "Skills & VFX",
-      "caption": "Animation-driven trail windows and directional impact feedback.",
+      "caption": "Spin attack and follow-up strikes with synchronized weapon trails and impact feedback.",
       "hint": "Gameplay capture",
-      "art": "effects"
+      "art": "effects",
+      "fit": "contain"
+    },
+    "combat-contact": {
+      "title": "Close-range hit feedback",
+      "caption": "A close-range strike and hit feedback in the combat test scene.",
+      "hint": "Gameplay capture",
+      "art": "combat",
+      "fit": "contain"
     },
     "gasp-block": {
       "title": "GASP block",
       "caption": "Blocking while moving and turning in the GASP / Mover character.",
       "hint": "Motion study",
-      "art": "motion"
+      "art": "motion",
+      "fit": "contain"
     },
     "melee-sweep": {
       "title": "Melee sweep / contact",
-      "caption": "Weapon pose history, swept queries and accepted contacts.",
+      "caption": "Weapon-sweep debug geometry during attacks, followed by contact and impact feedback.",
+      "preview": "poster",
       "hint": "Collision debug capture",
-      "art": "sweep"
+      "art": "sweep",
+      "fit": "contain"
     },
     "cr-facing": {
       "title": "Vertical aiming",
@@ -125,9 +136,10 @@
     },
     "pcg-graph": {
       "title": "Inside the PCG graph",
-      "caption": "The native layout element, generated mesh points and component-owned output.",
+      "caption": "City Village PCG graph: parcel input, building controls, mesh spawning, and layout, manifest and diagnostic outputs.",
       "hint": "Graph / debug view",
-      "art": "world"
+      "art": "world",
+      "fit": "contain"
     }
   },
   "friday-night": {

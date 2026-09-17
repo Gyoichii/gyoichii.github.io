@@ -54,7 +54,7 @@ export const rivering: Project = {
       detail:
         "Enhanced Input commands enter server-side combat handlers. The combat component tracks active actions, block phases, and hit-reaction state; GAS attributes and effects handle stamina spending and recovery. Blocking retains grounded movement input. Dashes lock facing. Attack phases can accept facing intent while suppressing ordinary translation.",
       tags: ["Action arbitration", "GAS attributes", "Input policy"],
-      media: ["rivering/combat-interaction"],
+      media: ["rivering/combat-interaction", "rivering/combat-contact"],
       diagram: "combat",
     },
     {
