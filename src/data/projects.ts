@@ -111,7 +111,13 @@ export const rivering: Project = {
       detail:
         "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
       tags: ["Substrate", "Material instances", "Surface blending"],
-      media: ["rivering/material-sphere"],
+      media: [
+        "rivering/material-sphere",
+        "rivering/glass-transmission",
+        "rivering/glass-variants",
+        "rivering/wall-weathering",
+        "rivering/material-instance-controls",
+      ],
     },
     {
       id: "occlusion",
@@ -122,7 +128,7 @@ export const rivering: Project = {
       detail:
         "The component samples a bounded silhouette across the character capsule and traces against the original structure. Separate classification handles walls, roofs, props and exclusions. Because material clipping does not remove the collision body used by the query, revealing an obstruction does not immediately make the visibility test lose that obstruction. Generated buildings also have an explicit PCG-to-occlusion lifecycle binding.",
       tags: ["Geometry queries", "Material clipping", "Collision preserved"],
-      media: ["rivering/occlusion"],
+      media: ["rivering/occlusion-walkthrough", "rivering/occlusion"],
       diagram: "occlusion",
     },
     {

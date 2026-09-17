@@ -11,11 +11,19 @@
   "rivering/combat-interaction": {
     "id": "rivering/combat-interaction",
     "title": "Combat interaction",
-    "caption": "Attack, block and targeting through a shared action state.",
+    "caption": "In-game combat demo: approach, melee exchanges, hit reactions and knockdown.",
     "hint": "Gameplay capture",
     "art": "combat",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/combat-interaction.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/combat-interaction-poster.webp"
   },
   "rivering/skill-vfx": {
     "id": "rivering/skill-vfx",
@@ -47,20 +55,121 @@
   "rivering/cr-facing": {
     "id": "rivering/cr-facing",
     "title": "Vertical aiming",
-    "caption": "Control Rig-based up-and-down aim correction. Character facing uses the existing GASP / Mover system.",
+    "caption": "Control Rig-based vertical aim correction during attacks toward the elevated target. Character facing uses the existing GASP / Mover system.",
     "hint": "Aim-height capture",
     "art": "motion",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/cr-facing.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/cr-facing-poster.webp"
   },
   "rivering/material-sphere": {
     "id": "rivering/material-sphere",
     "title": "Material studies",
-    "caption": "Surface blending, weathering and independently controlled glass aging.",
-    "hint": "Look-development turntable",
+    "caption": "Material-instance controls demonstrated on a wall preview: surface variation, coverage and texture rotation.",
+    "hint": "Material-instance demonstration",
     "art": "material",
+    "fit": "contain",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/material-sphere.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/material-sphere-poster.webp"
+  },
+  "rivering/glass-transmission": {
+    "id": "rivering/glass-transmission",
+    "title": "Glass transmission",
+    "caption": "Glass surface study in the test scene: a character remains visible through the tinted panel.",
+    "hint": "In-engine material study",
+    "art": "material",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/glass-transmission.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/glass-transmission.webp"
+  },
+  "rivering/glass-variants": {
+    "id": "rivering/glass-variants",
+    "title": "Glass surface variants",
+    "caption": "Side-by-side glass panels show different tint and surface treatments under the same scene lighting.",
+    "hint": "In-engine material study",
+    "art": "material",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/glass-variants.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/glass-variants.webp"
+  },
+  "rivering/wall-weathering": {
+    "id": "rivering/wall-weathering",
+    "title": "Tiled wall weathering",
+    "caption": "A tiled facade with surface variation and accumulated weathering along its lower edge.",
+    "hint": "In-engine material study",
+    "art": "material",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/wall-weathering.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/wall-weathering.webp"
+  },
+  "rivering/material-instance-controls": {
+    "id": "rivering/material-instance-controls",
+    "title": "Surface variation parameters",
+    "caption": "Material-instance editor with displacement, color variation, coverage masks and opacity controls beside the rendered wall preview.",
+    "hint": "Material-instance editor",
+    "art": "material",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/material-instance-controls.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/material-instance-controls.webp"
+  },
+  "rivering/occlusion-walkthrough": {
+    "id": "rivering/occlusion-walkthrough",
+    "title": "Building occlusion walkthrough",
+    "caption": "In-game capture: the character moves through the building while the visibility system reveals obstructed interior space.",
+    "hint": "In-engine walkthrough",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/occlusion-walkthrough.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/occlusion-walkthrough-poster.webp"
   },
   "rivering/occlusion": {
     "id": "rivering/occlusion",

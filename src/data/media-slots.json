@@ -8,9 +8,10 @@
     },
     "combat-interaction": {
       "title": "Combat interaction",
-      "caption": "Attack, block and targeting through a shared action state.",
+      "caption": "In-game combat demo: approach, melee exchanges, hit reactions and knockdown.",
       "hint": "Gameplay capture",
-      "art": "combat"
+      "art": "combat",
+      "fit": "contain"
     },
     "skill-vfx": {
       "title": "Skills & VFX",
@@ -32,15 +33,52 @@
     },
     "cr-facing": {
       "title": "Vertical aiming",
-      "caption": "Control Rig-based up-and-down aim correction. Character facing uses the existing GASP / Mover system.",
+      "caption": "Control Rig-based vertical aim correction during attacks toward the elevated target. Character facing uses the existing GASP / Mover system.",
       "hint": "Aim-height capture",
-      "art": "motion"
+      "art": "motion",
+      "fit": "contain"
     },
     "material-sphere": {
       "title": "Material studies",
-      "caption": "Surface blending, weathering and independently controlled glass aging.",
-      "hint": "Look-development turntable",
-      "art": "material"
+      "caption": "Material-instance controls demonstrated on a wall preview: surface variation, coverage and texture rotation.",
+      "hint": "Material-instance demonstration",
+      "art": "material",
+      "fit": "contain"
+    },
+    "glass-transmission": {
+      "title": "Glass transmission",
+      "caption": "Glass surface study in the test scene: a character remains visible through the tinted panel.",
+      "hint": "In-engine material study",
+      "art": "material",
+      "fit": "contain"
+    },
+    "glass-variants": {
+      "title": "Glass surface variants",
+      "caption": "Side-by-side glass panels show different tint and surface treatments under the same scene lighting.",
+      "hint": "In-engine material study",
+      "art": "material",
+      "fit": "contain"
+    },
+    "wall-weathering": {
+      "title": "Tiled wall weathering",
+      "caption": "A tiled facade with surface variation and accumulated weathering along its lower edge.",
+      "hint": "In-engine material study",
+      "art": "material",
+      "fit": "contain"
+    },
+    "material-instance-controls": {
+      "title": "Surface variation parameters",
+      "caption": "Material-instance editor with displacement, color variation, coverage masks and opacity controls beside the rendered wall preview.",
+      "hint": "Material-instance editor",
+      "art": "material",
+      "fit": "contain"
+    },
+    "occlusion-walkthrough": {
+      "title": "Building occlusion walkthrough",
+      "caption": "In-game capture: the character moves through the building while the visibility system reveals obstructed interior space.",
+      "hint": "In-engine walkthrough",
+      "art": "world",
+      "fit": "contain"
     },
     "occlusion": {
       "title": "Camera & occlusion",
