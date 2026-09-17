@@ -43,7 +43,7 @@ Another host can serve the entire `out/` directory at its domain root, preservin
 ## Provenance
 
 - Rivering: two existing Python/Blender asset-generation previews, resized to WebP and explicitly labelled asset studies, not in-engine captures. Current recordings remain to be supplied.
-- Friday Night: real public desktop/mobile sign-in pages captured September 17, 2026. No authenticated account content. Technical copy checked against current private source without publishing it.
+- Friday Night: six owner-supplied application screenshots with invite codes, account names, group identifiers, search input, and private comment text redacted using opaque pixel masks. Lossless WebP exports preserve all pixels outside the masks. The earlier public desktop/mobile login captures remain in the authentication gallery. Technical copy was checked against current private source without publishing it.
 - WayJia: three images from the team's final-game press kit. Credits and copy preserve collaborators' art, writing, audio and voice contributions. Reference shader algorithms are described as ported and adapted.
 - Manrope: self-hosted Latin variable font under SIL OFL; see `public/fonts/OFL.txt`.
 - Sharing card/favicon: original typography and arrow treatment matching the site.

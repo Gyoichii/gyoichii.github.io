@@ -3,6 +3,23 @@ import fs from "node:fs";
 import path from "node:path";
 const root = path.resolve("out");
 const port = Number(process.env.PORT || 4173);
+// Next's Windows export can write segment payload names as nested directories.
+// Serve the dotted URLs requested by its browser router without changing files.
+const segmentFiles = new Map();
+function indexSegments(directory) {
+  if (!fs.existsSync(directory)) return;
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) indexSegments(absolute);
+    else {
+      const parts = path.relative(root, absolute).split(path.sep);
+      const segment = parts.findIndex((part) => part.startsWith("__next."));
+      if (segment >= 0)
+        segmentFiles.set("/" + [...parts.slice(0, segment), parts.slice(segment).join(".")].join("/"), absolute);
+    }
+  }
+}
+indexSegments(root);
 const types = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -38,6 +55,7 @@ http
     if (fs.existsSync(file) && fs.statSync(file).isDirectory())
       file = path.join(file, "index.html");
     let status = 200;
+    if (!fs.existsSync(file) && segmentFiles.has(pathname)) file = segmentFiles.get(pathname);
     if (!fs.existsSync(file)) {
       file = path.join(root, "404.html");
       status = 404;

@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     url: "/projects/rivering/",
     images: [{ url: "/og.png", width: 1200, height: 630 }],
     title: "Project Rivering — Weihan Chen",
-    description: "An action game, built from the systems up.",
+    description:
+      "C++ combat systems, GASP / Mover integration, and procedural building generation in Unreal Engine 5.",
   },
 };
 export default function Page() {

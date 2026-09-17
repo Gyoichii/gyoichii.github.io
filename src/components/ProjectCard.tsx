@@ -60,13 +60,7 @@ export function ProjectCard({
               {project.number} / {project.category}
             </span>
             <h3>{project.title}</h3>
-            <p>
-              {project.slug === "rivering"
-                ? "Combat that connects. Movement with intent. A world built from rules."
-                : project.slug === "friday-night"
-                  ? "A shared place to discover a movie and make a night of it."
-                  : "A poetic space journey, brought from first thrust to final credits."}
-            </p>
+            <p>{project.cardSummary}</p>
           </div>
           <div className="card-meta">
             <div className="tags">

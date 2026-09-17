@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     url: "/projects/friday-night/",
     images: [{ url: "/og.png", width: 1200, height: 630 }],
     title: "Friday Night — Weihan Chen",
-    description: "From what should we watch to a shared plan.",
+    description:
+      "FastAPI movie planning with shared lists, voting, and group-based authorization.",
   },
 };
 export default function Page() {

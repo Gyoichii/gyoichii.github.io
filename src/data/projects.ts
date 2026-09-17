@@ -17,6 +17,7 @@ export type Project = {
   role: string;
   team: string;
   intro: string;
+  cardSummary: string;
   deck: string;
   tags: string[];
   hero: string;
@@ -30,8 +31,10 @@ export const rivering: Project = {
   period: "Apr 2026 — Present",
   role: "Independent developer",
   team: "Personal project",
-  intro: "An action game, built from the systems up.",
-  deck: "Custom combat, deliberate character movement, and a procedural urban world. An ongoing Unreal Engine 5 project where gameplay engineering meets the tools that make a place feel built.",
+  intro: "An Unreal Engine 5 action game.",
+  cardSummary:
+    "C++ combat systems, GASP / Mover integration, and procedural building generation.",
+  deck: "An independent project combining C++ combat systems, GASP / Mover integration, and native PCG building generation. Python / Blender tools produce the modular environment assets.",
   tags: [
     "C++",
     "Unreal Engine 5",
@@ -45,11 +48,11 @@ export const rivering: Project = {
     {
       id: "combat-interaction",
       label: "Combat interaction",
-      headline: "Every action has a place.",
+      headline: "Combat state & action arbitration",
       summary:
         "Attacks, blocks, dashes and targeting share a combat state and input policy. The same decisions govern what can start, what can be buffered, and when movement or facing input is accepted.",
       detail:
-        "Enhanced Input commands enter server-side combat handlers. The combat component tracks active actions, block phases and hit-reaction state, while GAS attributes and effects support stamina spending and recovery. Blocking retains grounded movement input; dashes lock facing; attack phases can accept facing intent while suppressing ordinary translation. This is a source-level architecture description, not a multiplayer performance claim.",
+        "Enhanced Input commands enter server-side combat handlers. The combat component tracks active actions, block phases, and hit-reaction state; GAS attributes and effects handle stamina spending and recovery. Blocking retains grounded movement input. Dashes lock facing. Attack phases can accept facing intent while suppressing ordinary translation.",
       tags: ["Action arbitration", "GAS attributes", "Input policy"],
       media: ["rivering/combat-interaction"],
       diagram: "combat",
@@ -57,18 +60,18 @@ export const rivering: Project = {
     {
       id: "skill-vfx",
       label: "Skills & VFX",
-      headline: "Timing makes an effect belong.",
+      headline: "Animation-driven skills & effects",
       summary:
         "Animation notify windows drive the Spin 360 trail lifecycle. Impact feedback consumes resolved contact direction and result data to orient Niagara effects around the interaction.",
       detail:
-        "A dedicated notify state calls begin, update and end on the combat component. Impact presentation binds values such as impact normal and weapon-sweep direction into Niagara. These are implemented integration paths; this page does not claim that every effect asset or the experimental bloodline work has finished visual validation.",
+        "A dedicated notify state starts, updates, and ends the trail through the combat component. Impact presentation passes the contact normal and weapon-sweep direction to Niagara. These hooks control effect timing and orientation; visual tuning is ongoing.",
       tags: ["Niagara", "Animation notifies", "Impact feedback"],
       media: ["rivering/skill-vfx"],
     },
     {
       id: "gasp-block",
       label: "GASP block",
-      headline: "Hold your ground. Keep moving.",
+      headline: "Blocking integrated with GASP / Mover",
       summary:
         "Blocking is a combat state with its own movement and orientation policy. The GASP / Mover character can retain grounded locomotion while ordinary movement-driven facing intent is suppressed.",
       detail:
@@ -79,11 +82,11 @@ export const rivering: Project = {
     {
       id: "melee-sweep",
       label: "Melee sweep / contact",
-      headline: "The space between two poses matters.",
+      headline: "Continuous melee contact",
       summary:
         "Animation-timed attack windows query the path between weapon poses. Candidate contacts are validated before gameplay resolution, and accepted targets are tracked within the attack window to avoid repeated processing across frames.",
       detail:
-        "The current source integrates a weapon-sweep subsystem and validates contact actor, component, body information, point, normal and attack direction. Invalid or volume-only evidence is not promoted to a usable surface contact. Pose history and contact validation are implementation facts; the newest sweep changes still need their final linked-build and in-game acceptance. Experimental trauma and bloodline work is outside this case study’s completed scope.",
+        "The weapon-sweep subsystem validates the actor, component, body, contact point, normal, and attack direction. Invalid or volume-only results are rejected. Accepted targets are tracked within each attack window. The latest sweep revision still requires linked-build and in-game validation.",
       tags: ["Pose history", "Swept collision", "Contact validation"],
       media: ["rivering/melee-sweep"],
       diagram: "sweep",
@@ -91,29 +94,29 @@ export const rivering: Project = {
     {
       id: "cr-facing",
       label: "Vertical aiming / Control Rig",
-      headline: "Aim above. Aim below.",
+      headline: "Control Rig & vertical aiming",
       summary:
         "Control Rig adds up-and-down aim correction to the animated pose. Character facing follows the existing GASP / Mover orientation system; Rivering connects the aiming layer to target data and combat state.",
       detail:
-        "CR means Control Rig here. The dedicated melee aiming rig consumes a target offset relative to the character root and applies bounded corrections on top of the authored animation. Body-part settings control the correction range and weight. GASP / Mover continues to handle base character facing, while Rivering integrates the aiming layer with combat state and target data. Pose correction alone does not establish exact weapon or muzzle alignment.",
+        "The dedicated melee Control Rig consumes a target offset relative to the character root and adds bounded corrections to the authored animation. Body-part settings control the correction range and weight. Rivering supplies combat state and target data; the base character-facing path remains in GASP / Mover.",
       tags: ["Control Rig", "Vertical aiming", "Animation integration"],
       media: ["rivering/cr-facing"],
     },
     {
       id: "material-sphere",
       label: "Material work",
-      headline: "Surfaces with a controllable history.",
+      headline: "Parameterized material studies",
       summary:
-        "Material studies explore intact and weathered surfaces, height-driven layer boundaries, and aged glass. Dirt, rain streaks, tint and surface response have separate controls so a look can be tuned deliberately.",
+        "Wall materials blend intact and weathered surfaces with height-driven boundaries. Glass instances expose separate controls for dirt, rain streaks, tint, and surface response.",
       detail:
-        "The project includes an A/B wall-surface blend with optional height-based coverage, and a Substrate glass-aging material with separate dust, rain-streak, mud and transmission controls. Material instances and project tooling are present. This is authored material work and integration; it is not a runtime weather simulation. The material-sphere slot is ready for a current turntable.",
+        "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
       tags: ["Substrate", "Material instances", "Surface blending"],
       media: ["rivering/material-sphere"],
     },
     {
       id: "occlusion",
       label: "Camera & occlusion",
-      headline: "Reveal the player. Keep the world solid.",
+      headline: "Geometry-preserving occlusion",
       summary:
         "Camera-to-character geometry queries decide when walls and roofs need a visibility window. Material clipping reveals the character while retaining the original collision geometry used for obstruction checks.",
       detail:
@@ -125,11 +128,11 @@ export const rivering: Project = {
     {
       id: "pcg-urban-village",
       label: "PCG urban village",
-      headline: "A building is more than a façade.",
+      headline: "Procedural building generation",
       summary:
         "Python / Blender tools generate a modular construction kit. A native Unreal PCG element turns building controls into layout and mesh output, connecting rooms, circulation, windows, floors and rooftop structure.",
       detail:
-        "The current C++ plugin exposes width and depth, floor count, entrance and stair choices, a seed, window options and weighted material patterns. Fixed modules and adaptable infill play different roles. PCG owns generated components, while a binding component connects completed output to building visibility and releases that binding on cleanup. Current source has advanced beyond the early Blender-only prototype; final circulation and visual issues are still being refined.",
+        "The C++ plugin exposes width, depth, floor count, entrances, stairs, seed, window options, and weighted material patterns. Layout combines fixed modules with adaptable infill. PCG owns the generated components; a binding component registers completed output with building visibility and releases it during cleanup. Circulation and visual refinement are ongoing.",
       tags: [
         "Native PCG element",
         "Deterministic generation",
@@ -154,59 +157,57 @@ export const friday: Project = {
   period: "Jun 2026",
   role: "Developer",
   team: "Web application",
-  intro: "From “what should we watch?” to a shared plan.",
-  deck: "A collaborative movie-discovery and planning application with persistent groups, recommendations and voting. The engineering runs through the interface: authentication, group-scoped permissions, and the shared state behind a movie night.",
+  intro: "Movie discovery and planning for groups.",
+  cardSummary:
+    "A FastAPI application with shared movie lists, voting, and group-based permissions.",
+  deck: "A Python / FastAPI web application for movie recommendations, voting, and discussion. SQLAlchemy and SQLite store group membership and movie activity; signed-cookie authentication and resource-level checks control access.",
   tags: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "TMDB"],
-  hero: "friday-night/desktop",
+  hero: "friday-night/group-workflow",
   systems: [
     {
       id: "shared-workflow",
       label: "Product & persistence",
-      headline: "One group. A shared movie night.",
+      headline: "Shared movie lists & persistent state",
       summary:
         "Users join groups by code or a configured approval flow, recommend films, vote, and discuss them. SQLAlchemy models preserve membership, movie state, comments and notification preferences in SQLite.",
       detail:
         "Group membership is unique per user and group. Votes are unique per user, movie and vote date. Movie records distinguish active, watched and deleted states, with separate restoration and archive actions. Movie queries filter by the selected group, so shared state belongs to the group that created it.",
       tags: ["Relational models", "Group workflow", "Persistent state"],
-      media: [
-        "friday-night/desktop",
-        "friday-night/mobile",
-        "friday-night/group-workflow",
-      ],
+      media: ["friday-night/movie-detail", "friday-night/notifications"],
     },
     {
       id: "access-control",
       label: "Authentication & permissions",
-      headline: "A group boundary is a real boundary.",
+      headline: "Authentication & group-level authorization",
       summary:
-        "A valid login is only the first check. Each operation resolves the current group, verifies membership and checks the resource and role before changing state. Being an admin in one group grants no authority over another.",
+        "Each operation resolves the current group, verifies membership, and checks the resource and role before changing state. Owner, admin, and member permissions apply within their own group.",
       detail:
         "Time-limited signed cookies establish identity. Passwords use salted PBKDF2-SHA256 hashes with constant-time comparison. Role checks distinguish owner, admin and member; movie and comment handlers enforce group ownership. Removed members cannot keep posting with a stale group cookie. The request path checks CSRF tokens for state-changing methods.",
       tags: ["Signed cookies", "Role-based access", "CSRF protection"],
-      media: [],
+      media: ["friday-night/group-settings", "friday-night/group-selection"],
       diagram: "auth",
     },
     {
       id: "movie-data",
       label: "External data & discovery",
-      headline: "Movie data, connected to a local workflow.",
+      headline: "TMDB search & metadata import",
       summary:
         "An asynchronous TMDB client supplies movie search, details and poster metadata. Selected films become local records that the group can recommend, vote on, archive and discuss.",
       detail:
         "The client uses bounded HTTP timeouts and handles upstream failures. API credentials are read from the environment. Search and metadata completion connect to the group’s existing movie records; identity checks look for duplicate active or archived films within that group. The group workflow remains distinct from the external catalogue.",
       tags: ["TMDB API", "Async HTTP", "Movie identity"],
-      media: [],
+      media: ["friday-night/movie-search"],
     },
     {
       id: "security-tests",
       label: "Security & delivery",
-      headline: "Test what a user must not be able to do.",
+      headline: "Permission-boundary tests & deployment",
       summary:
         "Focused tests exercise missing and invalid CSRF tokens, guessed movie IDs, stale membership cookies, and permissions across group boundaries. The public application is served over HTTPS.",
       detail:
         "The current test source includes cross-group trash operations, member-only restrictions, owner-role protection and login-failure throttling. Production configuration rejects a missing or development signing key and requires secure cookies. Nginx in front of Uvicorn is the documented deployment setup; only the public HTTPS endpoint was inspected here, not the live server configuration. Test presence and assertions were reviewed, not re-executed for this portfolio.",
       tags: ["Permission-boundary tests", "Production configuration", "HTTPS"],
-      media: [],
+      media: ["friday-night/desktop", "friday-night/mobile"],
     },
   ],
 };
@@ -219,6 +220,8 @@ export const wayjia: Project = {
   role: "Sole programmer & producer",
   team: "Three-person core team",
   intro: "A little spacecraft. A long way home.",
+  cardSummary:
+    "Sole programmer and producer of a three-person space-exploration game.",
   deck: "A poetic zero-gravity journey through light, memory and unfamiliar space. I programmed the game and coordinated production for a three-person core team, taking its systems from spacecraft control through the ending.",
   tags: ["GML", "GameMaker Studio", "GLSL ES"],
   hero: "wayjia/hero",
@@ -226,7 +229,7 @@ export const wayjia: Project = {
     {
       id: "flight",
       label: "Physics & exploration",
-      headline: "Let momentum tell the story.",
+      headline: "Spacecraft physics & exploration",
       summary:
         "Force-driven thrust, torque and inertial movement give the spacecraft its character. Radar reveals targets; resonance interactions activate stars and advance the journey.",
       detail:
@@ -237,7 +240,7 @@ export const wayjia: Project = {
     {
       id: "rendering",
       label: "Rendering & shader adaptation",
-      headline: "An atmosphere, integrated into play.",
+      headline: "Shader adaptation & rendering",
       summary:
         "Reference and Shadertoy-origin shader work was ported and adapted for GameMaker’s GLSL ES pipeline. Runtime parameter binding, camera-aligned rendering and off-screen surfaces connect those effects to the game.",
       detail:
@@ -250,7 +253,7 @@ export const wayjia: Project = {
       label: "Complete game delivery",
       headline: "All the way to the credits.",
       summary:
-        "Beyond movement and visual effects, I implemented the connective tissue of a finished game: region progression, dialogue, voice playback, cutscenes, menus and the ending.",
+        "I implemented region progression, dialogue, voice playback, cutscenes, menus, and the ending, alongside the spacecraft controller and visual effects.",
       detail:
         "The final local project contains the room flow, narrative controllers, audio playback and end-state objects. As producer, I coordinated the technical work with the team’s art and narrative. The final-game credits below preserve the wider contributors’ authorship.",
       tags: ["Game flow", "Dialogue & audio", "Production"],

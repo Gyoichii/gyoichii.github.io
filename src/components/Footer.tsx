@@ -9,7 +9,7 @@ export function Footer() {
         <p>Gameplay / Software Engineer</p>
       </div>
       <span className="footer-note">
-        Built with intent. Atlanta, GA.
+        Atlanta, GA.
         <br />© 2026 Weihan Chen
       </span>
       <a href="#top" className="back-top">

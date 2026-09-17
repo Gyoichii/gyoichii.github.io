@@ -19,16 +19,14 @@ export default function Home() {
         </h1>
         <div className="hero-lower">
           <h2>
-            I build the systems
+            Gameplay systems.
             <br />
-            that make worlds <em>work.</em>
+            Procedural environments.
+            <br />
+            <span className="accent">Software.</span>
           </h2>
           <div>
-            <p>
-              Gameplay with intent. Procedural places.
-              <br />
-              Software that brings people together.
-            </p>
+            <p>C++ / Unreal Engine 5 · Python / FastAPI</p>
             <div className="hero-actions">
               <Link href="/projects/rivering" className="button button-accent">
                 View Rivering <span aria-hidden="true">↗</span>
@@ -70,9 +68,9 @@ export default function Home() {
               Different kinds of engineering.
             </h2>
             <p>
-              From the frame-by-frame details of combat
+              An Unreal Engine project, a web application,
               <br />
-              to the state behind a shared movie night.
+              and a completed GameMaker game.
             </p>
           </div>
         </div>
@@ -84,23 +82,19 @@ export default function Home() {
       </section>
       <section id="about" className="about-section wrap">
         <div className="section-heading">
-          <span className="eyebrow">02 / THE APPROACH</span>
-          <h2>
-            Technical depth.
-            <br />
-            <em>Creative range.</em>
-          </h2>
+          <span className="eyebrow">02 / ABOUT</span>
+          <h2>What I work on</h2>
         </div>
         <div className="about-intro">
           <p>
-            I’m Weihan, a Computational Media student at Georgia Tech. I build
-            gameplay systems, the tools around them, and web applications with a
-            purpose.
+            I’m Weihan, a Computational Media student at Georgia Tech. I’m
+            currently developing Project Rivering, an Unreal Engine 5 action
+            game.
           </p>
           <p>
-            I like work where the details have something to do with the
-            experience: how an attack connects, how a building comes together,
-            or how a group makes a decision.
+            My work includes C++ combat systems, procedural building tools, and
+            Python web applications. I was also the sole programmer and producer
+            of WayJia, a three-person game project.
           </p>
         </div>
         <div className="focus-grid">
@@ -110,8 +104,8 @@ export default function Home() {
             </span>
             <h3>Gameplay systems</h3>
             <p>
-              Combat state, movement, collision and animation working as one
-              interaction.
+              Combat state, action arbitration, animation-timed collision, and
+              movement integration.
             </p>
             <span className="eyebrow">C++ / UE5 / GAS / MOVER</span>
           </article>
@@ -119,10 +113,10 @@ export default function Home() {
             <span className="focus-symbol" aria-hidden="true">
               [ + ]
             </span>
-            <h3>Worlds & tooling</h3>
+            <h3>Procedural environments</h3>
             <p>
-              Modular assets, procedural buildings and material controls that
-              support iteration.
+              Native PCG building generation, Python / Blender asset tools, and
+              parameterized materials.
             </p>
             <span className="eyebrow">PCG / PYTHON / BLENDER</span>
           </article>
@@ -132,8 +126,8 @@ export default function Home() {
             </span>
             <h3>Software engineering</h3>
             <p>
-              Web applications and backend systems built around a clear user
-              workflow.
+              Backend APIs, relational data, authentication, group permissions,
+              and external API integration.
             </p>
             <span className="eyebrow">PYTHON / FASTAPI / SQL</span>
           </article>
@@ -159,20 +153,14 @@ export default function Home() {
         </div>
       </section>
       <section id="contact" className="contact-section wrap">
-        <p className="eyebrow">03 / LET’S TALK</p>
+        <p className="eyebrow">03 / CONTACT</p>
         <div className="contact-heading">
-          <h2>
-            Good work starts
-            <br />
-            with a <em>conversation.</em>
-          </h2>
+          <h2>Get in touch</h2>
           <span className="contact-arrow" aria-hidden="true">
             ↗
           </span>
         </div>
-        <p>
-          Gameplay, tools, or software. I’d like to hear what you’re building.
-        </p>
+        <p>For gameplay, tools, and software engineering opportunities.</p>
         <a className="email-link" href="mailto:weihan.chen.dev@outlook.com">
           weihan.chen.dev@outlook.com <span aria-hidden="true">↗</span>
         </a>

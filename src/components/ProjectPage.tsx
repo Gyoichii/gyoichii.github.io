@@ -79,8 +79,8 @@ export function ProjectPage({ project }: { project: Project }) {
             {project.slug === "rivering"
               ? "Selected engineering systems."
               : project.slug === "wayjia"
-                ? "A small team. A complete journey."
-                : "A product with a shared purpose."}
+                ? "Programming & production"
+                : "Backend & application features"}
           </h2>
         </div>
         <div className="overview-grid">
@@ -139,21 +139,21 @@ export function ProjectPage({ project }: { project: Project }) {
           </p>
           <h2>
             {project.slug === "rivering"
-              ? "The work continues."
+              ? "Development status"
               : project.slug === "wayjia"
-                ? "Made together. Built to the end."
-                : "A real application, in the wild."}
+                ? "Team & credits"
+                : "Application screenshots"}
           </h2>
           <p>
             {project.slug === "rivering"
               ? "This case study reflects the source available in September 2026. New gameplay captures and environment studies will follow as the game develops."
               : project.slug === "wayjia"
                 ? "Programming and production were my responsibilities. The game’s identity also belongs to the artists, writers, musicians and voice contributors who helped make it."
-                : "The current public gallery shows the deployed sign-in experience. A fuller group-workflow recording will follow."}
+                : "Screenshots show movie lists, search, discussion, group administration, and notifications in the original Chinese-language interface. Invite codes, account names, and private comment text are redacted."}
           </p>
         </div>
         <a href="mailto:weihan.chen.dev@outlook.com" className="button">
-          Talk about the work ↗
+          Get in touch ↗
         </a>
       </section>
       <Link href={`/projects/${next.slug}`} className="next-project wrap">

@@ -99,7 +99,7 @@
   },
   "rivering/module-kit": {
     "id": "rivering/module-kit",
-    "title": "A vocabulary of parts",
+    "title": "Modular building components",
     "caption": "Python / Blender tooling: installed frontage, window accessories and modular construction details.",
     "hint": "Asset study",
     "art": "world",
@@ -131,6 +131,91 @@
     "art": "world",
     "project": "rivering",
     "sources": []
+  },
+  "friday-night/movie-search": {
+    "id": "friday-night/movie-search",
+    "title": "TMDB movie search",
+    "caption": "Search results import a movie poster, year, and synopsis before adding the film to the group list.",
+    "hint": "Application screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/movie-search.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/movie-search.webp"
+  },
+  "friday-night/group-settings": {
+    "id": "friday-night/group-settings",
+    "title": "Group administration",
+    "caption": "Group visibility, join approval, membership roles, and administrative actions. Names and invite codes are redacted.",
+    "hint": "Application screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/group-settings.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/group-settings.webp"
+  },
+  "friday-night/notifications": {
+    "id": "friday-night/notifications",
+    "title": "Notifications & preferences",
+    "caption": "Notification settings for votes, comments, replies, movie status, and group requests. Names and private message text are redacted.",
+    "hint": "Application screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/notifications.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/notifications.webp"
+  },
+  "friday-night/group-selection": {
+    "id": "friday-night/group-selection",
+    "title": "Group selection & joining",
+    "caption": "Switch between groups, set a per-group nickname, create a group, or join by invitation. Personal identifiers and codes are redacted.",
+    "hint": "Application screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/group-selection.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/group-selection.webp"
+  },
+  "friday-night/movie-detail": {
+    "id": "friday-night/movie-detail",
+    "title": "Movie details, votes & discussion",
+    "caption": "Movie metadata, votes, watched/archive actions, comments, and replies. Names and private comment text are redacted.",
+    "hint": "Application screenshot",
+    "art": "web",
+    "fit": "contain",
+    "project": "friday-night",
+    "sources": [
+      {
+        "src": "/media/friday-night/movie-detail.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/movie-detail.webp"
   },
   "friday-night/desktop": {
     "id": "friday-night/desktop",
@@ -168,12 +253,20 @@
   },
   "friday-night/group-workflow": {
     "id": "friday-night/group-workflow",
-    "title": "The shared movie night",
-    "caption": "Group discovery, selection and planning workflow.",
-    "hint": "Application walkthrough",
+    "title": "Shared movie list",
+    "caption": "Group movie list with genre filters, vote counts, ratings, and member roles. Personal identifiers are redacted.",
+    "hint": "Application screenshot",
     "art": "web",
+    "fit": "contain",
     "project": "friday-night",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/friday-night/group-workflow.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/friday-night/group-workflow.webp"
   },
   "wayjia/hero": {
     "id": "wayjia/hero",

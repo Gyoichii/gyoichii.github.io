@@ -2262,3 +2262,73 @@ section[id] {
   font-size: 12px;
   min-height: 44px;
 }
+/* Keep the new factual hero on three deliberate lines. */
+.hero-lower {
+  grid-template-columns: 1.55fr 1fr;
+  align-items: center;
+  gap: 45px;
+}
+.hero-lower h2 {
+  font-size: clamp(28px, 3.05vw, 44px);
+}
+.hero-lower p {
+  font-size: 15px;
+}
+.project-friday-night .project-hero-media .media-open {
+  height: auto;
+  aspect-ratio: 16/10;
+  max-height: 720px;
+  padding: 0;
+  background: #101318;
+}
+.project-friday-night .project-hero-media .media-open > img {
+  object-fit: cover !important;
+  object-position: top;
+}
+.project-friday-night .project-chapter .gallery-grid > .media-figure {
+  grid-column: 1/-1;
+}
+.project-friday-night .project-chapter .media-open {
+  aspect-ratio: auto;
+  background: #101318;
+}
+.project-friday-night .project-chapter .media-open > img {
+  height: auto;
+  object-fit: contain !important;
+}
+.card-friday-night .project-card-media {
+  padding: 35px 18px 0;
+  background: #293d32;
+}
+.card-friday-night .project-card-media > img {
+  object-position: top;
+}
+@media (max-width: 760px) {
+  .hero-lower {
+    display: block;
+  }
+  .hero-lower h2 {
+    font-size: clamp(24px, 7.25vw, 32px);
+    line-height: 1.23;
+  }
+  .hero-lower p {
+    font-size: 13px;
+  }
+  .project-friday-night .project-hero-media .media-open {
+    aspect-ratio: 1.22;
+  }
+  .project-friday-night .project-hero-media .media-open > img {
+    object-fit: contain !important;
+  }
+}
+.project-friday-night .project-chapter .media-open {
+  height: auto;
+}
+.project-friday-night .project-chapter .portrait-media .media-open {
+  height: 440px;
+}
+.project-friday-night .project-chapter .portrait-media .media-open > img {
+  height: 100%;
+  width: auto;
+  margin: auto;
+}

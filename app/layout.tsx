@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     template: "%s — Weihan Chen",
   },
   description:
-    "Gameplay systems, procedural worlds, and software engineering. Selected work by Weihan Chen: Project Rivering, Friday Night, and WayJia.",
+    "Gameplay systems, procedural environments, and software. Selected work by Weihan Chen in C++, Unreal Engine 5, Python, and FastAPI.",
   icons: { icon: "/favicon.png" },
   openGraph: {
     type: "website",
     title: "Weihan Chen — Gameplay / Software Engineer",
-    description: "Building the systems that make worlds work.",
+    description: "Gameplay systems, procedural environments, and software.",
     siteName: "Weihan Chen",
     images: [
       {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Weihan Chen — Gameplay / Software Engineer",
-    description: "Gameplay systems. Procedural worlds. Software engineering.",
+    description: "Gameplay systems. Procedural environments. Software.",
     images: ["/og.png"],
   },
 };
