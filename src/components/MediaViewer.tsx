@@ -28,11 +28,17 @@ function motionSnapshot() {
 export function useReducedMotion() {
   return useSyncExternalStore(subscribeMotion, motionSnapshot, () => true);
 }
-export function MediaPlaceholder({ item }: { item: MediaItem }) {
+export function MediaPlaceholder({
+  item,
+  pending = true,
+}: {
+  item: MediaItem;
+  pending?: boolean;
+}) {
   return (
     <div
       className={`media-placeholder art-${item.art}`}
-      aria-label={`${item.title}: ${item.hint} coming soon`}
+      aria-label={`${item.title}: ${item.hint}${pending ? " coming soon" : ""}`}
     >
       <div className="placeholder-index" aria-hidden="true">
         {item.project === "rivering"
@@ -51,7 +57,10 @@ export function MediaPlaceholder({ item }: { item: MediaItem }) {
       </div>
       <div className="placeholder-text">
         <span>{item.title}</span>
-        <small>{item.hint} · coming soon</small>
+        <small>
+          {item.hint}
+          {pending ? " · coming soon" : ""}
+        </small>
       </div>
       <span className="placeholder-format" aria-hidden="true">
         FILM / STILL
@@ -113,7 +122,12 @@ function VideoPreview({ item, paused }: { item: MediaItem; paused: boolean }) {
     };
   }, [near, reduced, paused]);
   if (failed)
-    return <MediaPlaceholder item={{ ...item, hint: "Preview unavailable" }} />;
+    return (
+      <MediaPlaceholder
+        item={{ ...item, hint: "Preview unavailable" }}
+        pending={false}
+      />
+    );
   const videos = item.sources.filter((s) => s.type === "video");
   return (
     <video
@@ -161,6 +175,7 @@ export function MediaPreview({
     return (
       <MediaPlaceholder
         item={{ ...item, hint: "Animation paused · open to play" }}
+        pending={false}
       />
     );
   return (

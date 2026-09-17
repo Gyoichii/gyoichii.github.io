@@ -22,7 +22,12 @@ export function Navigation() {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries)
-          if (entry.isIntersecting) setSection(entry.target.id);
+          if (entry.isIntersecting)
+            setSection(
+              entry.target.classList.contains("home-hero")
+                ? "work"
+                : entry.target.id,
+            );
       },
       { rootMargin: "-20% 0px -55% 0px" },
     );
@@ -30,6 +35,8 @@ export function Navigation() {
       const node = document.getElementById(id);
       if (node) observer.observe(node);
     }
+    const hero = document.querySelector(".home-hero");
+    if (hero) observer.observe(hero);
     return () => observer.disconnect();
   }, [pathname]);
   const links = [
