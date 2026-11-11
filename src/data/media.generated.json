@@ -1,12 +1,20 @@
 {
   "rivering/hero": {
     "id": "rivering/hero",
-    "title": "Project Rivering",
-    "caption": "Gameplay overview",
-    "hint": "Gameplay film",
+    "title": "Street-level view of the urban village",
+    "caption": "The character stands in a generated alley between tiled residences, window cages and air-conditioning units.",
+    "hint": "Unreal Engine district",
     "art": "world",
+    "fit": "cover",
     "project": "rivering",
-    "sources": []
+    "sources": [
+      {
+        "src": "/media/rivering/hero.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/hero.webp"
   },
   "rivering/combat-interaction": {
     "id": "rivering/combat-interaction",
@@ -61,8 +69,8 @@
   },
   "rivering/gasp-block": {
     "id": "rivering/gasp-block",
-    "title": "GASP block",
-    "caption": "Blocking while moving and turning in the GASP / Mover character.",
+    "title": "Katana guard movement",
+    "caption": "The character moves and changes facing while holding a katana in guard.",
     "hint": "Motion study",
     "art": "motion",
     "fit": "contain",
@@ -331,6 +339,125 @@
     ],
     "poster": "/media/rivering/pcg-graph.webp"
   },
+  "rivering/commercial-plan": {
+    "id": "rivering/commercial-plan",
+    "title": "Commercial street plan",
+    "caption": "Street selection in the Python planner. The Unreal walkthrough below uses a separate district.",
+    "hint": "Commercial street plan",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/commercial-plan.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/commercial-plan.webp"
+  },
+  "rivering/guilin-overview": {
+    "id": "rivering/guilin-overview",
+    "title": "Guilin foundation, regional view",
+    "caption": "Regional views across 8.064 km. Rows are seeds 185, 741 and 2026. Each row doubles relief from 15% (left) to 30% (right).",
+    "hint": "Guilin foundation, regional view",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/guilin-overview.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/guilin-overview.webp"
+  },
+  "rivering/guilin-local": {
+    "id": "rivering/guilin-local",
+    "title": "Guilin foundation, local view",
+    "caption": "Closer views of the same three seeds and the same 15% versus 30% relief settings.",
+    "hint": "Guilin foundation, local view",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/guilin-local.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/guilin-local.webp"
+  },
+  "rivering/large-river": {
+    "id": "rivering/large-river",
+    "title": "Large River spline edit",
+    "caption": "Full map → move a spline point → automatic rebuild → bank close-up. Continuous editor capture at normal speed.",
+    "hint": "Large River in Unreal Editor",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/large-river.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/large-river-poster.webp"
+  },
+  "rivering/lightning-growth": {
+    "id": "rivering/lightning-growth",
+    "title": "Seed 4 branch growth",
+    "caption": "Offline geometry preview of one seeded lightning tree from three angles.",
+    "hint": "Seed 4 branch growth",
+    "art": "motion",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/lightning-growth.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/lightning-growth-poster.webp"
+  },
+  "rivering/lightning-pie": {
+    "id": "rivering/lightning-pie",
+    "title": "Niagara discharge",
+    "caption": "Unreal Play In Editor capture of the generated channel striking and lighting up again.",
+    "hint": "Niagara discharge",
+    "art": "motion",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/lightning-pie.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/lightning-pie-poster.webp"
+  },
+  "rivering/river-bank": {
+    "id": "rivering/river-bank",
+    "title": "Bank after the spline edit",
+    "caption": "The same edited bend at bank scale, after the new shoreline and adjacent slope have been published.",
+    "hint": "Editor close-up",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/river-bank.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/river-bank.webp"
+  },
   "friday-night/movie-search": {
     "id": "friday-night/movie-search",
     "title": "TMDB movie search",
@@ -532,5 +659,73 @@
       }
     ],
     "poster": "/media/wayjia/gameplay-poster.webp"
+  },
+  "avatar-review/examples": {
+    "id": "avatar-review/examples",
+    "title": "Avatar crop examples",
+    "caption": "Two original sample images prepared for the offline crop demonstration.",
+    "hint": "Avatar crop examples",
+    "art": "world",
+    "fit": "contain",
+    "project": "avatar-review",
+    "sources": [
+      {
+        "src": "/media/avatar-review/examples.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/avatar-review/examples.webp"
+  },
+  "disaster-chatbot/interface": {
+    "id": "disaster-chatbot/interface",
+    "title": "Disaster Chatbot interface",
+    "caption": "Actual Django interface showing the two revisions of a fictional flood exercise. Matching and timeline storage use the application; the local test fixture supplies the model response.",
+    "hint": "Disaster Chatbot interface",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/interface.png",
+        "type": "image",
+        "mime": "image/png"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/interface.png"
+  },
+  "disaster-chatbot/delivery": {
+    "id": "disaster-chatbot/delivery",
+    "title": "Notification delivery benchmark",
+    "caption": "Measured local simulation. Public version checks and private timeline delivery have different endpoints.",
+    "hint": "Notification delivery benchmark",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/delivery.png",
+        "type": "image",
+        "mime": "image/png"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/delivery.png"
+  },
+  "disaster-chatbot/subscription": {
+    "id": "disaster-chatbot/subscription",
+    "title": "A subscribed location receives a flood update",
+    "caption": "A fresh local session confirms an Atlanta watch area, receives an exercise flood report and its update, then opens the supporting passages. The model response is a test fixture.",
+    "hint": "Django application recording",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/subscription.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/subscription-poster.webp"
   }
 }

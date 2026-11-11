@@ -1,88 +1,19 @@
-import Link from "next/link";
-import { projects } from "../src/data/projects";
-import { ProjectCard } from "../src/components/ProjectCard";
+import { ProjectDirectory } from "../src/components/ProjectDirectory";
 export const metadata = { alternates: { canonical: "/" } };
 export default function Home() {
   return (
     <main id="main">
-      <section className="home-hero wrap">
-        <div className="hero-topline">
-          <p className="eyebrow">
-            <span className="status-dot" /> GAMEPLAY / SOFTWARE ENGINEER
-          </p>
-          <span className="eyebrow hero-location">
-            ATLANTA, GA · GEORGIA TECH
-          </span>
+      <section className="home-hero portfolio-intro wrap">
+        <div>
+          <p className="intro-name">Weihan Chen</p>
+          <h1>Engineering portfolio</h1>
         </div>
-        <h1>
-          Weihan Chen<span className="accent">.</span>
-        </h1>
-        <div className="hero-lower">
-          <h2>
-            Gameplay systems.
-            <br />
-            Procedural environments.
-            <br />
-            <span className="accent">Software.</span>
-          </h2>
-          <div>
-            <p>C++ / Unreal Engine 5 · Python / FastAPI</p>
-            <div className="hero-actions">
-              <Link href="/projects/rivering" className="button button-accent">
-                View Rivering <span aria-hidden="true">↗</span>
-              </Link>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link"
-              >
-                View résumé ↗
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="hero-bottom">
-          <a href="#work" className="eyebrow">
-            SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
-          </a>
-          <div>
-            <a
-              href="https://github.com/Gyoichii"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub ↗
-            </a>
-            <a href="#contact">Get in touch ↗</a>
-          </div>
-        </div>
+        <p>Gameplay and procedural worlds in Unreal Engine. Web applications and applied machine learning.</p>
       </section>
-      <section className="selected-work wrap" id="work">
-        <div className="section-heading">
-          <span className="eyebrow">01 / SELECTED WORK</span>
-          <div>
-            <h2>
-              Three projects.
-              <br />
-              Different kinds of engineering.
-            </h2>
-            <p>
-              An Unreal Engine project, a web application,
-              <br />
-              and a completed GameMaker game.
-            </p>
-          </div>
-        </div>
-        <ProjectCard project={projects[0]} featured />
-        <div className="secondary-projects">
-          <ProjectCard project={projects[1]} />
-          <ProjectCard project={projects[2]} />
-        </div>
-      </section>
+      <ProjectDirectory />
       <section id="about" className="about-section wrap">
         <div className="section-heading">
-          <span className="eyebrow">02 / ABOUT</span>
+          <span className="eyebrow">ABOUT</span>
           <h2>What I work on</h2>
         </div>
         <div className="about-intro">
@@ -153,7 +84,7 @@ export default function Home() {
         </div>
       </section>
       <section id="contact" className="contact-section wrap">
-        <p className="eyebrow">03 / CONTACT</p>
+        <p className="eyebrow">CONTACT</p>
         <div className="contact-heading">
           <h2>Get in touch</h2>
           <span className="contact-arrow" aria-hidden="true">

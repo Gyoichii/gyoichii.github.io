@@ -33,7 +33,7 @@ export const rivering: Project = {
   team: "Personal project",
   intro: "An Unreal Engine 5 action game.",
   cardSummary:
-    "C++ combat systems, GASP / Mover integration, and procedural building generation.",
+    "An urban village, editable river valleys, procedural lightning and katana locomotion in Unreal Engine 5.",
   deck: "An independent project combining C++ combat systems, GASP / Mover integration, and native PCG building generation. Python / Blender tools produce the modular environment assets.",
   tags: [
     "C++",
@@ -45,6 +45,98 @@ export const rivering: Project = {
   ],
   hero: "rivering/hero",
   systems: [
+    {
+      id: "pcg-urban-village",
+      label: "Urban village",
+      headline: "From a commercial street to a residential entrance",
+      summary:
+        "The street planner selects a commercial corridor across a frozen layout of 231 buildings. In a separate Unreal district, shops face the street while residents enter from the side or rear. All 57 tested entrances in that 23-building scene passed capsule and support checks.",
+      detail:
+        "The C++ plugin exposes width, depth, floor count, entrances, stairs, seed, window options, and weighted material patterns. Layout combines fixed modules with adaptable infill. PCG owns the generated components; a binding component registers completed output with building visibility and releases it during cleanup. Circulation and visual refinement are ongoing.",
+      tags: [
+        "Native PCG element",
+        "Deterministic generation",
+        "Modular tooling",
+      ],
+      media: [
+        "rivering/commercial-plan",
+        "rivering/hero",
+        "rivering/pcg-urban-village",
+        "rivering/pcg-dimensions",
+        "rivering/pcg-variants",
+        "rivering/building-study",
+        "rivering/module-kit",
+        "rivering/pcg-graph",
+      ],
+      diagram: "pcg",
+    },
+    {
+      id: "terrain",
+      label: "Terrain foundations",
+      headline: "Shaping the low ground in Guilin",
+      summary: "The base terrain defines the broad slopes and lowlands beneath a landscape. Three fixed seeds show how the same low-relief recipe reads across an 8.064 km region and at local scale.",
+      detail: "The rows use seeds 185, 741 and 2026. Each pair compares the original 15% relief setting with 30% while holding the horizontal layout, lighting and camera fixed. The low-relief regional base and its surface treatment are authored separately. Individual karst peaks belong to a later stage.",
+      tags: ["Terrain authoring", "Regional presets"],
+      media: ["rivering/guilin-overview", "rivering/guilin-local"],
+    },
+    {
+      id: "large-river",
+      label: "Large River mode",
+      headline: "Moving a bend changes the whole river valley",
+      summary: "The editor starts above the full 4.608 km × 4.608 km terrain. A middle spline point moves 320 m sideways. The generator rebuilds the channel and the adjoining terrain, then the camera descends to the changed bank.",
+      detail: "The saved procedural valley has 11 control points. A script moves one point through the editor spline API. The generator detects the edit and publishes revision 10 after revision 9. Its own timing for this run was 4.56 seconds. The film retains the wait at normal speed. Discharge is set to 2,500 cubic metres per second.",
+      tags: ["Unreal Editor", "Spline authoring", "Water"],
+      media: ["rivering/large-river", "rivering/river-bank"],
+    },
+    {
+      id: "lightning",
+      label: "Procedural lightning",
+      headline: "One branching channel, several flashes",
+      summary: "The seed fixes the shape of the discharge. Watch the main channel grow toward the ground while smaller branches split off, then compare the geometry study with the Niagara discharge.",
+      detail: "One generated tree carries the segment geometry, growth times and branch intensities into Niagara. A shared schedule lets later flashes illuminate the same path. The test uses fixed start and end positions and a horizontal landing surface.",
+      tags: ["Niagara", "C++", "Seeded generation"],
+      media: ["rivering/lightning-growth", "rivering/lightning-pie"],
+    },
+    {
+      id: "gasp-block",
+      label: "Katana guard turns",
+      headline: "Turning with the katana held in guard",
+      summary:
+        "The character raises a katana, stays in guard and changes facing. Motion Matching selects the turn while the support foot stays planted through the pivot. Guarding also supports grounded movement.",
+      detail:
+        "GASP / Mover supplies the underlying locomotion and character-facing system. Rivering integrates block entry, loop and ending with that existing path, selecting movement and facing policies for combat. The walking integration consumes a desired facing and applies a bounded yaw response during blocking. The contribution shown here is combat-state integration with GASP / Mover.",
+      tags: ["GASP", "Mover", "Block state"],
+      media: ["rivering/gasp-block"],
+    },
+    {
+      id: "material-sphere",
+      label: "Wall tiles & glass",
+      headline: "Weathering a tiled facade",
+      summary:
+        "Wall materials blend intact and weathered surfaces with height-driven boundaries. Glass instances expose separate controls for dirt, rain streaks, tint, and surface response.",
+      detail:
+        "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
+      tags: ["Substrate", "Material instances", "Surface blending"],
+      media: [
+        "rivering/wall-weathering",
+        "rivering/material-sphere",
+        "rivering/glass-transmission",
+        "rivering/glass-variants",
+        "rivering/material-instance-controls",
+      ],
+    },
+    {
+      id: "occlusion",
+      label: "Camera & occlusion",
+      headline: "Geometry-preserving occlusion",
+      summary:
+        "Camera-to-character geometry queries decide when walls and roofs need a visibility window. Material clipping reveals the character while retaining the original collision geometry used for obstruction checks.",
+      detail:
+        "The component samples a bounded silhouette across the character capsule and traces against the original structure. Separate classification handles walls, roofs, props and exclusions. Because material clipping does not remove the collision body used by the query, revealing an obstruction does not immediately make the visibility test lose that obstruction. Generated buildings also have an explicit PCG-to-occlusion lifecycle binding.",
+      tags: ["Geometry queries", "Material clipping", "Collision preserved"],
+      media: ["rivering/occlusion-walkthrough", "rivering/occlusion"],
+      diagram: "occlusion",
+    },
     {
       id: "combat-interaction",
       label: "Combat interaction",
@@ -69,17 +161,6 @@ export const rivering: Project = {
       media: ["rivering/skill-vfx"],
     },
     {
-      id: "gasp-block",
-      label: "GASP block",
-      headline: "Blocking integrated with GASP / Mover",
-      summary:
-        "Blocking is a combat state with its own movement and orientation policy. The GASP / Mover character can retain grounded locomotion while ordinary movement-driven facing intent is suppressed.",
-      detail:
-        "GASP / Mover supplies the underlying locomotion and character-facing system. Rivering integrates block entry, loop and ending with that existing path, selecting movement and facing policies for combat. The walking integration consumes a desired facing and applies a bounded yaw response during blocking. The contribution shown here is combat-state integration with GASP / Mover.",
-      tags: ["GASP", "Mover", "Block state"],
-      media: ["rivering/gasp-block"],
-    },
-    {
       id: "melee-sweep",
       label: "Melee sweep / contact",
       headline: "Continuous melee contact",
@@ -101,58 +182,6 @@ export const rivering: Project = {
         "The dedicated melee Control Rig consumes a target offset relative to the character root and adds bounded corrections to the authored animation. Body-part settings control the correction range and weight. Rivering supplies combat state and target data; the base character-facing path remains in GASP / Mover.",
       tags: ["Control Rig", "Vertical aiming", "Animation integration"],
       media: ["rivering/cr-facing"],
-    },
-    {
-      id: "material-sphere",
-      label: "Material work",
-      headline: "Parameterized material studies",
-      summary:
-        "Wall materials blend intact and weathered surfaces with height-driven boundaries. Glass instances expose separate controls for dirt, rain streaks, tint, and surface response.",
-      detail:
-        "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
-      tags: ["Substrate", "Material instances", "Surface blending"],
-      media: [
-        "rivering/material-sphere",
-        "rivering/glass-transmission",
-        "rivering/glass-variants",
-        "rivering/wall-weathering",
-        "rivering/material-instance-controls",
-      ],
-    },
-    {
-      id: "occlusion",
-      label: "Camera & occlusion",
-      headline: "Geometry-preserving occlusion",
-      summary:
-        "Camera-to-character geometry queries decide when walls and roofs need a visibility window. Material clipping reveals the character while retaining the original collision geometry used for obstruction checks.",
-      detail:
-        "The component samples a bounded silhouette across the character capsule and traces against the original structure. Separate classification handles walls, roofs, props and exclusions. Because material clipping does not remove the collision body used by the query, revealing an obstruction does not immediately make the visibility test lose that obstruction. Generated buildings also have an explicit PCG-to-occlusion lifecycle binding.",
-      tags: ["Geometry queries", "Material clipping", "Collision preserved"],
-      media: ["rivering/occlusion-walkthrough", "rivering/occlusion"],
-      diagram: "occlusion",
-    },
-    {
-      id: "pcg-urban-village",
-      label: "PCG urban village",
-      headline: "Procedural building generation",
-      summary:
-        "Python / Blender tools generate a modular construction kit. A native Unreal PCG element turns building controls into layout and mesh output, connecting rooms, circulation, windows, floors and rooftop structure.",
-      detail:
-        "The C++ plugin exposes width, depth, floor count, entrances, stairs, seed, window options, and weighted material patterns. Layout combines fixed modules with adaptable infill. PCG owns the generated components; a binding component registers completed output with building visibility and releases it during cleanup. Circulation and visual refinement are ongoing.",
-      tags: [
-        "Native PCG element",
-        "Deterministic generation",
-        "Modular tooling",
-      ],
-      media: [
-        "rivering/pcg-urban-village",
-        "rivering/pcg-dimensions",
-        "rivering/pcg-variants",
-        "rivering/building-study",
-        "rivering/module-kit",
-        "rivering/pcg-graph",
-      ],
-      diagram: "pcg",
     },
   ],
 };
@@ -268,4 +297,72 @@ export const wayjia: Project = {
     },
   ],
 };
-export const projects = [rivering, friday, wayjia];
+export const avatar: Project = {
+  slug: "avatar-review",
+  number: "04",
+  title: "Avatar Review",
+  category: "Machine learning / Computer vision",
+  period: "Fall 2026",
+  role: "Model development & evaluation",
+  team: "Offline study",
+  intro: "What the avatar crop actually shows",
+  cardSummary: "A four-category image review pipeline evaluated on the visible avatar crop.",
+  deck: "A wide upload is cropped to a square before review. The study measures each category separately, then checks the final allow or block decision.",
+  tags: ["Python", "Computer vision", "Offline evaluation"],
+  hero: "avatar-review/examples",
+  systems: [
+    {
+      id: "visible-crop",
+      label: "Visible crop",
+      headline: "From an upload to the displayed avatar",
+      summary: "Compare the full upload with the square image the reviewer sees. These two original portfolio samples were prepared specifically for this demonstration.",
+      detail: "The preprocessing path accounts for image orientation and transparency, scales to the review size, then takes the centered square. The same crop feeds the category checks.",
+      tags: ["Image preprocessing", "Crop policy"],
+      media: [],
+    },
+    {
+      id: "four-checks",
+      label: "Evaluation",
+      headline: "Four checks, one decision",
+      summary: "A photo can trigger more than one category. Of 140 images with a complete set of labels, 124 received the correct final decision.",
+      detail: "Out of 82 images that should pass, 7 were blocked. Out of 58 images that should be blocked, 9 passed. Per-category denominators differ because ambiguous labels were omitted for that category.",
+      tags: ["Independent labels", "Error analysis"],
+      media: [],
+    },
+  ],
+};
+export const disaster: Project = {
+  slug: "disaster-chatbot",
+  number: "05",
+  title: "Disaster Chatbot",
+  category: "Software / Retrieval-augmented generation",
+  period: "Fall 2026",
+  role: "Chat and notification workflows",
+  team: "Georgia Tech team project",
+  intro: "Following a changing local alert",
+  cardSummary: "Source-grounded answers and location subscriptions in a Django chat application.",
+  deck: "A notice can be updated in one town and remain active in the next. The project connects time-stamped evidence, conversation history and confirmed location subscriptions.",
+  tags: ["Django", "LangChain", "Notifications"],
+  hero: "disaster-chatbot/interface",
+  systems: [
+    {
+      id: "bulletins",
+      label: "Source updates",
+      headline: "Which bulletin applies to Eastbank?",
+      summary: "Explore two successive exercise bulletins. Open each source to see the change in location and validity.",
+      detail: "Retrieved documents carry source IDs, publication times, affected areas and validity windows. The answer stage receives the conversation and the relevant documents. The example reproduces a fictional project fixture.",
+      tags: ["RAG", "Versioned evidence"],
+      media: [],
+    },
+    {
+      id: "subscriptions",
+      label: "Subscriptions",
+      headline: "From a saved location to a timeline update",
+      summary: "A user confirms a location and its coverage. Matching published events then appear in the conversation timeline. Device notifications are an additional opt-in.",
+      detail: "A shared area version signals new publications. Private location matching and timeline writes happen after the version changes. The chart records a single-machine simulation and distinguishes public checks from user-specific update latency.",
+      tags: ["Location matching", "Event delivery"],
+      media: ["disaster-chatbot/subscription", "disaster-chatbot/delivery"],
+    },
+  ],
+};
+export const projects = [rivering, friday, wayjia, avatar, disaster];

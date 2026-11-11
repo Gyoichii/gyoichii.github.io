@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navigation } from "../src/components/Navigation";
 import { Footer } from "../src/components/Footer";
 import "./globals.css";
+import "./directory.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://gyoichii.github.io"),
   title: {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s — Weihan Chen",
   },
   description:
-    "Gameplay systems, procedural environments, and software. Selected work by Weihan Chen in C++, Unreal Engine 5, Python, and FastAPI.",
+    "Explore Weihan Chen’s work in Unreal Engine, procedural environments, game development, computer vision and web applications.",
   icons: { icon: "/favicon.png" },
   openGraph: {
     type: "website",

@@ -1,10 +1,11 @@
 {
   "rivering": {
     "hero": {
-      "title": "Project Rivering",
-      "caption": "Gameplay overview",
-      "hint": "Gameplay film",
-      "art": "world"
+      "title": "Street-level view of the urban village",
+      "caption": "The character stands in a generated alley between tiled residences, window cages and air-conditioning units.",
+      "hint": "Unreal Engine district",
+      "art": "world",
+      "fit": "cover"
     },
     "combat-interaction": {
       "title": "Combat interaction",
@@ -28,8 +29,8 @@
       "fit": "contain"
     },
     "gasp-block": {
-      "title": "GASP block",
-      "caption": "Blocking while moving and turning in the GASP / Mover character.",
+      "title": "Katana guard movement",
+      "caption": "The character moves and changes facing while holding a katana in guard.",
       "hint": "Motion study",
       "art": "motion",
       "fit": "contain"
@@ -138,6 +139,55 @@
       "hint": "Graph / debug view",
       "art": "world",
       "fit": "contain"
+    },
+    "commercial-plan": {
+      "title": "Commercial street plan",
+      "caption": "Street selection in the Python planner. The Unreal walkthrough below uses a separate district.",
+      "hint": "Commercial street plan",
+      "art": "world",
+      "fit": "contain"
+    },
+    "guilin-overview": {
+      "title": "Guilin foundation, regional view",
+      "caption": "Regional views across 8.064 km. Rows are seeds 185, 741 and 2026. Each row doubles relief from 15% (left) to 30% (right).",
+      "hint": "Guilin foundation, regional view",
+      "art": "world",
+      "fit": "contain"
+    },
+    "guilin-local": {
+      "title": "Guilin foundation, local view",
+      "caption": "Closer views of the same three seeds and the same 15% versus 30% relief settings.",
+      "hint": "Guilin foundation, local view",
+      "art": "world",
+      "fit": "contain"
+    },
+    "large-river": {
+      "title": "Large River spline edit",
+      "caption": "Full map → move a spline point → automatic rebuild → bank close-up. Continuous editor capture at normal speed.",
+      "hint": "Large River in Unreal Editor",
+      "art": "world",
+      "fit": "contain"
+    },
+    "lightning-growth": {
+      "title": "Seed 4 branch growth",
+      "caption": "Offline geometry preview of one seeded lightning tree from three angles.",
+      "hint": "Seed 4 branch growth",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "lightning-pie": {
+      "title": "Niagara discharge",
+      "caption": "Unreal Play In Editor capture of the generated channel striking and lighting up again.",
+      "hint": "Niagara discharge",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "river-bank": {
+      "title": "Bank after the spline edit",
+      "caption": "The same edited bend at bank scale, after the new shoreline and adjacent slope have been published.",
+      "hint": "Editor close-up",
+      "art": "world",
+      "fit": "contain"
     }
   },
   "friday-night": {
@@ -223,6 +273,38 @@
       "caption": "Gameplay capture: spacecraft flight, star interactions, dialogue and transitions between regions.",
       "hint": "Gameplay film",
       "art": "space",
+      "fit": "contain"
+    }
+  },
+  "avatar-review": {
+    "examples": {
+      "title": "Avatar crop examples",
+      "caption": "Two original sample images prepared for the offline crop demonstration.",
+      "hint": "Avatar crop examples",
+      "art": "world",
+      "fit": "contain"
+    }
+  },
+  "disaster-chatbot": {
+    "interface": {
+      "title": "Disaster Chatbot interface",
+      "caption": "Actual Django interface showing the two revisions of a fictional flood exercise. Matching and timeline storage use the application; the local test fixture supplies the model response.",
+      "hint": "Disaster Chatbot interface",
+      "art": "world",
+      "fit": "contain"
+    },
+    "delivery": {
+      "title": "Notification delivery benchmark",
+      "caption": "Measured local simulation. Public version checks and private timeline delivery have different endpoints.",
+      "hint": "Notification delivery benchmark",
+      "art": "world",
+      "fit": "contain"
+    },
+    "subscription": {
+      "title": "A subscribed location receives a flood update",
+      "caption": "A fresh local session confirms an Atlanta watch area, receives an exercise flood report and its update, then opens the supporting passages. The model response is a test fixture.",
+      "hint": "Django application recording",
+      "art": "world",
       "fit": "contain"
     }
   }

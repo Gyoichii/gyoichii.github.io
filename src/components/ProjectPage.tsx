@@ -4,6 +4,7 @@ import manifest from "../data/media.generated.json";
 import { Gallery, type MediaItem } from "./MediaViewer";
 import { ProjectNav } from "./Navigation";
 import { Diagram } from "./Diagrams";
+import { AvatarExamples, AvatarMetrics, BulletinExercise } from "./CaseEvidence";
 export function ProjectPage({ project }: { project: Project }) {
   const data = manifest as Record<string, MediaItem>;
   const hero = data[project.hero].sources.length
@@ -80,6 +81,8 @@ export function ProjectPage({ project }: { project: Project }) {
               ? "Selected engineering systems."
               : project.slug === "wayjia"
                 ? "Programming & production"
+                : project.slug === "avatar-review" ? "Samples & evaluation"
+                : project.slug === "disaster-chatbot" ? "Queries & subscriptions"
                 : "Backend & application features"}
           </h2>
         </div>
@@ -111,6 +114,9 @@ export function ProjectPage({ project }: { project: Project }) {
               </p>
               <h2>{system.headline}</h2>
               <p className="chapter-summary">{system.summary}</p>
+              {project.slug === "avatar-review" && system.id === "visible-crop" && <AvatarExamples />}
+              {project.slug === "avatar-review" && system.id === "four-checks" && <AvatarMetrics />}
+              {project.slug === "disaster-chatbot" && system.id === "bulletins" && <BulletinExercise />}
               <div className="tags">
                 {system.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
@@ -142,13 +148,17 @@ export function ProjectPage({ project }: { project: Project }) {
               ? "Development status"
               : project.slug === "wayjia"
                 ? "Team & credits"
+                : project.slug === "avatar-review" ? "Evaluation scope"
+                : project.slug === "disaster-chatbot" ? "Exercise data"
                 : "Application screenshots"}
           </h2>
           <p>
             {project.slug === "rivering"
-              ? "This case study reflects the source available in September 2026. New gameplay captures and environment studies will follow as the game develops."
+              ? "The editor recordings show authoring tools. The gameplay and Niagara clips show their respective in-engine test scenes."
               : project.slug === "wayjia"
                 ? "Programming and production were my responsibilities. The game’s identity also belongs to the artists, writers, musicians and voice contributors who helped make it."
+                : project.slug === "avatar-review" ? "The two illustrated samples were run separately from the evaluation set. Each percentage uses only images with a usable label for that category."
+                : project.slug === "disaster-chatbot" ? "Eastbank, Riverside and the exercise bulletins are fictional. The walkthrough uses the team project’s test data, with an independent local simulation for the delivery benchmark."
                 : "Screenshots show movie lists, search, discussion, group administration, and notifications in the original Chinese-language interface. Invite codes, account names, and private comment text are redacted."}
           </p>
         </div>

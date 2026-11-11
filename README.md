@@ -2,7 +2,7 @@
 
 Live: **https://gyoichii.github.io/**
 
-Static Next.js / React / TypeScript portfolio with three engineering case studies, mixed-media galleries, and a self-hosted font. No database, login, tracking script or runtime server.
+Static Next.js / React / TypeScript portfolio with five engineering case studies, mixed-media galleries, and a self-hosted font. No database, login, tracking script or runtime server.
 
 ## Run
 
@@ -48,6 +48,8 @@ Another host can serve the entire `out/` directory at its domain root, preservin
 - Additional Rivering media: combat, Control Rig vertical aiming, and building-occlusion MP4s with trimmed starts/ends; a complete material-instance recording retaining the final rotation adjustment; four glass/wall/parameter screenshots. All are supplied captures. The material recording is remuxed without re-encoding or temporal cuts.
 - Short Rivering recordings of skills/VFX, close-range hit feedback and sweep debugging are looping GIFs with static pause posters. The longer block-movement recording remains an MP4. The supplied PCG graph screenshot uses lossless WebP to preserve node labels.
 - Friday Night: six owner-supplied application screenshots with invite codes, account names, group identifiers, search input, and private comment text redacted using opaque pixel masks. Lossless WebP exports preserve all pixels outside the masks. The earlier public desktop/mobile login captures remain in the authentication gallery. Technical copy was checked against current private source without publishing it.
+- The project directory groups Unreal Engine, software and ML, and games. Rivering includes a continuous 4.608 km Large River editor recording with an automatically regenerated spline edit, a bank close-up, the Guilin terrain study, a PCG street plan, and offline / PIE lightning captures.
+- Avatar Review uses two original illustrations scored by the offline classifier. Disaster Chatbot uses fictional project fixtures and the real local Django UI; the notification recording uses the project's deterministic model test response.
 - WayJia: three images from the team's final-game press kit and the owner-supplied gameplay recording, compressed for web playback without temporal cuts. Credits and copy preserve collaborators' art, writing, audio and voice contributions. Reference shader algorithms are described as ported and adapted.
 - Manrope: self-hosted Latin variable font under SIL OFL; see `public/fonts/OFL.txt`.
 - Sharing card/favicon: original typography and arrow treatment matching the site.

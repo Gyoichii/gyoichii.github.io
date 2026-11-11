@@ -1,0 +1,94 @@
+/* A teal desktop and a compact, beveled project browser. */
+:root {
+  --bg: #102b2d;
+  --surface: #173438;
+  --surface-2: #203d41;
+  --text: #f5f5eb;
+  --muted: #c1d2cd;
+  --dim: #b5c6c4;
+  --line: #456367;
+  --accent: #ffda79;
+  --chrome: #d9d9ce;
+  --ink: #192832;
+  --title-blue: #183b78;
+}
+.site-header { background: var(--chrome); color: var(--ink); border-bottom: 2px solid #767e76; }
+.site-header .identity-mark { background: var(--title-blue); color: white; }
+.site-header nav a, .site-header .menu-toggle { color: var(--ink); }
+.site-header nav a[aria-current], .site-header nav a:hover { color: #113865; text-decoration: underline; text-underline-offset: 4px; }
+.site-header .nav-resume, .site-header .menu-toggle, .classic-button {
+  background: var(--chrome); color: var(--ink); border: 2px solid;
+  border-color: #fff #677171 #677171 #fff;
+}
+.site-header :focus-visible, .directory :focus-visible { outline: 2px dashed #164377; outline-offset: 2px; }
+.home-hero.portfolio-intro {
+  min-height: auto; padding: clamp(42px, 5vw, 76px) 0 30px;
+  display: flex; align-items: end; justify-content: space-between; gap: 2rem;
+}
+.portfolio-intro .intro-name { color: #d1e7e0; font: 500 16px/1.4 var(--mono); margin-bottom: 10px; }
+.home-hero.portfolio-intro h1 { font: 600 clamp(36px, 5.4vw, 78px)/1.04 var(--sans); margin: 0; letter-spacing: -.055em; }
+.portfolio-intro > p { max-width: 33ch; color: #deebe7; line-height: 1.55; }
+.directory {
+  background: var(--chrome); color: var(--ink); padding: 5px;
+  border: 2px solid; border-color: #fafaf5 #737b79 #737b79 #fafaf5;
+  box-shadow: 7px 7px 0 #081e20; color-scheme: light;
+}
+.directory-bar {
+  display: flex; align-items: center; gap: 12px; padding: 7px 12px;
+  background: linear-gradient(100deg, #163666, #326e95); color: #fff;
+  font: 650 15px/1.4 var(--sans);
+}
+.folder-icon {
+  position: relative; width: 18px; height: 12px; flex: 0 0 18px;
+  display: inline-block; background: #f3ca62; border: 1px solid #8a682e;
+  box-shadow: inset 1px 1px #fff1ac; margin-top: 2px;
+}
+.folder-icon::before { content: ""; position: absolute; left: -1px; top: -4px;
+  width: 9px; height: 4px; background: #f3ca62; border: 1px solid #8a682e; border-bottom: 0; }
+.directory-layout { display: grid; grid-template-columns: minmax(210px, 25%) 1fr; gap: 5px; margin: 5px 0; }
+.directory-tree, .directory-preview { border: 2px solid; border-color: #808987 #fff #fff #808987; }
+.directory-tree { padding: clamp(14px, 2vw, 30px); background: #f3f3e9; }
+.tree-group + .tree-group { margin-top: 24px; }
+.tree-group h2 { display: flex; align-items: center; gap: 9px; font: 700 15px/1.4 var(--sans); letter-spacing: 0; margin: 0 0 7px; }
+.tree-group button { display: block; background: transparent; border: 0; text-align: left; color: #253742;
+  padding: 6px 9px; margin: 1px 0 1px 15px; font: 520 14px/1.4 var(--sans); }
+.tree-group button[aria-pressed=true] { background: var(--title-blue); color: white; }
+.tree-group button:hover:not([aria-pressed=true]) { background: #dce4df; }
+.directory-preview { min-width: 0; background: #fafaf3; display: flex; flex-direction: column; }
+.directory-image { display: block; width: 100%; background: #25373b; overflow: hidden; }
+.directory-image img, .directory-image video { width: 100%; height: clamp(205px, 23vw, 350px); object-fit: contain; }
+.preview-description { display: grid; grid-template-columns: 1fr auto; gap: 7px 20px; align-items: center; padding: 15px 20px 18px; }
+.preview-description h2 { color: #182d37; font-size: clamp(24px, 2.7vw, 37px); font-weight: 650; }
+.preview-description p { grid-column: 1; color: #42565b; font-size: 14px; line-height: 1.5; }
+.classic-button { grid-column: 2; grid-row: 1 / 3; padding: 8px 14px; font-size: 14px; font-weight: 650; white-space: nowrap; }
+.classic-button:active { border-color: #677171 #fff #fff #677171; }
+.directory-status { display: flex; gap: 0; flex-wrap: wrap; padding: 3px 5px; border: 1px solid; border-color: #8a918b #fff #fff #8a918b; }
+.directory-status a { padding: 3px 10px; font-size: 12px; color: #173f68; text-decoration: underline; text-underline-offset: 3px; }
+.case-table { width: 100%; margin: 24px 0; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.case-table caption { text-align: left; margin-bottom: 8px; font-weight: 650; }
+.case-table td, .case-table th { padding: 8px 6px; text-align: left; border-bottom: 1px solid var(--line); }
+.exercise-demo { margin: 28px 0; padding: clamp(15px,3vw,28px); border: 1px solid var(--line); background: var(--surface); }
+.exercise-demo .demo-controls { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.exercise-demo .demo-controls button { background: var(--chrome); color: var(--ink); padding: 6px 12px; }
+.exercise-demo .demo-controls button[aria-pressed=true] { background: #294980; color: white; }
+.exercise-demo a { text-decoration: underline; }
+.exercise-demo blockquote { margin: 16px 0 8px; border-left: 3px solid var(--accent); padding-left: 15px; }
+.exercise-demo details { margin-top: 12px; }
+.sample-pair { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin: 20px 0; }
+.sample-pair img { width: 100%; height: auto; border: 1px solid var(--line); }
+.sample-pair figcaption { margin-top: 5px; color: var(--muted); font-size: 14px; }
+.case-table th[scope=row] { font-weight: 500; }
+@media (max-width: 700px) {
+  .site-header nav.is-open { background: var(--chrome); }
+  .home-hero.portfolio-intro { display: block; padding-top: 32px; }
+  .portfolio-intro > p { margin-top: 14px; max-width: 48ch; }
+  .directory-layout { grid-template-columns: 1fr; }
+  .directory-tree { display: flex; flex-wrap: wrap; align-items: start; gap: 13px; padding: 12px; }
+  .tree-group + .tree-group { margin: 0; }
+  .tree-group button { margin-left: 0; padding: 5px 6px; }
+  .tree-group h2 { font-size: 13px; }
+  .preview-description { grid-template-columns: 1fr; padding: 14px; }
+  .classic-button { grid-column: 1; grid-row: auto; justify-self: start; }
+  .directory-image img, .directory-image video { height: auto; max-height: 300px; min-height: 135px; }
+  .directory-status a { padding: 4px 7px; }
+}
