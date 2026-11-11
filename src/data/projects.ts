@@ -8,6 +8,11 @@ export type System = {
   media: string[];
   diagram?: "combat" | "sweep" | "occlusion" | "pcg" | "auth";
 };
+export type SystemGroup = {
+  id: string;
+  label: string;
+  systems: System[];
+};
 export type Project = {
   slug: string;
   number: string;
@@ -21,8 +26,167 @@ export type Project = {
   deck: string;
   tags: string[];
   hero: string;
+  groups?: SystemGroup[];
   systems: System[];
 };
+const riveringGroups: SystemGroup[] = [
+  {
+    id: "world-generation",
+    label: "Procedural environments",
+    systems: [
+      {
+        id: "pcg-urban-village",
+        label: "Urban village",
+        headline: "Street layout and modular building generation",
+        summary:
+          "A Python planner selects a commercial street within a fixed layout of 231 buildings. In a separate 23-building Unreal scene, shops face the street and residential entrances open onto side or rear paths. All 57 tested entrances had room for the character capsule and a supporting floor.",
+        detail:
+          "The C++ plugin exposes width, depth, floor count, entrances, stairs, seed, window options, and weighted material patterns. Layout combines fixed modules with adaptable infill. PCG owns the generated components; a binding component registers completed output with building visibility and releases it during cleanup. Circulation and visual refinement are ongoing.",
+        tags: [
+          "Native PCG element",
+          "Deterministic generation",
+          "Modular tooling",
+        ],
+        media: [
+          "rivering/commercial-plan",
+          "rivering/hero",
+          "rivering/pcg-urban-village",
+          "rivering/pcg-dimensions",
+          "rivering/pcg-variants",
+          "rivering/building-study",
+          "rivering/module-kit",
+          "rivering/pcg-graph",
+        ],
+        diagram: "pcg",
+      },
+      {
+        id: "terrain",
+        label: "Terrain foundations",
+        headline: "Guilin terrain generation",
+        summary: "The generator sets the broad slopes and lowlands across an 8.064 km region. For each of three seeds, the comparison holds the terrain layout fixed and increases relief from 15% to 30%.",
+        detail: "The rows use seeds 185, 741 and 2026. Each pair uses the same lighting and camera position. Surface materials and individual karst peaks are separate stages.",
+        tags: ["Terrain authoring", "Regional presets"],
+        media: ["rivering/guilin-overview", "rivering/guilin-local"],
+      },
+      {
+        id: "large-river",
+        label: "Large River mode",
+        headline: "Spline-based river and bank generation",
+        summary: "Moving a spline control point updates the river channel and adjoining banks. In the 4.608 × 4.608 km editor scene, a 320 m lateral edit took 4.56 seconds to rebuild.",
+        detail: "The spline has 11 control points. A script moves one point through the editor API with discharge set to 2,500 cubic metres per second. The recording shows the full map, the rebuild at normal speed, and a close-up of the edited bank.",
+        tags: ["Unreal Editor", "Spline authoring", "Water"],
+        media: ["rivering/large-river", "rivering/river-bank"],
+      },
+    ],
+  },
+  {
+    id: "rendering-effects",
+    label: "Rendering & effects",
+    systems: [
+      {
+        id: "lightning",
+        label: "Procedural lightning",
+        headline: "Procedural lightning",
+        summary: "A C++ generator uses a seed to build the main lightning channel and its branches. Niagara renders the initial strike and lights the same branches again for subsequent flashes.",
+        detail: "Each segment stores its geometry, growth time and intensity. The geometry preview shows seed 4 from three angles. The Unreal test uses fixed endpoints and a flat landing surface.",
+        tags: ["Niagara", "C++", "Seeded generation"],
+        media: ["rivering/lightning-growth", "rivering/lightning-pie"],
+      },
+      {
+        id: "material-sphere",
+        label: "Wall tiles & glass",
+        headline: "Wall weathering and glass materials",
+        summary:
+          "Wall materials blend intact and weathered surfaces with height-driven boundaries. Glass instances expose separate controls for dirt, rain streaks, tint, and surface response.",
+        detail:
+          "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
+        tags: ["Substrate", "Material instances", "Surface blending"],
+        media: [
+          "rivering/wall-weathering",
+          "rivering/material-sphere",
+          "rivering/glass-transmission",
+          "rivering/glass-variants",
+          "rivering/material-instance-controls",
+        ],
+      },
+      {
+        id: "occlusion",
+        label: "Camera & occlusion",
+        headline: "Camera occlusion in buildings",
+        summary:
+          "Camera-to-character geometry queries decide when walls and roofs need a visibility window. Material clipping reveals the character while retaining the original collision geometry used for obstruction checks.",
+        detail:
+          "The component samples a bounded silhouette across the character capsule and traces against the original structure. Separate classification handles walls, roofs, props and exclusions. Because material clipping does not remove the collision body used by the query, revealing an obstruction does not immediately make the visibility test lose that obstruction. Generated buildings also have an explicit PCG-to-occlusion lifecycle binding.",
+        tags: ["Geometry queries", "Material clipping", "Collision preserved"],
+        media: ["rivering/occlusion-walkthrough", "rivering/occlusion"],
+        diagram: "occlusion",
+      },
+      {
+        id: "skill-vfx",
+        label: "Weapon effects",
+        headline: "Weapon trails and impact effects",
+        summary:
+          "Animation notify windows drive the Spin 360 trail lifecycle. Impact feedback consumes resolved contact direction and result data to orient Niagara effects around the interaction.",
+        detail:
+          "A dedicated notify state starts, updates, and ends the trail through the combat component. Impact presentation passes the contact normal and weapon-sweep direction to Niagara. These hooks control effect timing and orientation; visual tuning is ongoing.",
+        tags: ["Niagara", "Animation notifies", "Impact feedback"],
+        media: ["rivering/skill-vfx"],
+      },
+    ],
+  },
+  {
+    id: "gameplay-animation",
+    label: "Gameplay & animation",
+    systems: [
+      {
+        id: "combat-interaction",
+        label: "Combat interaction",
+        headline: "Combat state & action arbitration",
+        summary:
+          "Attacks, blocks, dashes and targeting share a combat state and input policy. The same decisions govern what can start, what can be buffered, and when movement or facing input is accepted.",
+        detail:
+          "Enhanced Input commands enter server-side combat handlers. The combat component tracks active actions, block phases, and hit-reaction state; GAS attributes and effects handle stamina spending and recovery. Blocking retains grounded movement input. Dashes lock facing. Attack phases can accept facing intent while suppressing ordinary translation.",
+        tags: ["Action arbitration", "GAS attributes", "Input policy"],
+        media: ["rivering/combat-interaction", "rivering/combat-contact"],
+        diagram: "combat",
+      },
+      {
+        id: "melee-sweep",
+        label: "Melee sweep / contact",
+        headline: "Melee hit detection",
+        summary:
+          "Animation-timed attack windows query the path between weapon poses. Candidate contacts are validated before gameplay resolution, and accepted targets are tracked within the attack window to avoid repeated processing across frames.",
+        detail:
+          "The weapon-sweep subsystem validates the actor, component, body, contact point, normal, and attack direction. Invalid or volume-only results are rejected. Accepted targets are tracked within each attack window. The latest sweep revision still requires linked-build and in-game validation.",
+        tags: ["Pose history", "Swept collision", "Contact validation"],
+        media: ["rivering/melee-sweep"],
+        diagram: "sweep",
+      },
+      {
+        id: "gasp-block",
+        label: "Katana guard turns",
+        headline: "Katana guard locomotion",
+        summary:
+          "The character raises a katana, stays in guard and changes facing. Motion Matching selects the turn while the support foot stays planted through the pivot. Guarding also supports grounded movement.",
+        detail:
+          "GASP / Mover supplies the underlying locomotion and character-facing system. Rivering integrates block entry, loop and ending with that existing path, selecting movement and facing policies for combat. The walking integration consumes a desired facing and applies a bounded yaw response during blocking. The contribution shown here is combat-state integration with GASP / Mover.",
+        tags: ["GASP", "Mover", "Block state"],
+        media: ["rivering/gasp-block"],
+      },
+      {
+        id: "cr-facing",
+        label: "Vertical aiming / Control Rig",
+        headline: "Vertical aiming with Control Rig",
+        summary:
+          "Control Rig adds up-and-down aim correction to the animated pose. Character facing follows the existing GASP / Mover orientation system; Rivering connects the aiming layer to target data and combat state.",
+        detail:
+          "The dedicated melee Control Rig consumes a target offset relative to the character root and adds bounded corrections to the authored animation. Body-part settings control the correction range and weight. Rivering supplies combat state and target data; the base character-facing path remains in GASP / Mover.",
+        tags: ["Control Rig", "Vertical aiming", "Animation integration"],
+        media: ["rivering/cr-facing"],
+      },
+    ],
+  },
+];
 export const rivering: Project = {
   slug: "rivering",
   number: "01",
@@ -44,146 +208,8 @@ export const rivering: Project = {
     "Python / Blender",
   ],
   hero: "rivering/hero",
-  systems: [
-    {
-      id: "pcg-urban-village",
-      label: "Urban village",
-      headline: "From a commercial street to a residential entrance",
-      summary:
-        "The street planner selects a commercial corridor across a frozen layout of 231 buildings. In a separate Unreal district, shops face the street while residents enter from the side or rear. All 57 tested entrances in that 23-building scene passed capsule and support checks.",
-      detail:
-        "The C++ plugin exposes width, depth, floor count, entrances, stairs, seed, window options, and weighted material patterns. Layout combines fixed modules with adaptable infill. PCG owns the generated components; a binding component registers completed output with building visibility and releases it during cleanup. Circulation and visual refinement are ongoing.",
-      tags: [
-        "Native PCG element",
-        "Deterministic generation",
-        "Modular tooling",
-      ],
-      media: [
-        "rivering/commercial-plan",
-        "rivering/hero",
-        "rivering/pcg-urban-village",
-        "rivering/pcg-dimensions",
-        "rivering/pcg-variants",
-        "rivering/building-study",
-        "rivering/module-kit",
-        "rivering/pcg-graph",
-      ],
-      diagram: "pcg",
-    },
-    {
-      id: "terrain",
-      label: "Terrain foundations",
-      headline: "Shaping the low ground in Guilin",
-      summary: "The base terrain defines the broad slopes and lowlands beneath a landscape. Three fixed seeds show how the same low-relief recipe reads across an 8.064 km region and at local scale.",
-      detail: "The rows use seeds 185, 741 and 2026. Each pair compares the original 15% relief setting with 30% while holding the horizontal layout, lighting and camera fixed. The low-relief regional base and its surface treatment are authored separately. Individual karst peaks belong to a later stage.",
-      tags: ["Terrain authoring", "Regional presets"],
-      media: ["rivering/guilin-overview", "rivering/guilin-local"],
-    },
-    {
-      id: "large-river",
-      label: "Large River mode",
-      headline: "Moving a bend changes the whole river valley",
-      summary: "The editor starts above the full 4.608 km × 4.608 km terrain. A middle spline point moves 320 m sideways. The generator rebuilds the channel and the adjoining terrain, then the camera descends to the changed bank.",
-      detail: "The saved procedural valley has 11 control points. A script moves one point through the editor spline API. The generator detects the edit and publishes revision 10 after revision 9. Its own timing for this run was 4.56 seconds. The film retains the wait at normal speed. Discharge is set to 2,500 cubic metres per second.",
-      tags: ["Unreal Editor", "Spline authoring", "Water"],
-      media: ["rivering/large-river", "rivering/river-bank"],
-    },
-    {
-      id: "lightning",
-      label: "Procedural lightning",
-      headline: "One branching channel, several flashes",
-      summary: "The seed fixes the shape of the discharge. Watch the main channel grow toward the ground while smaller branches split off, then compare the geometry study with the Niagara discharge.",
-      detail: "One generated tree carries the segment geometry, growth times and branch intensities into Niagara. A shared schedule lets later flashes illuminate the same path. The test uses fixed start and end positions and a horizontal landing surface.",
-      tags: ["Niagara", "C++", "Seeded generation"],
-      media: ["rivering/lightning-growth", "rivering/lightning-pie"],
-    },
-    {
-      id: "gasp-block",
-      label: "Katana guard turns",
-      headline: "Turning with the katana held in guard",
-      summary:
-        "The character raises a katana, stays in guard and changes facing. Motion Matching selects the turn while the support foot stays planted through the pivot. Guarding also supports grounded movement.",
-      detail:
-        "GASP / Mover supplies the underlying locomotion and character-facing system. Rivering integrates block entry, loop and ending with that existing path, selecting movement and facing policies for combat. The walking integration consumes a desired facing and applies a bounded yaw response during blocking. The contribution shown here is combat-state integration with GASP / Mover.",
-      tags: ["GASP", "Mover", "Block state"],
-      media: ["rivering/gasp-block"],
-    },
-    {
-      id: "material-sphere",
-      label: "Wall tiles & glass",
-      headline: "Weathering a tiled facade",
-      summary:
-        "Wall materials blend intact and weathered surfaces with height-driven boundaries. Glass instances expose separate controls for dirt, rain streaks, tint, and surface response.",
-      detail:
-        "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
-      tags: ["Substrate", "Material instances", "Surface blending"],
-      media: [
-        "rivering/wall-weathering",
-        "rivering/material-sphere",
-        "rivering/glass-transmission",
-        "rivering/glass-variants",
-        "rivering/material-instance-controls",
-      ],
-    },
-    {
-      id: "occlusion",
-      label: "Camera & occlusion",
-      headline: "Geometry-preserving occlusion",
-      summary:
-        "Camera-to-character geometry queries decide when walls and roofs need a visibility window. Material clipping reveals the character while retaining the original collision geometry used for obstruction checks.",
-      detail:
-        "The component samples a bounded silhouette across the character capsule and traces against the original structure. Separate classification handles walls, roofs, props and exclusions. Because material clipping does not remove the collision body used by the query, revealing an obstruction does not immediately make the visibility test lose that obstruction. Generated buildings also have an explicit PCG-to-occlusion lifecycle binding.",
-      tags: ["Geometry queries", "Material clipping", "Collision preserved"],
-      media: ["rivering/occlusion-walkthrough", "rivering/occlusion"],
-      diagram: "occlusion",
-    },
-    {
-      id: "combat-interaction",
-      label: "Combat interaction",
-      headline: "Combat state & action arbitration",
-      summary:
-        "Attacks, blocks, dashes and targeting share a combat state and input policy. The same decisions govern what can start, what can be buffered, and when movement or facing input is accepted.",
-      detail:
-        "Enhanced Input commands enter server-side combat handlers. The combat component tracks active actions, block phases, and hit-reaction state; GAS attributes and effects handle stamina spending and recovery. Blocking retains grounded movement input. Dashes lock facing. Attack phases can accept facing intent while suppressing ordinary translation.",
-      tags: ["Action arbitration", "GAS attributes", "Input policy"],
-      media: ["rivering/combat-interaction", "rivering/combat-contact"],
-      diagram: "combat",
-    },
-    {
-      id: "skill-vfx",
-      label: "Skills & VFX",
-      headline: "Animation-driven skills & effects",
-      summary:
-        "Animation notify windows drive the Spin 360 trail lifecycle. Impact feedback consumes resolved contact direction and result data to orient Niagara effects around the interaction.",
-      detail:
-        "A dedicated notify state starts, updates, and ends the trail through the combat component. Impact presentation passes the contact normal and weapon-sweep direction to Niagara. These hooks control effect timing and orientation; visual tuning is ongoing.",
-      tags: ["Niagara", "Animation notifies", "Impact feedback"],
-      media: ["rivering/skill-vfx"],
-    },
-    {
-      id: "melee-sweep",
-      label: "Melee sweep / contact",
-      headline: "Continuous melee contact",
-      summary:
-        "Animation-timed attack windows query the path between weapon poses. Candidate contacts are validated before gameplay resolution, and accepted targets are tracked within the attack window to avoid repeated processing across frames.",
-      detail:
-        "The weapon-sweep subsystem validates the actor, component, body, contact point, normal, and attack direction. Invalid or volume-only results are rejected. Accepted targets are tracked within each attack window. The latest sweep revision still requires linked-build and in-game validation.",
-      tags: ["Pose history", "Swept collision", "Contact validation"],
-      media: ["rivering/melee-sweep"],
-      diagram: "sweep",
-    },
-    {
-      id: "cr-facing",
-      label: "Vertical aiming / Control Rig",
-      headline: "Control Rig & vertical aiming",
-      summary:
-        "Control Rig adds up-and-down aim correction to the animated pose. Character facing follows the existing GASP / Mover orientation system; Rivering connects the aiming layer to target data and combat state.",
-      detail:
-        "The dedicated melee Control Rig consumes a target offset relative to the character root and adds bounded corrections to the authored animation. Body-part settings control the correction range and weight. Rivering supplies combat state and target data; the base character-facing path remains in GASP / Mover.",
-      tags: ["Control Rig", "Vertical aiming", "Animation integration"],
-      media: ["rivering/cr-facing"],
-    },
-  ],
+  groups: riveringGroups,
+  systems: riveringGroups.flatMap((group) => group.systems),
 };
 export const friday: Project = {
   slug: "friday-night",
@@ -255,10 +281,10 @@ export const wayjia: Project = {
   period: "Sep — Dec 2025",
   role: "Sole programmer & producer",
   team: "Three-person core team",
-  intro: "A little spacecraft. A long way home.",
+  intro: "Spacecraft control and exploration in GameMaker.",
   cardSummary:
     "Sole programmer and producer of a three-person space-exploration game.",
-  deck: "A poetic zero-gravity journey through light, memory and unfamiliar space. I programmed the game and coordinated production for a three-person core team, taking its systems from spacecraft control through the ending.",
+  deck: "I programmed the spacecraft controller, star interactions, dialogue and region transitions in GML. I also coordinated production for the three-person core team.",
   tags: ["GML", "GameMaker Studio", "GLSL ES"],
   hero: "wayjia/hero",
   systems: [
@@ -267,7 +293,7 @@ export const wayjia: Project = {
       label: "Physics & exploration",
       headline: "Spacecraft physics & exploration",
       summary:
-        "Force-driven thrust, torque and inertial movement give the spacecraft its character. Radar reveals targets; resonance interactions activate stars and advance the journey.",
+        "Thrust and torque control the spacecraft’s motion. The player scans for nearby stars and holds an input to activate them and advance through each region.",
       detail:
         "The player controller applies mass-scaled forces and torque, limits linear and angular speed, and decays motion after input. A radar cooldown gates scan creation. Nearby-star interaction accumulates a hold duration, marks the star as activated and updates shared progression. Region-specific code adds underwater behavior, black-hole attraction and white-hole transitions.",
       tags: ["Forces & torque", "Radar", "Resonance"],
@@ -287,7 +313,7 @@ export const wayjia: Project = {
     {
       id: "delivery",
       label: "Complete game delivery",
-      headline: "All the way to the credits.",
+      headline: "Game progression and credits",
       summary:
         "I implemented region progression, dialogue, voice playback, cutscenes, menus, and the ending, alongside the spacecraft controller and visual effects.",
       detail:
@@ -305,7 +331,7 @@ export const avatar: Project = {
   period: "Fall 2026",
   role: "Model development & evaluation",
   team: "Offline study",
-  intro: "What the avatar crop actually shows",
+  intro: "Image moderation for square avatar crops.",
   cardSummary: "A four-category image review pipeline evaluated on the visible avatar crop.",
   deck: "A wide upload is cropped to a square before review. The study measures each category separately, then checks the final allow or block decision.",
   tags: ["Python", "Computer vision", "Offline evaluation"],
@@ -314,8 +340,8 @@ export const avatar: Project = {
     {
       id: "visible-crop",
       label: "Visible crop",
-      headline: "From an upload to the displayed avatar",
-      summary: "Compare the full upload with the square image the reviewer sees. These two original portfolio samples were prepared specifically for this demonstration.",
+      headline: "Avatar cropping and preprocessing",
+      summary: "Each example pairs an original upload with the square crop used for classification and its recorded decision.",
       detail: "The preprocessing path accounts for image orientation and transparency, scales to the review size, then takes the centered square. The same crop feeds the category checks.",
       tags: ["Image preprocessing", "Crop policy"],
       media: [],
@@ -323,7 +349,7 @@ export const avatar: Project = {
     {
       id: "four-checks",
       label: "Evaluation",
-      headline: "Four checks, one decision",
+      headline: "Classification results and error counts",
       summary: "A photo can trigger more than one category. Of 140 images with a complete set of labels, 124 received the correct final decision.",
       detail: "Out of 82 images that should pass, 7 were blocked. Out of 58 images that should be blocked, 9 passed. Per-category denominators differ because ambiguous labels were omitted for that category.",
       tags: ["Independent labels", "Error analysis"],
@@ -339,17 +365,17 @@ export const disaster: Project = {
   period: "Fall 2026",
   role: "Chat and notification workflows",
   team: "Georgia Tech team project",
-  intro: "Following a changing local alert",
+  intro: "Location-based alerts in a Django chat application.",
   cardSummary: "Source-grounded answers and location subscriptions in a Django chat application.",
-  deck: "A notice can be updated in one town and remain active in the next. The project connects time-stamped evidence, conversation history and confirmed location subscriptions.",
+  deck: "The application retrieves dated bulletins for a location and records updates in the chat timeline for users who subscribe to that area.",
   tags: ["Django", "LangChain", "Notifications"],
   hero: "disaster-chatbot/interface",
   systems: [
     {
       id: "bulletins",
       label: "Source updates",
-      headline: "Which bulletin applies to Eastbank?",
-      summary: "Explore two successive exercise bulletins. Open each source to see the change in location and validity.",
+      headline: "Bulletin updates by location",
+      summary: "In the exercise data, the second bulletin cancels the flood warning for Eastbank. The warning for Riverside remains in effect.",
       detail: "Retrieved documents carry source IDs, publication times, affected areas and validity windows. The answer stage receives the conversation and the relevant documents. The example reproduces a fictional project fixture.",
       tags: ["RAG", "Versioned evidence"],
       media: [],
@@ -357,7 +383,7 @@ export const disaster: Project = {
     {
       id: "subscriptions",
       label: "Subscriptions",
-      headline: "From a saved location to a timeline update",
+      headline: "Location subscriptions and event delivery",
       summary: "A user confirms a location and its coverage. Matching published events then appear in the conversation timeline. Device notifications are an additional opt-in.",
       detail: "A shared area version signals new publications. Private location matching and timeline writes happen after the version changes. The chart records a single-machine simulation and distinguishes public checks from user-specific update latency.",
       tags: ["Location matching", "Event delivery"],

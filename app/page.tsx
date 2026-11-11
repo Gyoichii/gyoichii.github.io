@@ -77,7 +77,7 @@ export default function Home() {
           </div>
         </div>
         <div className="skills-line">
-          <span className="eyebrow">ALSO IN THE TOOLBOX</span>
+          <span className="eyebrow">Additional tools</span>
           <p>
             C · Java · Django · SQLite · Git · Unreal Blueprint · Enhanced Input
           </p>

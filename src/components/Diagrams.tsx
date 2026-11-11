@@ -5,7 +5,7 @@ export function Diagram({
 }) {
   const config = {
     auth: {
-      label: "Every mutation crosses an access boundary",
+      label: "Authorization checks for group operations",
       steps: [
         "Signed identity",
         "Group membership",
@@ -15,17 +15,17 @@ export function Diagram({
       note: "A group selector is context. Membership and resource checks grant access.",
     },
     combat: {
-      label: "One policy, multiple consumers",
+      label: "Combat input processing",
       steps: [
         "Player intent",
         "Action arbitration",
         "Movement + facing",
         "Animation / feedback",
       ],
-      note: "Combat state owns the decision. Presentation consumes it.",
+      note: "The current combat state determines which movement and animation responses can run.",
     },
     sweep: {
-      label: "From motion to an accepted hit",
+      label: "Melee contact validation",
       steps: [
         "Previous pose",
         "Current pose",
@@ -35,7 +35,7 @@ export function Diagram({
       note: "An overlap alone is not a valid surface contact.",
     },
     occlusion: {
-      label: "Visibility and geometry stay separate",
+      label: "Occlusion query and material clipping",
       steps: [
         "Camera → capsule",
         "Original geometry",
@@ -45,7 +45,7 @@ export function Diagram({
       note: "Original collision geometry remains available to the next query.",
     },
     pcg: {
-      label: "From construction kit to generated world",
+      label: "Procedural building generation",
       steps: [
         "Blender modules",
         "Building controls",

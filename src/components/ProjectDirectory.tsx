@@ -44,8 +44,17 @@ export function ProjectDirectory() {
           </div>
         </div>
       </div>
-      <nav className="directory-status" aria-label="Jump to a project chapter">
-        {selected.systems.slice(0, 6).map((section) => <Link key={section.id} href={`/projects/${selected.slug}/#${section.id}`}>{section.label}</Link>)}
+      <nav className={selected.groups ? "directory-status grouped-links" : "directory-status"} aria-label="Project contents">
+        {selected.groups ? selected.groups.map((group) => (
+          <div key={group.id}>
+            <Link className="group-link" href={`/projects/${selected.slug}/#${group.id}`}>{group.label}</Link>
+            <ul>{group.systems.map((system) => (
+              <li key={system.id}><Link href={`/projects/${selected.slug}/#${system.id}`}>{system.label}</Link></li>
+            ))}</ul>
+          </div>
+        )) : selected.systems.map((section) => (
+          <Link key={section.id} href={`/projects/${selected.slug}/#${section.id}`}>{section.label}</Link>
+        ))}
       </nav>
     </section>
   );

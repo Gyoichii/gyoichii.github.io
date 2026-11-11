@@ -324,7 +324,7 @@
   },
   "rivering/pcg-graph": {
     "id": "rivering/pcg-graph",
-    "title": "Inside the PCG graph",
+    "title": "Building generation graph",
     "caption": "City Village PCG graph: parcel input, building controls, mesh spawning, and layout, manifest and diagnostic outputs.",
     "hint": "Graph / debug view",
     "art": "world",
@@ -393,7 +393,7 @@
   "rivering/large-river": {
     "id": "rivering/large-river",
     "title": "Large River spline edit",
-    "caption": "Full map → move a spline point → automatic rebuild → bank close-up. Continuous editor capture at normal speed.",
+    "caption": "A continuous editor recording shows the spline edit, the automatic rebuild and the resulting riverbank at normal speed.",
     "hint": "Large River in Unreal Editor",
     "art": "world",
     "fit": "contain",
@@ -596,7 +596,7 @@
   },
   "wayjia/hero": {
     "id": "wayjia/hero",
-    "title": "WayJia — finding home",
+    "title": "WayJia spacecraft and dialogue",
     "caption": "Final-game press-kit screenshot: a spacecraft, a black hole and a conversation in deep space.",
     "hint": "Game screenshot",
     "art": "space",
@@ -612,7 +612,7 @@
   },
   "wayjia/exploration": {
     "id": "wayjia/exploration",
-    "title": "Signals in the dark",
+    "title": "Spacecraft exploration",
     "caption": "Final-game press-kit screenshot: spacecraft movement and narrative exploration.",
     "hint": "Game screenshot",
     "art": "space",
@@ -628,7 +628,7 @@
   },
   "wayjia/credits": {
     "id": "wayjia/credits",
-    "title": "The people behind the journey",
+    "title": "Game credits",
     "caption": "Final-game credits. Weihan Chen: engineer / programmer and game producer, with design and sound contributions. Art, writing, voices and music include contributions from the wider team and collaborators.",
     "hint": "Credits screenshot",
     "art": "space",

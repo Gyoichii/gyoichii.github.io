@@ -96,6 +96,79 @@ export function Navigation() {
     </header>
   );
 }
+
+type NavGroup = {
+  id: string;
+  label: string;
+  sections: { id: string; label: string }[];
+};
+
+export function GroupedProjectNav({ groups }: { groups: NavGroup[] }) {
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const targets = groups.flatMap((group) => [
+      { id: group.id, activeId: group.sections[0].id },
+      ...group.sections.map(({ id }) => ({ id, activeId: id })),
+    ]).map(({ id, activeId }) => ({ node: document.getElementById(id), activeId }));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) + 2;
+      let current = "";
+      for (const { node, activeId } of targets) {
+        if (!node) continue;
+        if (node.getBoundingClientRect().top > offset) break;
+        current = activeId;
+      }
+      setActive(current);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [groups]);
+
+  return (
+    <nav className="system-nav" aria-label="Project chapters">
+      <div className="system-tree">
+        {groups.map((group) => (
+          <div key={group.id}>
+            <a className="system-tree-group" href={`#${group.id}`}>{group.label}</a>
+            <ul>{group.sections.map((section) => (
+              <li key={section.id}><a href={`#${section.id}`}
+                aria-current={active === section.id ? "location" : undefined}>{section.label}</a></li>
+            ))}</ul>
+          </div>
+        ))}
+      </div>
+      <label className="system-picker">
+        <span>Section</span>
+        <select value={active} onChange={(event) => {
+          const id = event.target.value;
+          const target = document.getElementById(id);
+          if (!target) return;
+          window.location.hash = id;
+          target.focus({ preventScroll: true });
+          target.scrollIntoView();
+        }}>
+          <option value="" disabled>Choose a section</option>
+          {groups.map((group) => (
+            <optgroup key={group.id} label={group.label}>
+              {group.sections.map((section) => <option key={section.id} value={section.id}>{section.label}</option>)}
+            </optgroup>
+          ))}
+        </select>
+      </label>
+    </nav>
+  );
+}
 export function ProjectNav({
   sections,
 }: {

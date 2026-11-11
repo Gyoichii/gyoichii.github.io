@@ -4,9 +4,9 @@ import { ProjectPage } from "../../../src/components/ProjectPage";
 export const dynamic = "force-static";
 export const metadata: Metadata = {
   alternates: { canonical: "/projects/rivering/" },
-  title: "Project Rivering — Combat, Movement & Procedural Worlds",
+  title: "Project Rivering — Unreal Engine Systems",
   description:
-    "An independent UE5 action game: C++ combat arbitration, animation-timed melee sweeps, GASP / Mover integration, material work and native PCG buildings.",
+    "Procedural environments, rendering, combat and character animation in an independent Unreal Engine 5 action game.",
   openGraph: {
     url: "/projects/rivering/",
     images: [{ url: "/og.png", width: 1200, height: 630 }],

@@ -6,12 +6,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects/wayjia/" },
   title: "WayJia — Game Programming & Production",
   description:
-    "A poetic zero-gravity space-exploration game. Weihan Chen was the sole programmer and producer on a three-person core team, implementing physics, game flow and GLSL ES shader adaptation.",
+    "Spacecraft physics, game progression and GLSL ES shader adaptation in a three-person GameMaker project.",
   openGraph: {
     url: "/projects/wayjia/",
     images: [{ url: "/og.png", width: 1200, height: 630 }],
     title: "WayJia — Weihan Chen",
-    description: "A little spacecraft. A long way home.",
+    description: "Game programming and production for a space-exploration game in GameMaker.",
   },
 };
 export default function Page() {

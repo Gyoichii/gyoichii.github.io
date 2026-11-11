@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s — Weihan Chen",
   },
   description:
-    "Explore Weihan Chen’s work in Unreal Engine, procedural environments, game development, computer vision and web applications.",
+    "Weihan Chen’s engineering portfolio covers Unreal Engine systems, game development, computer vision and web applications.",
   icons: { icon: "/favicon.png" },
   openGraph: {
     type: "website",
