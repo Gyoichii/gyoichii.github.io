@@ -35,10 +35,17 @@
       "art": "motion",
       "fit": "contain"
     },
-    "melee-sweep": {
-      "title": "Melee sweep / contact",
-      "caption": "Weapon-sweep debug geometry during attacks, followed by contact and impact feedback.",
-      "hint": "Collision debug capture",
+    "melee-r22-trace": {
+      "title": "Server trace replay",
+      "caption": "Slowed top view of a recorded 116.6 ms server interval. The fitted blade turns 230.1°. The attack window opens at 22.8 ms, and the server accepts contact at 46.7 ms. Times are relative to the first pose.",
+      "hint": "Recorded R22 query",
+      "art": "sweep",
+      "fit": "contain"
+    },
+    "melee-r22-pie": {
+      "title": "Melee collision in Unreal",
+      "caption": "Normal-speed Play In Editor recording against the blocking test dummy. Cyan shows the sampled poses, orange the fitted blade path inside the attack window, and yellow the geometric hit. The second attack produced an accepted contact.",
+      "hint": "R22 runtime debug view",
       "art": "sweep",
       "fit": "contain"
     },

@@ -152,14 +152,14 @@ const riveringGroups: SystemGroup[] = [
       },
       {
         id: "melee-sweep",
-        label: "Melee sweep / contact",
-        headline: "Melee hit detection",
+        label: "Melee hit detection",
+        headline: "Continuous melee hit detection",
         summary:
-          "Animation-timed attack windows query the path between weapon poses. Candidate contacts are validated before gameplay resolution, and accepted targets are tracked within the attack window to avoid repeated processing across frames.",
+          "Two sampled blade poses can represent a short turn or a longer swing. The server uses the weapon’s authored cutting direction to select an arc, then checks when the moving blade first contacts a target collider inside the animation’s attack window.",
         detail:
-          "The weapon-sweep subsystem validates the actor, component, body, contact point, normal, and attack direction. Invalid or volume-only results are rejected. Accepted targets are tracked within each attack window. The latest sweep revision still requires linked-build and in-game validation.",
-        tags: ["Pose history", "Swept collision", "Contact validation"],
-        media: ["rivering/melee-sweep"],
+          "The R22 solver fits the full blade segment for swings. Thrusts use the tip’s motion relative to each target collider. At contact, the server evaluates the collider surface and its normal at the same instant. A target can be accepted once per attack window.",
+        tags: ["Continuous collision detection", "Time of impact", "Unreal Engine"],
+        media: ["rivering/melee-r22-pie", "rivering/melee-r22-trace"],
         diagram: "sweep",
       },
       {

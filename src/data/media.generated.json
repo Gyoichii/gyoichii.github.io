@@ -84,22 +84,39 @@
     ],
     "poster": "/media/rivering/gasp-block-poster.webp"
   },
-  "rivering/melee-sweep": {
-    "id": "rivering/melee-sweep",
-    "title": "Melee sweep / contact",
-    "caption": "Weapon-sweep debug geometry during attacks, followed by contact and impact feedback.",
-    "hint": "Collision debug capture",
+  "rivering/melee-r22-trace": {
+    "id": "rivering/melee-r22-trace",
+    "title": "Server trace replay",
+    "caption": "Slowed top view of a recorded 116.6 ms server interval. The fitted blade turns 230.1°. The attack window opens at 22.8 ms, and the server accepts contact at 46.7 ms. Times are relative to the first pose.",
+    "hint": "Recorded R22 query",
     "art": "sweep",
     "fit": "contain",
     "project": "rivering",
     "sources": [
       {
-        "src": "/media/rivering/melee-sweep.gif",
-        "type": "gif",
-        "mime": "image/gif"
+        "src": "/media/rivering/melee-r22-trace.mp4",
+        "type": "video",
+        "mime": "video/mp4"
       }
     ],
-    "poster": "/media/rivering/melee-sweep-poster.webp"
+    "poster": "/media/rivering/melee-r22-trace-poster.webp"
+  },
+  "rivering/melee-r22-pie": {
+    "id": "rivering/melee-r22-pie",
+    "title": "Melee collision in Unreal",
+    "caption": "Normal-speed Play In Editor recording against the blocking test dummy. Cyan shows the sampled poses, orange the fitted blade path inside the attack window, and yellow the geometric hit. The second attack produced an accepted contact.",
+    "hint": "R22 runtime debug view",
+    "art": "sweep",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/melee-r22-pie.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/melee-r22-pie-poster.webp"
   },
   "rivering/cr-facing": {
     "id": "rivering/cr-facing",

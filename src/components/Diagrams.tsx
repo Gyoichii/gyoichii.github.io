@@ -25,14 +25,14 @@ export function Diagram({
       note: "The current combat state determines which movement and animation responses can run.",
     },
     sweep: {
-      label: "Melee contact validation",
+      label: "Continuous collision query for a swing",
       steps: [
-        "Previous pose",
-        "Current pose",
-        "Sweep + validate",
-        "Accept once",
+        "Blade poses and cutting direction",
+        "Fit the blade trajectory",
+        "Solve for contact within the window",
+        "Accept the target once",
       ],
-      note: "An overlap alone is not a valid surface contact.",
+      note: "The contact point and surface normal use the target collider’s pose at the time of impact.",
     },
     occlusion: {
       label: "Occlusion query and material clipping",
