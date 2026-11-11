@@ -246,6 +246,48 @@
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
+    },
+    "watch-together": {
+      "title": "Watching together in the living room",
+      "caption": "Alex and Mina share a sofa while the TV plays a locally cached excerpt of Big Buck Bunny (Blender Foundation). Recorded with two demo accounts.",
+      "hint": "Screen recording",
+      "art": "web",
+      "fit": "contain"
+    },
+    "dvd-shelf": {
+      "title": "Opening a DVD case",
+      "caption": "In the Mood for Love slides off the shelf. The case opens to show the sleeve and disc.",
+      "hint": "Screen recording",
+      "art": "web",
+      "fit": "contain"
+    },
+    "theater-desktop": {
+      "title": "Browsing the desktop filmstrip",
+      "caption": "Scroll the filmstrip beside the projector preview, then select a title.",
+      "hint": "Screen recording",
+      "art": "web",
+      "fit": "contain"
+    },
+    "theater-mobile": {
+      "title": "The projector on a small screen",
+      "caption": "Expand the projector, fold it away, then scroll to Her and open its film card. Recorded at a mobile viewport size.",
+      "hint": "Screen recording",
+      "art": "web",
+      "fit": "contain"
+    },
+    "courtyard": {
+      "title": "Chinese courtyard at night",
+      "caption": "A player stands outside the courtyard pavilion after dark.",
+      "hint": "Scene screenshot",
+      "art": "web",
+      "fit": "contain"
+    },
+    "cinema": {
+      "title": "Inside the cinema",
+      "caption": "A view from the projection booth toward the rows of seats and the screen.",
+      "hint": "Scene screenshot",
+      "art": "web",
+      "fit": "contain"
     }
   },
   "wayjia": {

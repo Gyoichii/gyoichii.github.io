@@ -193,19 +193,37 @@ export const friday: Project = {
   period: "Jun 2026",
   role: "Developer",
   team: "Web application",
-  intro: "Movie discovery and planning for groups.",
+  intro: "Choose a film and watch it together.",
   cardSummary:
-    "A FastAPI application with shared movie lists, voting, and group-based permissions.",
-  deck: "A Python / FastAPI web application for movie recommendations, voting, and discussion. SQLAlchemy and SQLite store group membership and movie activity; signed-cookie authentication and resource-level checks control access.",
-  tags: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "TMDB"],
-  hero: "friday-night/group-workflow",
+    "Browse a shared DVD shelf, vote on films, and watch together in a virtual living room.",
+  deck: "Groups keep a shared watchlist and meet in 3D rooms to watch their selection. Spring Boot and PostgreSQL handle groups, movie lists, and real-time rooms. A Python service resolves and relays video.",
+  tags: ["Java", "Spring Boot", "PostgreSQL", "Python", "WebSocket", "TMDB"],
+  hero: "friday-night/watch-together",
   systems: [
+    {
+      id: "choosing-a-film",
+      label: "DVD shelf & screening room",
+      headline: "Choosing a film",
+      summary: "The same group watchlist has two browsing modes. The DVD shelf opens each title as a case. The screening room pairs a scrolling filmstrip with a projector preview.",
+      detail: "The desktop layout keeps the projector and filmstrip side by side. On a narrow screen, the projector folds away so the list has room for posters and film details.",
+      tags: ["Desktop", "Mobile"],
+      media: ["friday-night/dvd-shelf", "friday-night/theater-desktop", "friday-night/theater-mobile"],
+    },
+    {
+      id: "shared-spaces",
+      label: "Shared spaces",
+      headline: "Places to watch together",
+      summary: "Group members can walk through a courtyard, take a seat in a cinema, or meet on the sofa in the living room. The living-room recording above shows two members watching the same TV.",
+      detail: "Each participant controls an avatar. The room shares seat occupancy and playback state, while each browser decodes the film and displays it on the TV.",
+      tags: ["Multiplayer", "Shared playback"],
+      media: ["friday-night/courtyard", "friday-night/cinema"],
+    },
     {
       id: "shared-workflow",
       label: "Product & persistence",
       headline: "Shared movie lists & persistent state",
       summary:
-        "Users join groups by code or a configured approval flow, recommend films, vote, and discuss them. SQLAlchemy models preserve membership, movie state, comments and notification preferences in SQLite.",
+        "Users join groups by code or a configured approval flow, recommend films, vote, and discuss them. PostgreSQL stores membership, movie state, comments and notification preferences.",
       detail:
         "Group membership is unique per user and group. Votes are unique per user, movie and vote date. Movie records distinguish active, watched and deleted states, with separate restoration and archive actions. Movie queries filter by the selected group, so shared state belongs to the group that created it.",
       tags: ["Relational models", "Group workflow", "Persistent state"],
@@ -241,7 +259,7 @@ export const friday: Project = {
       summary:
         "Focused tests exercise missing and invalid CSRF tokens, guessed movie IDs, stale membership cookies, and permissions across group boundaries. The public application is served over HTTPS.",
       detail:
-        "The current test source includes cross-group trash operations, member-only restrictions, owner-role protection and login-failure throttling. Production configuration rejects a missing or development signing key and requires secure cookies. Nginx in front of Uvicorn is the documented deployment setup; only the public HTTPS endpoint was inspected here, not the live server configuration. Test presence and assertions were reviewed, not re-executed for this portfolio.",
+        "The current test source includes cross-group trash operations, member-only restrictions, owner-role protection and login-failure throttling. Production configuration rejects a missing or development signing key and requires secure cookies. The application separates the Java web service from the Python media worker.",
       tags: ["Permission-boundary tests", "Production configuration", "HTTPS"],
       media: ["friday-night/desktop", "friday-night/mobile"],
     },

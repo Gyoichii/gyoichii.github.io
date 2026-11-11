@@ -61,7 +61,7 @@ export function ProjectPage({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="button button-accent"
             >
-              Visit live site ↗
+              Visit fridaynight.love ↗
             </a>
           ) : (
             <a href="#systems" className="text-link">
