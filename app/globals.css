@@ -2327,6 +2327,7 @@ section[id] {
 .project-friday-night .project-chapter .portrait-media .media-open {
   height: 440px;
 }
+.project-friday-night .project-chapter .portrait-media .media-open > video,
 .project-friday-night .project-chapter .portrait-media .media-open > img {
   height: 100%;
   width: auto;

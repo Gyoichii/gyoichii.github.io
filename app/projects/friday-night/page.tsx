@@ -4,15 +4,15 @@ import { ProjectPage } from "../../../src/components/ProjectPage";
 export const dynamic = "force-static";
 export const metadata: Metadata = {
   alternates: { canonical: "/projects/friday-night/" },
-  title: "Friday Night — Collaborative Movie Planning",
+  title: "Friday Night — Shared Watchlists & Watch Parties",
   description:
-    "A collaborative movie-discovery and planning web application built with Python, FastAPI and SQLAlchemy. A project by Weihan Chen.",
+    "Browse a DVD shelf and filmstrip, then join friends in a shared 3D room to watch a film. A project by Weihan Chen.",
   openGraph: {
     url: "/projects/friday-night/",
     images: [{ url: "/og.png", width: 1200, height: 630 }],
     title: "Friday Night — Weihan Chen",
     description:
-      "FastAPI movie planning with shared lists, voting, and group-based authorization.",
+      "Shared watchlists, a virtual DVD shelf, and synchronized playback in 3D rooms.",
   },
 };
 export default function Page() {

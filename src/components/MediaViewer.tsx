@@ -290,7 +290,7 @@ export function Gallery({
       <div className="gallery-grid">
         {items.map((item, i) => (
           <figure
-            className={`media-figure ${item.sources.length ? "has-media" : "awaiting-media"} ${item.id.endsWith("/mobile") ? "portrait-media" : ""}`}
+            className={`media-figure ${item.sources.length ? "has-media" : "awaiting-media"} ${(item.id.endsWith("/mobile") || item.id.endsWith("-mobile")) ? "portrait-media" : ""}`}
             key={item.id}
           >
             {item.sources.length ? (
