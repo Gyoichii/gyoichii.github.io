@@ -72,10 +72,7 @@
 .cable-study p { line-height: 1.55; max-width: 76ch; }
 .cable-layers { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin: 1rem 0; }
 .cable-layers label { padding: .3rem 0; cursor: pointer; }
-.cable-roles { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; gap: .6rem 1rem; }
-.cable-roles dt { font-weight: 650; }
-.cable-roles dd { margin: 0; }
-@media (max-width: 520px) {
-  .cable-roles { grid-template-columns: 1fr; gap: .15rem; }
-  .cable-roles dd { margin-bottom: .65rem; }
+#street-cables > .gallery h4 { margin: 0 0 .5rem; font-size: 1rem; }
+@media (min-width: 1000px) {
+  #street-cables > .gallery .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

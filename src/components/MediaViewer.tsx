@@ -198,9 +198,11 @@ export function MediaPreview({
 export function Gallery({
   items,
   featured = false,
+  showTitles = false,
 }: {
   items: MediaItem[];
   featured?: boolean;
+  showTitles?: boolean;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const [paused, setPaused] = useState(false);
@@ -293,6 +295,7 @@ export function Gallery({
             className={`media-figure ${item.sources.length ? "has-media" : "awaiting-media"} ${(item.id.endsWith("/mobile") || item.id.endsWith("-mobile")) ? "portrait-media" : ""}`}
             key={item.id}
           >
+            {showTitles && <h4>{item.title}</h4>}
             {item.sources.length ? (
               <button
                 type="button"

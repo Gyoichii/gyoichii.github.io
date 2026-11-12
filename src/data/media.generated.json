@@ -1041,73 +1041,73 @@
     ],
     "poster": "/media/rivering/cable-plan-box.webp"
   },
-  "rivering/cable-detail-split": {
-    "id": "rivering/cable-detail-split",
-    "title": "Split and rejoin",
-    "caption": "Four strands take a separate support and return to the same terminal rack. Each keeps its identity through the detour.",
-    "hint": "Cable routing study",
+  "rivering/cable-source-rivering": {
+    "id": "rivering/cable-source-rivering",
+    "title": "Rivering · procedural strands",
+    "caption": "I generate each overhead strand between wall racks. Its slot fixes where it meets the wall, and the spare length sets how far it sags. This earlier shop crossing shows the individual arcs before I added the Saigon bundles.",
+    "hint": "District60 cable installation",
     "art": "world",
     "fit": "contain",
     "project": "rivering",
     "sources": [
       {
-        "src": "/media/rivering/cable-detail-split.webp",
+        "src": "/media/rivering/cable-source-rivering.webp",
         "type": "image",
         "mime": "image/webp"
       }
     ],
-    "poster": "/media/rivering/cable-detail-split.webp"
+    "poster": "/media/rivering/cable-source-rivering.webp"
   },
-  "rivering/cable-detail-rack": {
-    "id": "rivering/cable-detail-rack",
-    "title": "Wrap a waypoint",
-    "caption": "A continuous strand arrives at a rack, wraps its assigned slot and leaves towards the next span.",
-    "hint": "Cable routing study",
+  "rivering/cable-source-saigon": {
+    "id": "rivering/cable-source-saigon",
+    "title": "Saigon Alley · adapted overhead bundles",
+    "caption": "At the same crossing, the thicker bands come from Saigon Alley’s A/B cable meshes. I adapted the pack’s placement tool in C++ to fit one pre-shaped section between each pair of rack contacts. The final pass also adds more of my individual strands.",
+    "hint": "District60 cable installation",
     "art": "world",
     "fit": "contain",
     "project": "rivering",
     "sources": [
       {
-        "src": "/media/rivering/cable-detail-rack.webp",
+        "src": "/media/rivering/cable-source-saigon.webp",
         "type": "image",
         "mime": "image/webp"
       }
     ],
-    "poster": "/media/rivering/cable-detail-rack.webp"
+    "poster": "/media/rivering/cable-source-saigon.webp"
   },
-  "rivering/cable-detail-coil": {
-    "id": "rivering/cable-detail-coil",
-    "title": "Store spare length",
-    "caption": "One strand winds five turns on its support before continuing. The other strands pass underneath.",
-    "hint": "Cable routing study",
+  "rivering/cable-source-asiamarket": {
+    "id": "rivering/cable-source-asiamarket",
+    "title": "AsiaMarket · bundled facade runs",
+    "caption": "Under the eaves I use AsiaMarket’s SM_bigwire_01. The individual wires and ties are part of the original mesh. I fit the whole bundle along the facade and bridge neighbouring ends. Here it continues across the gap between two shopfronts.",
+    "hint": "District60 cable installation",
     "art": "world",
     "fit": "contain",
     "project": "rivering",
     "sources": [
       {
-        "src": "/media/rivering/cable-detail-coil.webp",
+        "src": "/media/rivering/cable-source-asiamarket.webp",
         "type": "image",
         "mime": "image/webp"
       }
     ],
-    "poster": "/media/rivering/cable-detail-coil.webp"
+    "poster": "/media/rivering/cable-source-asiamarket.webp"
   },
-  "rivering/cable-detail-cross": {
-    "id": "rivering/cable-detail-cross",
-    "title": "Cross another bundle",
-    "caption": "A coloured route wraps across an independent bundle. Both routes retain their own endpoints.",
-    "hint": "Cable routing study",
+  "rivering/cable-street-main": {
+    "id": "rivering/cable-street-main",
+    "title": "Power mains along the alley",
+    "caption": "Looking along the alley in District60, successive overhead spans carry the main between the two rows of shopfronts.",
+    "hint": "District60 street view",
     "art": "world",
     "fit": "contain",
     "project": "rivering",
     "sources": [
       {
-        "src": "/media/rivering/cable-detail-cross.webp",
+        "src": "/media/rivering/cable-street-main.webp",
         "type": "image",
         "mime": "image/webp"
       }
     ],
-    "poster": "/media/rivering/cable-detail-cross.webp"
+    "poster": "/media/rivering/cable-street-main.webp"
   },
   "friday-night/movie-search": {
     "id": "friday-night/movie-search",
