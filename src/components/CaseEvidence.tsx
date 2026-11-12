@@ -2,23 +2,46 @@
 
 import { useState } from "react";
 
-const samples = [
-  { id: "landscape", title: "Landscape illustration", result: "Allow", reason: "All four checks passed." },
-  { id: "code-card", title: "Printed code card", result: "Block", reason: "The referral / QR check flagged the centered code." },
+type AvatarSample = {
+  id: string; title: string; result: "Block" | "Allow"; description: string;
+  alt: string; credit: string; source?: string; license?: string; licenseUrl?: string;
+};
+const comparisons: { title: string; samples: AvatarSample[] }[] = [
+  { title: "Referral & QR", samples: [
+    { id: "study-ad", title: "Study materials ad", result: "Block", description: "The banner asks readers to scan a WeChat code for study materials. The referral check flagged the original crop. The displayed image masks the code and account name.",
+      alt: "Chinese study materials promotion with its QR code and account name covered", credit: "CSDN · article 144385444, redacted excerpt" },
+    { id: "travel-poster", title: "Yangtze Gorges travel poster", result: "Allow", description: "This illustrated travel advertisement also contains promotional text. All four checks passed on its square crop.",
+      alt: "Vintage Yangtze Gorges travel poster with a river illustration and printed lettering", credit: "Butterfield & Swire · Library of Congress", license: "Public domain", source: "https://commons.wikimedia.org/wiki/File:Beauty_and_grandeur,_the_Yangtze_gorges,_travel_poster,_ca._1930.jpg" },
+  ] },
+  { title: "Visible injury", samples: [
+    { id: "scraped-knee", title: "Uncovered knee abrasion", result: "Block", description: "A small area of scraped skin and visible blood triggered the injury check.",
+      alt: "A close-up of a scraped knee with a small amount of visible blood", credit: "Editor B · Wikimedia Commons", source: "https://commons.wikimedia.org/wiki/File:Scraped_Knee.jpg", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/" },
+    { id: "bandaged-knee", title: "Knee with an adhesive bandage", result: "Allow", description: "The bandage covers the abrasion in this separate photograph. All four checks passed.",
+      alt: "An adhesive bandage on a knee", credit: "© Friedrich Haag / Wikimedia Commons", source: "https://commons.wikimedia.org/wiki/File:Erste_Hilfe_001_2023_09_03.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" },
+  ] },
 ];
 
 export function AvatarExamples() {
   const [index, setIndex] = useState(0);
-  const sample = samples[index];
-  return <div className="exercise-demo">
-    <div className="demo-controls" aria-label="Select an evaluated sample">
-      {samples.map((s,i) => <button type="button" key={s.id} aria-pressed={index === i} onClick={() => setIndex(i)}>{s.title}</button>)}
+  const [fullFrame, setFullFrame] = useState(false);
+  return <div className="exercise-demo avatar-demo">
+    <div className="demo-controls" role="group" aria-label="Compare model decisions">
+      {comparisons.map((group,i) => <button type="button" key={group.title} aria-pressed={index === i} onClick={() => setIndex(i)}>{group.title}</button>)}
     </div>
-    <div className="sample-pair">
-      <figure><img src={`/media/avatar-review/${sample.id}.png`} alt={sample.title} width={840} height={420}/><figcaption>Original upload</figcaption></figure>
-      <figure><img src={`/media/avatar-review/${sample.id}-crop.png`} alt={`Square crop of ${sample.title}`} width={420} height={420}/><figcaption>Visible avatar</figcaption></figure>
+    <label className="frame-toggle"><input type="checkbox" checked={fullFrame} onChange={(event) => setFullFrame(event.target.checked)} /> Show full frames</label>
+    <div className="avatar-pair" aria-live="polite">
+      {comparisons[index].samples.map((sample) => <figure key={sample.id}>
+        <img src={`/media/avatar-review/${sample.id}${fullFrame ? "" : "-crop"}.webp`} alt={sample.alt} width={400} height={400} />
+        <figcaption>
+          <strong className={sample.result === "Block" ? "blocked" : "allowed"}>{sample.result}</strong>
+          <h3>{sample.title}</h3>
+          <p>{sample.description}</p>
+          <small>{sample.source ? <a href={sample.source}>{sample.credit}</a> : sample.credit}
+            {sample.license && <> · {sample.licenseUrl ? <a href={sample.licenseUrl}>{sample.license}</a> : sample.license}</>}
+          </small>
+        </figcaption>
+      </figure>)}
     </div>
-    <p aria-live="polite"><strong>{sample.result}</strong> · {sample.reason} Recorded offline model output.</p>
   </div>;
 }
 

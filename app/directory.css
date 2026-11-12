@@ -123,6 +123,25 @@ html:has(.project-rivering) { scroll-padding-top: 105px; scroll-behavior: auto; 
 .system-group > h2 { margin: 0 0 24px; padding-bottom: 10px; border-bottom: 2px solid var(--line); font: 650 clamp(21px, 2vw, 29px)/1.25 var(--sans); }
 .system-group .project-chapter > h3 { margin: 0 0 12px; font-size: clamp(24px, 2.7vw, 35px); line-height: 1.2; letter-spacing: -.035em; }
 .system-group .project-chapter { margin-bottom: 34px; padding-bottom: 32px; }
+.chapter-explanation { max-width: 71ch; margin-top: 12px; font-size: 15px; line-height: 1.75; }
+.avatar-demo .demo-controls { margin-top: 0; }
+.frame-toggle { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; }
+.avatar-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 16px; }
+.avatar-pair figure { min-width: 0; margin: 0; }
+.avatar-pair img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; display: block; background: #d9dedb; border: 1px solid var(--line); }
+.avatar-pair figcaption { padding: 10px 0; }
+.avatar-pair strong { display: inline-block; padding: 3px 8px; font: 650 13px/1.4 var(--sans); }
+.avatar-pair .blocked { background: #f4ddd3; color: #762d1b; }
+.avatar-pair .allowed { background: #d3e9d9; color: #194e31; }
+.avatar-pair h3 { font-size: 17px; line-height: 1.3; margin: 7px 0; }
+.avatar-pair p { font-size: 14px; line-height: 1.55; margin-bottom: 8px; }
+.avatar-pair small { display: block; font-size: 12px; color: var(--muted); }
+@media (max-width: 520px) {
+  .avatar-demo { padding: 12px; }
+  .avatar-pair { gap: 12px; }
+  .avatar-pair h3 { font-size: 15px; }
+  .avatar-pair p { font-size: 13px; }
+}
 
 @media (max-width: 760px) {
   html:has(.project-rivering) { scroll-padding-top: 132px; }

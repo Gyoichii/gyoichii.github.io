@@ -177,14 +177,14 @@
     },
     "lightning-growth": {
       "title": "Seed 4 branch growth",
-      "caption": "Offline geometry preview of one seeded lightning tree from three angles.",
+      "caption": "Follow the first forks and the progressively finer branches in three views of seed 4. Offline geometry playback.",
       "hint": "Seed 4 branch growth",
       "art": "motion",
       "fit": "contain"
     },
     "lightning-pie": {
       "title": "Niagara discharge",
-      "caption": "Unreal Play In Editor capture of the generated channel striking and lighting up again.",
+      "caption": "Play In Editor recording. The main channel reaches the selected point, flashes back up, then lights again on subsequent strokes.",
       "hint": "Niagara discharge",
       "art": "motion",
       "fit": "contain"
@@ -193,6 +193,69 @@
       "title": "Bank after the spline edit",
       "caption": "The same edited bend at bank scale, after the new shoreline and adjacent slope have been published.",
       "hint": "Editor close-up",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-chuanxi-mountains": {
+      "title": "Western Sichuan · mixed mountain terrain",
+      "caption": "Retained mixed-terrain baseline. Elevation range 2,584 m across 8.064 km. Seed 185.",
+      "hint": "Western Sichuan · mixed mountain terrain",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-chuanxi-plateau": {
+      "title": "Western Sichuan · rolling plateau",
+      "caption": "Accepted plateau layer. Elevation range 2,584 m across 8.064 km. Seed 185.",
+      "hint": "Western Sichuan · rolling plateau",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-chuanxi-shoulders": {
+      "title": "Western Sichuan · broad ridge shoulders",
+      "caption": "Preferred ridge-shoulder study. Elevation range 2,584 m across 8.064 km. Seed 185.",
+      "hint": "Western Sichuan · broad ridge shoulders",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-chuanxi-rock": {
+      "title": "Western Sichuan · rocky slopes",
+      "caption": "Retained slope study. Elevation range 2,584 m across 8.064 km. Seed 185.",
+      "hint": "Western Sichuan · rocky slopes",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-chuanxi-foothills": {
+      "title": "Western Sichuan · foothills",
+      "caption": "Foothill study. Repetition in the surface pattern remains visible. Elevation range 2,584 m across 8.064 km. Seed 185.",
+      "hint": "Western Sichuan · foothills",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-chuanxi-valley": {
+      "title": "Western Sichuan · broad valley",
+      "caption": "Valley study under review. Elevation range 2,584 m across 8.064 km. Seed 185.",
+      "hint": "Western Sichuan · broad valley",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-three-gorges": {
+      "title": "Three Gorges · eroded mountains",
+      "caption": "Accepted regional foundation. Elevation range 2,186 m across 8.064 km. Seed 185.",
+      "hint": "Three Gorges · eroded mountains",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-rounded-hills": {
+      "title": "Guilin · rounded hills",
+      "caption": "Accepted hill foundation. Elevation range 3,280 m across 8.064 km. Seed 185.",
+      "hint": "Guilin · rounded hills",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-gentle-lowland": {
+      "title": "Guilin · gentle lowlands",
+      "caption": "Accepted lowland foundation. Elevation range 3,058 m across 8.064 km. Seed 185.",
+      "hint": "Guilin · gentle lowlands",
       "art": "world",
       "fit": "contain"
     }
@@ -328,7 +391,7 @@
   "avatar-review": {
     "examples": {
       "title": "Avatar crop examples",
-      "caption": "Two original sample images prepared for the offline crop demonstration.",
+      "caption": "The model blocked a QR referral ad and allowed a historical travel poster. The public image masks the QR code and account name.",
       "hint": "Avatar crop examples",
       "art": "world",
       "fit": "contain"

@@ -18,6 +18,7 @@ function ProjectChapter({ system, slug, index }: { system: System; slug: string;
       )}
       <Heading>{system.headline}</Heading>
       <p className="chapter-summary">{system.summary}</p>
+      {system.paragraphs?.map((paragraph) => <p className="chapter-explanation" key={paragraph}>{paragraph}</p>)}
       {slug === "avatar-review" && system.id === "visible-crop" && <AvatarExamples />}
       {slug === "avatar-review" && system.id === "four-checks" && <AvatarMetrics />}
       {slug === "disaster-chatbot" && system.id === "bulletins" && <BulletinExercise />}
@@ -119,7 +120,7 @@ export function ProjectPage({ project }: { project: Project }) {
           </nav>
           <Gallery items={[hero]} featured />
         </div>
-      ) : (
+      ) : project.slug === "avatar-review" ? null : (
         <>
           <div className="project-hero-media wrap">
             <Gallery items={[hero]} featured />
@@ -152,7 +153,7 @@ export function ProjectPage({ project }: { project: Project }) {
           </section>
         </>
       )}
-      <div className="project-body wrap">
+      <div className="project-body wrap" id={project.slug === "avatar-review" ? "systems" : undefined}>
         {project.groups ? (
           <GroupedProjectNav groups={project.groups.map(({ id, label, systems }) => ({
             id, label, sections: systems.map(({ id, label }) => ({ id, label })),
@@ -194,7 +195,7 @@ export function ProjectPage({ project }: { project: Project }) {
               ? "The editor recordings show authoring tools. The gameplay and Niagara clips show their respective in-engine test scenes."
               : project.slug === "wayjia"
                 ? "I was the programmer and producer. The in-game credits list the contributors to art, writing, music and voice acting."
-                : project.slug === "avatar-review" ? "The two illustrated samples were run separately from the evaluation set. Each percentage uses only images with a usable label for that category."
+                : project.slug === "avatar-review" ? "The four demonstration images were run separately through the frozen model. The table reports the original evaluation, with a separate denominator for each set of usable labels."
                 : project.slug === "disaster-chatbot" ? "Eastbank, Riverside and the exercise bulletins are fictional. The walkthrough uses the team project’s test data, with an independent local simulation for the delivery benchmark."
                 : "Screenshots show movie lists, search, discussion, group administration, and notifications in the original Chinese-language interface. Invite codes, account names, and private comment text are redacted."}
           </p>

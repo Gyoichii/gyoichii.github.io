@@ -3,6 +3,7 @@ export type System = {
   label: string;
   headline: string;
   summary: string;
+  paragraphs?: string[];
   detail: string;
   tags: string[];
   media: string[];
@@ -62,11 +63,16 @@ const riveringGroups: SystemGroup[] = [
       {
         id: "terrain",
         label: "Terrain foundations",
-        headline: "Guilin terrain generation",
-        summary: "The generator sets the broad slopes and lowlands across an 8.064 km region. For each of three seeds, the comparison holds the terrain layout fixed and increases relief from 15% to 30%.",
-        detail: "The rows use seeds 185, 741 and 2026. Each pair uses the same lighting and camera position. Surface materials and individual karst peaks are separate stages.",
+        headline: "Terrain foundations in western Sichuan, the Three Gorges and Guilin",
+        summary: "These nine Unreal Landscape presets shape terrain at regional scale. Compare the eroded relief of the Three Gorges with the gentler Guilin lowlands, then look across the western Sichuan studies to see how the ridges, foothills and valleys change.",
+        detail: "Each preset uses seed 185 on an 8.064 km square. Camera position, lighting and grey material are fixed, and each recipe keeps its own relief. The last two figures isolate a separate Guilin experiment. Each row keeps the seed and layout fixed while relief increases from 15% to 30%.",
         tags: ["Terrain authoring", "Regional presets"],
-        media: ["rivering/guilin-overview", "rivering/guilin-local"],
+        media: [
+          "rivering/terrain-chuanxi-mountains", "rivering/terrain-three-gorges", "rivering/terrain-rounded-hills",
+          "rivering/terrain-chuanxi-plateau", "rivering/terrain-chuanxi-shoulders", "rivering/terrain-chuanxi-rock",
+          "rivering/terrain-chuanxi-foothills", "rivering/terrain-chuanxi-valley", "rivering/terrain-gentle-lowland",
+          "rivering/guilin-overview", "rivering/guilin-local",
+        ],
       },
       {
         id: "large-river",
@@ -87,8 +93,12 @@ const riveringGroups: SystemGroup[] = [
         id: "lightning",
         label: "Procedural lightning",
         headline: "Procedural lightning",
-        summary: "A C++ generator uses a seed to build the main lightning channel and its branches. Niagara renders the initial strike and lights the same branches again for subsequent flashes.",
-        detail: "Each segment stores its geometry, growth time and intensity. The geometry preview shows seed 4 from three angles. The Unreal test uses fixed endpoints and a flat landing surface.",
+        summary: "In slow-motion footage, faint lightning leaders trace competing paths through the air. When a leader connects to the ground, the discharge concentrates along that channel. A bright return stroke runs back up it while the other paths fade.",
+        paragraphs: [
+          "We wanted the forks to stay legible as the bolt spread into a triangular silhouette. The generator spaces two to four branches around their parent’s direction. Early forks open wide. Deeper forks grow at shorter intervals and narrower angles, so fine branches fill out the shape without obscuring the main channel.",
+          "The strike has to land where the effect is placed. At each fork on the main channel, the child aimed closest to that point inherits 69–80% of the remaining charge budget. Its final approach steers into the exact endpoint. Side branches slow down near the ground and stop above it. That makes the chosen point the first and only ground contact.",
+        ],
+        detail: "The C++ generator computes the contact time and stores a birth time for each segment. Niagara plays those timestamps, flashes the connected channel from the ground up, then reuses it for later strokes. Ground is the horizontal plane through the supplied endpoint. If a seed fails to connect, the effect does not spawn.",
         tags: ["Niagara", "C++", "Seeded generation"],
         media: ["rivering/lightning-growth", "rivering/lightning-pie"],
       },
@@ -357,9 +367,9 @@ export const avatar: Project = {
   systems: [
     {
       id: "visible-crop",
-      label: "Visible crop",
-      headline: "Avatar cropping and preprocessing",
-      summary: "Each example pairs an original upload with the square crop used for classification and its recorded decision.",
+      label: "Model decisions",
+      headline: "Blocked and allowed avatar crops",
+      summary: "Compare a referral banner with a travel poster, or an uncovered abrasion with a bandaged knee. Each decision comes from the frozen model. The square images show the region it evaluated.",
       detail: "The preprocessing path accounts for image orientation and transparency, scales to the review size, then takes the centered square. The same crop feeds the category checks.",
       tags: ["Image preprocessing", "Crop policy"],
       media: [],
