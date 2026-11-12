@@ -295,7 +295,7 @@ export const friday: Project = {
       detail:
         "Group membership is unique per user and group. Votes are unique per user, movie and vote date. Movie records distinguish active, watched and deleted states, with separate restoration and archive actions. Movie queries filter by the selected group, so shared state belongs to the group that created it.",
       tags: ["Relational models", "Group workflow", "Persistent state"],
-      media: ["friday-night/movie-detail", "friday-night/notifications"],
+      media: ["friday-night/group-workflow", "friday-night/movie-detail", "friday-night/notifications"],
     },
     {
       id: "access-control",

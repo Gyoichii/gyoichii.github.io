@@ -277,56 +277,56 @@
   "friday-night": {
     "movie-search": {
       "title": "TMDB movie search",
-      "caption": "Search results import a movie poster, year, and synopsis before adding the film to the group list.",
+      "caption": "The English search form shows a result for The Grand Budapest Hotel, with a poster, synopsis, and an Add to watchlist button. This local demo uses cached TMDB metadata.",
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
     },
     "group-settings": {
       "title": "Group administration",
-      "caption": "Group visibility, join approval, membership roles, and administrative actions. Names and invite codes are redacted.",
+      "caption": "The group owner can rename the club, change its visibility and joining policy, or invite friends.",
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
     },
     "notifications": {
-      "title": "Notifications & preferences",
-      "caption": "Notification settings for votes, comments, replies, movie status, and group requests. Names and private message text are redacted.",
+      "title": "Comment notifications",
+      "caption": "Mina and Theo commented on a film Alex added. Both replies appear in Alex’s notification feed.",
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
     },
     "group-selection": {
       "title": "Group selection & joining",
-      "caption": "Switch between groups, set a per-group nickname, create a group, or join by invitation. Personal identifiers and codes are redacted.",
+      "caption": "The demo account belongs to two groups. Each row shows its invitation code, nickname field, and group entry button.",
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
     },
     "movie-detail": {
       "title": "Movie details, votes & discussion",
-      "caption": "Movie metadata, votes, watched/archive actions, comments, and replies. Names and private comment text are redacted.",
+      "caption": "The detail page for In the Mood for Love shows its ratings, group votes, and options for moving or sharing the film.",
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
     },
     "desktop": {
       "title": "Friday Night on desktop",
-      "caption": "The real public sign-in page at fridaynight.love, captured September 17, 2026. Application content requires an account.",
+      "caption": "The public English sign-in page at fridaynight.love, captured on a desktop viewport.",
       "hint": "Desktop screenshot",
       "art": "web",
       "fit": "contain"
     },
     "mobile": {
       "title": "Friday Night on mobile",
-      "caption": "Public sign-in page at a 390 px viewport. Original Chinese-language interface.",
+      "caption": "The same public sign-in page at a 390 px mobile viewport.",
       "hint": "Mobile screenshot",
       "art": "web",
       "fit": "contain"
     },
     "group-workflow": {
       "title": "Shared movie list",
-      "caption": "Group movie list with genre filters, vote counts, ratings, and member roles. Personal identifiers are redacted.",
+      "caption": "The English watchlist shows each film’s poster, synopsis, ratings, votes, and comment count.",
       "hint": "Application screenshot",
       "art": "web",
       "fit": "contain"
@@ -360,8 +360,8 @@
       "fit": "contain"
     },
     "courtyard": {
-      "title": "Chinese courtyard at night",
-      "caption": "A player stands outside the courtyard pavilion after dark.",
+      "title": "Chinese courtyard",
+      "caption": "A player outside the courtyard pavilion in daylight.",
       "hint": "Scene screenshot",
       "art": "web",
       "fit": "contain"
