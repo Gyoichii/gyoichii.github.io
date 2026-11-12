@@ -988,6 +988,193 @@
     ],
     "poster": "/media/avatar-review/examples.webp"
   },
+  "disaster-chatbot/chat-answer": {
+    "id": "disaster-chatbot/chat-answer",
+    "title": "Eastbank chat reply",
+    "caption": "The Chat tab shows the exercise question, the frozen test reply and its dated source link. The source and model response come from the project’s test fixtures.",
+    "hint": "Eastbank chat reply",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/chat-answer.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/chat-answer.webp"
+  },
+  "disaster-chatbot/chat-activity": {
+    "id": "disaster-chatbot/chat-activity",
+    "title": "Response activity",
+    "caption": "The activity drawer shows two available bulletins, response planning and citation validation. The displayed timings belong to this local fixture run.",
+    "hint": "Response activity",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/chat-activity.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/chat-activity.webp"
+  },
+  "disaster-chatbot/source-check": {
+    "id": "disaster-chatbot/source-check",
+    "title": "Two passages supporting a shelter report",
+    "caption": "The one-time lookup displays the two independent exercise reports behind the 09:00 opening claim. Each quote is checked against its source document.",
+    "hint": "Two passages supporting a shelter report",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/source-check.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/source-check.webp"
+  },
+  "disaster-chatbot/watch-area": {
+    "id": "disaster-chatbot/watch-area",
+    "title": "Confirming a watch area",
+    "caption": "The user reviews the Atlanta exercise location, its 25 km radius and city coverage before saving.",
+    "hint": "Confirming a watch area",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/watch-area.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/watch-area.webp"
+  },
+  "disaster-chatbot/revisions": {
+    "id": "disaster-chatbot/revisions",
+    "title": "Two revisions of a simulated flood alert",
+    "caption": "The latest notice says the alert was lifted. Its expanded timeline keeps both simulated updates for the same event.",
+    "hint": "Two revisions of a simulated flood alert",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/revisions.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/revisions.webp"
+  },
+  "disaster-chatbot/route-start": {
+    "id": "disaster-chatbot/route-start",
+    "title": "Wheelchair route request",
+    "caption": "The evacuation form accepts a device location, a place search or a map pin. The selected travel mode is wheelchair.",
+    "hint": "Wheelchair route request",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/route-start.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/route-start.webp"
+  },
+  "disaster-chatbot/route-map": {
+    "id": "disaster-chatbot/route-map",
+    "title": "Screened detour on the map",
+    "caption": "The blue line shows the second route returned by the routing fixture after the first intersected the exercise closure. The base map is OpenStreetMap.",
+    "hint": "Screened detour on the map",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/route-map.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/route-map.webp"
+  },
+  "disaster-chatbot/route-result": {
+    "id": "disaster-chatbot/route-result",
+    "title": "Shelter distance, travel time and route steps",
+    "caption": "The card separates straight-line distance from the length and travel time supplied for the schematic detour. It also states which closure reports were checked.",
+    "hint": "Shelter distance, travel time and route steps",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/route-result.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/route-result.webp"
+  },
+  "disaster-chatbot/preferences": {
+    "id": "disaster-chatbot/preferences",
+    "title": "Saved evacuation preferences",
+    "caption": "Travel mode and directions language can be set before a future search. The application stores the preferences on this device.",
+    "hint": "Saved evacuation preferences",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/preferences.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/preferences.webp"
+  },
+  "disaster-chatbot/device-push": {
+    "id": "disaster-chatbot/device-push",
+    "title": "Background delivery status",
+    "caption": "A saved area still receives in-app updates. This instance has no push service configured, which the device panel reports.",
+    "hint": "Background delivery status",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/device-push.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/device-push.webp"
+  },
+  "disaster-chatbot/preparation": {
+    "id": "disaster-chatbot/preparation",
+    "title": "General preparation panel",
+    "caption": "Notifications includes an expandable, static reference for official updates, essentials and local help. It can be read without sending a chat message.",
+    "hint": "General preparation panel",
+    "art": "world",
+    "fit": "contain",
+    "project": "disaster-chatbot",
+    "sources": [
+      {
+        "src": "/media/disaster-chatbot/preparation.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/disaster-chatbot/preparation.webp"
+  },
   "disaster-chatbot/interface": {
     "id": "disaster-chatbot/interface",
     "title": "Disaster Chatbot interface",

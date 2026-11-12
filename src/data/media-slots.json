@@ -412,6 +412,83 @@
     }
   },
   "disaster-chatbot": {
+    "chat-answer": {
+      "title": "Eastbank chat reply",
+      "caption": "The Chat tab shows the exercise question, the frozen test reply and its dated source link. The source and model response come from the project’s test fixtures.",
+      "hint": "Eastbank chat reply",
+      "art": "world",
+      "fit": "contain"
+    },
+    "chat-activity": {
+      "title": "Response activity",
+      "caption": "The activity drawer shows two available bulletins, response planning and citation validation. The displayed timings belong to this local fixture run.",
+      "hint": "Response activity",
+      "art": "world",
+      "fit": "contain"
+    },
+    "source-check": {
+      "title": "Two passages supporting a shelter report",
+      "caption": "The one-time lookup displays the two independent exercise reports behind the 09:00 opening claim. Each quote is checked against its source document.",
+      "hint": "Two passages supporting a shelter report",
+      "art": "world",
+      "fit": "contain"
+    },
+    "watch-area": {
+      "title": "Confirming a watch area",
+      "caption": "The user reviews the Atlanta exercise location, its 25 km radius and city coverage before saving.",
+      "hint": "Confirming a watch area",
+      "art": "world",
+      "fit": "contain"
+    },
+    "revisions": {
+      "title": "Two revisions of a simulated flood alert",
+      "caption": "The latest notice says the alert was lifted. Its expanded timeline keeps both simulated updates for the same event.",
+      "hint": "Two revisions of a simulated flood alert",
+      "art": "world",
+      "fit": "contain"
+    },
+    "route-start": {
+      "title": "Wheelchair route request",
+      "caption": "The evacuation form accepts a device location, a place search or a map pin. The selected travel mode is wheelchair.",
+      "hint": "Wheelchair route request",
+      "art": "world",
+      "fit": "contain"
+    },
+    "route-map": {
+      "title": "Screened detour on the map",
+      "caption": "The blue line shows the second route returned by the routing fixture after the first intersected the exercise closure. The base map is OpenStreetMap.",
+      "hint": "Screened detour on the map",
+      "art": "world",
+      "fit": "contain"
+    },
+    "route-result": {
+      "title": "Shelter distance, travel time and route steps",
+      "caption": "The card separates straight-line distance from the length and travel time supplied for the schematic detour. It also states which closure reports were checked.",
+      "hint": "Shelter distance, travel time and route steps",
+      "art": "world",
+      "fit": "contain"
+    },
+    "preferences": {
+      "title": "Saved evacuation preferences",
+      "caption": "Travel mode and directions language can be set before a future search. The application stores the preferences on this device.",
+      "hint": "Saved evacuation preferences",
+      "art": "world",
+      "fit": "contain"
+    },
+    "device-push": {
+      "title": "Background delivery status",
+      "caption": "A saved area still receives in-app updates. This instance has no push service configured, which the device panel reports.",
+      "hint": "Background delivery status",
+      "art": "world",
+      "fit": "contain"
+    },
+    "preparation": {
+      "title": "General preparation panel",
+      "caption": "Notifications includes an expandable, static reference for official updates, essentials and local help. It can be read without sending a chat message.",
+      "hint": "General preparation panel",
+      "art": "world",
+      "fit": "contain"
+    },
     "interface": {
       "title": "Disaster Chatbot interface",
       "caption": "Actual Django interface showing the two revisions of a fictional flood exercise. Matching and timeline storage use the application; the local test fixture supplies the model response.",

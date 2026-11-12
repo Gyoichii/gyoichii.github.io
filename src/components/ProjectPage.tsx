@@ -4,7 +4,7 @@ import manifest from "../data/media.generated.json";
 import { Gallery, type MediaItem } from "./MediaViewer";
 import { GroupedProjectNav, ProjectNav } from "./Navigation";
 import { Diagram } from "./Diagrams";
-import { AvatarExamples, AvatarMetrics, BulletinExercise } from "./CaseEvidence";
+import { AvatarErrors, AvatarExamples, AvatarMetrics, AvatarModels, BulletinExercise } from "./CaseEvidence";
 const data = manifest as Record<string, MediaItem>;
 
 function ProjectChapter({ system, slug, index }: { system: System; slug: string; index?: number }) {
@@ -23,6 +23,8 @@ function ProjectChapter({ system, slug, index }: { system: System; slug: string;
       {opensWithFootage && gallery}
       {system.paragraphs?.map((paragraph) => <p className="chapter-explanation" key={paragraph}>{paragraph}</p>)}
       {slug === "avatar-review" && system.id === "visible-crop" && <AvatarExamples />}
+      {slug === "avatar-review" && system.id === "model-selection" && <AvatarModels />}
+      {slug === "avatar-review" && system.id === "identity-errors" && <AvatarErrors />}
       {slug === "avatar-review" && system.id === "four-checks" && <AvatarMetrics />}
       {slug === "disaster-chatbot" && system.id === "bulletins" && <BulletinExercise />}
       <div className="tags">
@@ -196,8 +198,8 @@ export function ProjectPage({ project }: { project: Project }) {
               ? "The editor recordings show authoring tools. The gameplay and Niagara clips show their respective in-engine test scenes."
               : project.slug === "wayjia"
                 ? "I was the programmer and producer. The in-game credits list the contributors to art, writing, music and voice acting."
-                : project.slug === "avatar-review" ? "The four demonstration images were run separately through the frozen model. The table reports the original evaluation, with a separate denominator for each set of usable labels."
-                : project.slug === "disaster-chatbot" ? "Eastbank, Riverside and the exercise bulletins are fictional. The walkthrough uses the team project’s test data, with an independent local simulation for the delivery benchmark."
+                : project.slug === "avatar-review" ? "The four example photos and graphics were scored separately from the 162-image evaluation. The frozen model saw the original center crops. The published injury and referral examples are redacted."
+                : project.slug === "disaster-chatbot" ? "The screenshots come from the current local Django project. The exercise supplies fictional bulletins, model replies, shelter listings, road closures and routing responses. The interface, citation validation, closure check, subscription matching and event history run in the app. The delivery chart is a separate local simulation."
                 : "Screenshots show movie lists, search, discussion, group administration, and notifications in the original Chinese-language interface. Invite codes, account names, and private comment text are redacted."}
           </p>
         </div>

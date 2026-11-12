@@ -136,6 +136,50 @@ html:has(.project-rivering) { scroll-padding-top: 105px; scroll-behavior: auto; 
 .avatar-pair h3 { font-size: 17px; line-height: 1.3; margin: 7px 0; }
 .avatar-pair p { font-size: 14px; line-height: 1.55; margin-bottom: 8px; }
 .avatar-pair small { display: block; font-size: 12px; color: var(--muted); }
+.review-frame { position: relative; display: grid; place-items: center; }
+.crop-outline { aspect-ratio: 1; position: absolute; border: 2px dashed white; box-shadow: 0 0 0 1px #182f36, inset 0 0 0 1px #182f36; pointer-events: none; }
+.crop-key { margin-inline-start: 12px; color: var(--muted); }
+.avatar-signals { display: flex; gap: 4px 12px; flex-wrap: wrap; padding: 0; margin: 6px 0 10px; list-style: none; font-size: 12px; color: var(--muted); }
+.avatar-signals .triggered { color: #ffc488; font-weight: 650; }
+.signal-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.avatar-path .demo-controls, .avatar-errors .demo-controls { margin-top: 0; }
+.model-path-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin: 22px 0 16px; padding: 0; list-style: none; }
+.model-path-steps li { position: relative; padding: 14px; border-top: 2px solid var(--accent); background: var(--surface-2); }
+.model-path-steps li + li::before { content: "→"; position: absolute; left: -19px; top: 50%; color: var(--accent); }
+.model-path-steps small, .model-path-steps b, .model-path-steps span { display: block; }
+.model-path-steps small { font: 12px/1.5 var(--mono); color: var(--muted); margin-bottom: 8px; }
+.model-path-steps b { font: 650 16px/1.4 var(--sans); }
+.model-path-steps span, .avatar-path p, .avatar-errors figcaption { font-size: 14px; line-height: 1.55; }
+.model-path-steps span { color: var(--muted); margin-top: 6px; }
+.identity-views { margin: 0 0 16px; }
+.identity-views-strip { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 6px; max-width: 560px; margin: 12px 0 6px; }
+.identity-views-strip span { aspect-ratio: 1; background: url('/media/avatar-review/travel-poster-crop.webp') no-repeat; background-size: 162%; border: 1px solid var(--line); }
+.identity-views-strip .whole-avatar { background-size: 100%; border-color: var(--accent); }
+.identity-views figcaption { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.error-heading { margin: 18px 0; font-weight: 650; }
+.error-row { display: grid; grid-template-columns: 100px minmax(0,1fr) 54px; align-items: center; gap: 16px; margin: 12px 0; font-size: 14px; }
+.error-strip { display: grid; grid-template-columns:repeat(41,minmax(0,1fr)); gap:2px; align-items: center; }
+.error-strip i { aspect-ratio:1; background:#64807c; }
+.error-strip .error { background:#efa36c; }
+.error-row b { text-align:right; font-variant-numeric:tabular-nums; }
+.avatar-errors figcaption { color:var(--muted); margin-top: 18px; }
+.outcome-table td { background: var(--surface); }
+.outcome-table .outcome-error { background: #513725; color: #ffceab; font-weight: 650; }
+.project-disaster-chatbot .media-open:has(> img[src$=".webp"]) { height:auto; aspect-ratio:auto; display:flex; align-items:center; flex-wrap:wrap; justify-content:space-between; background:var(--surface); border:1px solid var(--line); }
+.project-disaster-chatbot .media-open:has(> img[src$=".webp"]) > img { display:block; width:100%; height:auto; max-height:420px; background:#f4f3ef; }
+.project-disaster-chatbot .media-open:has(> img[src$=".webp"]) :is(.expand-mark,.media-kind) { position:static; background:transparent; color:var(--muted); }
+.project-disaster-chatbot .media-open:has(> img[src$=".webp"]) .media-kind { order:1; margin-left:4px; }
+.project-disaster-chatbot .media-open:has(> img[src$=".webp"]) .expand-mark { order:2; height:24px; }
+.project-disaster-chatbot .media-figure > figcaption { font-size:13px; line-height:1.55; }
+@media (max-width:650px) {
+  .model-path-steps { grid-template-columns:1fr; gap:18px; }
+  .model-path-steps li + li::before { content:"↓"; left:18px; top:-23px; }
+  .error-row { grid-template-columns:1fr auto; gap:5px 10px; }
+  .error-strip { grid-column:1/-1; grid-row:2; }
+  .error-row b { grid-column:2; grid-row:1; }
+  .crop-key { display:block; margin:5px 0 0; }
+  .avatar-results table { font-size:13px; }
+}
 @media (max-width: 520px) {
   .avatar-demo { padding: 12px; }
   .avatar-pair { gap: 12px; }
