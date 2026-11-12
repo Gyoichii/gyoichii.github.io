@@ -43,8 +43,8 @@
       "fit": "contain"
     },
     "melee-r22-pie": {
-      "title": "Melee collision in Unreal",
-      "caption": "Normal-speed Play In Editor recording against the blocking test dummy. Cyan shows the sampled poses, orange the fitted blade path inside the attack window, and yellow the geometric hit. The second attack produced an accepted contact.",
+      "title": "Melee collision from above",
+      "caption": "A fixed overhead camera records two attacks in Unreal at normal speed. Cyan marks the sampled blade poses, orange the fitted path inside the attack window, and yellow the geometric hit. The runtime accepted a contact in both windows.",
       "hint": "R22 runtime debug view",
       "art": "sweep",
       "fit": "contain"

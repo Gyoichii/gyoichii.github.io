@@ -24,7 +24,7 @@ Already populated from the supplied Unreal captures:
 - `skill-vfx.gif`: short spin-attack and trail demonstration.
 - `combat-contact.gif`: short close-range strike and hit feedback.
 - `melee-r22-trace.mp4`: slowed replay of a recorded R22 server query, including the fitted arc, active window and accepted contact.
-- `melee-r22-pie.mp4`: normal-speed Unreal recording of the current collision debug view against the blocking test dummy.
+- `melee-r22-pie.mp4`: overhead Unreal recording of two accepted contacts against the blocking test dummy.
 - `gasp-block.mp4`: complete blocking movement/turning demonstration, with original audio.
 - `pcg-graph.webp`: lossless graph screenshot with building inputs and mesh/layout/manifest/diagnostic outputs.
 
