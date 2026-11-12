@@ -478,7 +478,7 @@
   "rivering/terrain-chuanxi-mountains": {
     "id": "rivering/terrain-chuanxi-mountains",
     "title": "Western Sichuan · mixed mountain terrain",
-    "caption": "Retained mixed-terrain baseline. Elevation range 2,584 m across 8.064 km. Seed 185.",
+    "caption": "Western Sichuan · mixed mountain terrain. Retained mixed-terrain baseline. Elevation range 2,584 m across 8.064 km. Seed 185.",
     "hint": "Western Sichuan · mixed mountain terrain",
     "art": "world",
     "fit": "contain",
@@ -495,7 +495,7 @@
   "rivering/terrain-chuanxi-plateau": {
     "id": "rivering/terrain-chuanxi-plateau",
     "title": "Western Sichuan · rolling plateau",
-    "caption": "Accepted plateau layer. Elevation range 2,584 m across 8.064 km. Seed 185.",
+    "caption": "Western Sichuan · rolling plateau. Accepted plateau layer. Elevation range 2,584 m across 8.064 km. Seed 185.",
     "hint": "Western Sichuan · rolling plateau",
     "art": "world",
     "fit": "contain",
@@ -512,7 +512,7 @@
   "rivering/terrain-chuanxi-shoulders": {
     "id": "rivering/terrain-chuanxi-shoulders",
     "title": "Western Sichuan · broad ridge shoulders",
-    "caption": "Preferred ridge-shoulder study. Elevation range 2,584 m across 8.064 km. Seed 185.",
+    "caption": "Western Sichuan · broad ridge shoulders. Preferred ridge-shoulder study. Elevation range 2,584 m across 8.064 km. Seed 185.",
     "hint": "Western Sichuan · broad ridge shoulders",
     "art": "world",
     "fit": "contain",
@@ -529,7 +529,7 @@
   "rivering/terrain-chuanxi-rock": {
     "id": "rivering/terrain-chuanxi-rock",
     "title": "Western Sichuan · rocky slopes",
-    "caption": "Retained slope study. Elevation range 2,584 m across 8.064 km. Seed 185.",
+    "caption": "Western Sichuan · rocky slopes. Retained slope study. Elevation range 2,584 m across 8.064 km. Seed 185.",
     "hint": "Western Sichuan · rocky slopes",
     "art": "world",
     "fit": "contain",
@@ -546,7 +546,7 @@
   "rivering/terrain-chuanxi-foothills": {
     "id": "rivering/terrain-chuanxi-foothills",
     "title": "Western Sichuan · foothills",
-    "caption": "Foothill study. Repetition in the surface pattern remains visible. Elevation range 2,584 m across 8.064 km. Seed 185.",
+    "caption": "Western Sichuan · foothills. Foothill study. Repetition in the surface pattern remains visible. Elevation range 2,584 m across 8.064 km. Seed 185.",
     "hint": "Western Sichuan · foothills",
     "art": "world",
     "fit": "contain",
@@ -563,7 +563,7 @@
   "rivering/terrain-chuanxi-valley": {
     "id": "rivering/terrain-chuanxi-valley",
     "title": "Western Sichuan · broad valley",
-    "caption": "Valley study under review. Elevation range 2,584 m across 8.064 km. Seed 185.",
+    "caption": "Western Sichuan · broad valley. Valley study under review. Elevation range 2,584 m across 8.064 km. Seed 185.",
     "hint": "Western Sichuan · broad valley",
     "art": "world",
     "fit": "contain",
@@ -580,7 +580,7 @@
   "rivering/terrain-three-gorges": {
     "id": "rivering/terrain-three-gorges",
     "title": "Three Gorges · eroded mountains",
-    "caption": "Accepted regional foundation. Elevation range 2,186 m across 8.064 km. Seed 185.",
+    "caption": "Three Gorges · eroded mountains. Accepted regional foundation. Elevation range 2,186 m across 8.064 km. Seed 185.",
     "hint": "Three Gorges · eroded mountains",
     "art": "world",
     "fit": "contain",
@@ -597,7 +597,7 @@
   "rivering/terrain-rounded-hills": {
     "id": "rivering/terrain-rounded-hills",
     "title": "Guilin · rounded hills",
-    "caption": "Accepted hill foundation. Elevation range 3,280 m across 8.064 km. Seed 185.",
+    "caption": "Guilin · rounded hills. Accepted hill foundation. Elevation range 3,280 m across 8.064 km. Seed 185.",
     "hint": "Guilin · rounded hills",
     "art": "world",
     "fit": "contain",
@@ -614,7 +614,7 @@
   "rivering/terrain-gentle-lowland": {
     "id": "rivering/terrain-gentle-lowland",
     "title": "Guilin · gentle lowlands",
-    "caption": "Accepted lowland foundation. Elevation range 3,058 m across 8.064 km. Seed 185.",
+    "caption": "Guilin · gentle lowlands. Accepted lowland foundation. Elevation range 3,058 m across 8.064 km. Seed 185.",
     "hint": "Guilin · gentle lowlands",
     "art": "world",
     "fit": "contain",
