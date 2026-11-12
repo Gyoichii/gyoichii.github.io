@@ -10,7 +10,7 @@ const data = manifest as Record<string, MediaItem>;
 function ProjectChapter({ system, slug, index }: { system: System; slug: string; index?: number }) {
   const Heading = index === undefined ? "h3" : "h2";
   const gallery = system.media.length > 0 && <Gallery items={system.media.map((id) => data[id])} />;
-  const opensWithFootage = slug === "rivering" && system.id === "melee-sweep";
+  const opensWithFootage = slug === "friday-night" || (slug === "rivering" && system.id === "melee-sweep");
   return (
     <section className="project-chapter" id={system.id} tabIndex={-1}>
       {index !== undefined && (
@@ -200,7 +200,7 @@ export function ProjectPage({ project }: { project: Project }) {
                 ? "I was the programmer and producer. The in-game credits list the contributors to art, writing, music and voice acting."
                 : project.slug === "avatar-review" ? "The four example photos and graphics were scored separately from the 162-image evaluation. The frozen model saw the original center crops. The published injury and referral examples are redacted."
                 : project.slug === "disaster-chatbot" ? "The screenshots come from the current local Django project. The exercise supplies fictional bulletins, model replies, shelter listings, road closures and routing responses. The interface, citation validation, closure check, subscription matching and event history run in the app. The delivery chart is a separate local simulation."
-                : "Screenshots show movie lists, search, discussion, group administration, and notifications in the original Chinese-language interface. Invite codes, account names, and private comment text are redacted."}
+                : "The English-language captures use demo accounts and a sample film club. The sign-in screenshots show the public site."}
           </p>
         </div>
         <a href="mailto:weihan.chen.dev@outlook.com" className="button">

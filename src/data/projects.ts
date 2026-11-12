@@ -264,71 +264,85 @@ export const friday: Project = {
   intro: "Choose a film and watch it together.",
   cardSummary:
     "Browse a shared DVD shelf, vote on films, and watch together in a virtual living room.",
-  deck: "Groups keep a shared watchlist and meet in 3D rooms to watch their selection. Spring Boot and PostgreSQL handle groups, movie lists, and real-time rooms. A Python service resolves and relays video.",
+  deck: "I built Friday Night so a film club could recommend a movie, decide what to watch and sit down together even when everyone was at home. In the recording, Alex and Mina share a sofa and a TV. Each browser plays the film locally, so the room has to keep track of what both viewers should be seeing.",
   tags: ["Java", "Spring Boot", "PostgreSQL", "Python", "WebSocket", "TMDB"],
   hero: "friday-night/watch-together",
   systems: [
     {
       id: "choosing-a-film",
       label: "DVD shelf & screening room",
-      headline: "Choosing a film",
-      summary: "The same group watchlist has two browsing modes. The DVD shelf opens each title as a case. The screening room pairs a scrolling filmstrip with a projector preview.",
-      detail: "The desktop layout keeps the projector and filmstrip side by side. On a narrow screen, the projector folds away so the list has room for posters and film details.",
+      headline: "Picking a film off the shelf",
+      summary: "In the DVD recording, In the Mood for Love slides out spine-first. Its cover swings open and the disc comes into view. In the phone recording, the viewer folds away the projector, scrolls to Her and taps its poster.",
+      paragraphs: [
+        "I wanted browsing to feel like running a finger along a shelf of films. On a phone, a finger can land on a spine to open it or to move past it. I wait to see whether the finger travels before opening the case. That lets someone drag across a crowded shelf and still pick out a single film with a tap.",
+        "The screening room had a different problem. A projector and a strip of posters fit side by side on desktop, but the preview took up much of the phone screen. I gave the projector its own fold-away control and kept the filmstrip’s scroll position when it opens again.",
+      ],
+      detail: "I checked the shelf with drags starting on a case and in the gaps between cases. I also checked that a tap selected the intended film and a second tap opened its booklet. These interaction checks ran in a browser at a mobile viewport size.",
       tags: ["Desktop", "Mobile"],
       media: ["friday-night/dvd-shelf", "friday-night/theater-desktop", "friday-night/theater-mobile"],
     },
     {
       id: "shared-spaces",
       label: "Shared spaces",
-      headline: "Places to watch together",
-      summary: "Group members can walk through a courtyard, take a seat in a cinema, or meet on the sofa in the living room. The living-room recording above shows two members watching the same TV.",
-      detail: "Each participant controls an avatar. The room shares seat occupancy and playback state, while each browser decodes the film and displays it on the TV.",
+      headline: "Sharing the TV controls",
+      summary: "In the opening recording, Alex and Mina sit on the same sofa while Big Buck Bunny plays on the TV. The courtyard and cinema screenshots show two more places I built for members to meet.",
+      paragraphs: [
+        "Each viewer’s browser plays its own copy of the video. I share the room’s play state and position over WebSocket so either person at the TV can pause or seek for both. The tricky case was a delayed progress update arriving just after someone moved the playhead. Accepting it would send the room back to where it had been.",
+        "I gave commands and progress reports an order. Once the room accepts a seek, it ignores older reports. If the browser reporting progress disconnects, the room pauses at its saved position and the next reporter starts there. The person who first switched on the TV can leave without taking the controls with them.",
+      ],
+      detail: "The server tracks who is present in the scene and which avatar occupies each seat. I tested alternating playback commands and a stale progress report with two clients. The sofa recording shows one viewer’s screen with two demo accounts and a locally cached clip.",
       tags: ["Multiplayer", "Shared playback"],
       media: ["friday-night/courtyard", "friday-night/cinema"],
     },
     {
       id: "shared-workflow",
-      label: "Product & persistence",
-      headline: "Shared movie lists & persistent state",
-      summary:
-        "Users join groups by code or a configured approval flow, recommend films, vote, and discuss them. PostgreSQL stores membership, movie state, comments and notification preferences.",
-      detail:
-        "Group membership is unique per user and group. Votes are unique per user, movie and vote date. Movie records distinguish active, watched and deleted states, with separate restoration and archive actions. Movie queries filter by the selected group, so shared state belongs to the group that created it.",
+      label: "Votes & discussion",
+      headline: "Following a recommendation back to the film",
+      summary: "In the watchlist, members can scan the votes and comment counts before choosing a film. The detail page for In the Mood for Love puts the club’s votes beside the film’s ratings. Later, Alex’s notification feed shows who joined the discussion. Both Mina and Theo commented on a film Alex added.",
+      paragraphs: [
+        "I kept votes and comments on the group’s own copy of each film. Two clubs can pick the same title and have entirely different discussions. Within a club, a second tap on the vote button cannot add another vote from the same person that day.",
+        "A reply can outlive the link that first pointed to it. When someone opens their notifications, I look up the film that holds the comment now. If the film has moved, the link follows it. If the comment was deleted or the reader has left the group, the feed explains why it is unavailable.",
+      ],
+      detail: "PostgreSQL enforces the vote limit for each member, film and date. Each comment notification keeps a reference to the comment so the feed can resolve its current location and check the reader’s access.",
       tags: ["Relational models", "Group workflow", "Persistent state"],
       media: ["friday-night/group-workflow", "friday-night/movie-detail", "friday-night/notifications"],
     },
     {
       id: "access-control",
-      label: "Authentication & permissions",
-      headline: "Authentication & group-level authorization",
-      summary:
-        "Each operation resolves the current group, verifies membership, and checks the resource and role before changing state. Owner, admin, and member permissions apply within their own group.",
-      detail:
-        "Time-limited signed cookies establish identity. Passwords use salted PBKDF2-SHA256 hashes with constant-time comparison. Role checks distinguish owner, admin and member; movie and comment handlers enforce group ownership. Removed members cannot keep posting with a stale group cookie. The request path checks CSRF tokens for state-changing methods.",
+      label: "Group membership",
+      headline: "Who can change the club’s settings?",
+      summary: "The group picker shows an account that belongs to two clubs. Inside one club, its owner can change how people join and send invitations. I needed someone to be able to run one club and participate as an ordinary member in the other.",
+      paragraphs: [
+        "I attached the role to the membership between a person and a group. When someone saves a change, the server looks up that membership again. This matters if an owner removes someone while they still have the settings page open. Their old tab no longer gives them permission to act for the club.",
+      ],
+      detail: "The signed session identifies the person making the request. Membership and role checks use the group that owns the resource. I tested cross-group operations and access after membership removal.",
       tags: ["Signed cookies", "Role-based access", "CSRF protection"],
       media: ["friday-night/group-settings", "friday-night/group-selection"],
       diagram: "auth",
     },
     {
       id: "movie-data",
-      label: "External data & discovery",
-      headline: "TMDB search & metadata import",
-      summary:
-        "An asynchronous TMDB client supplies movie search, details and poster metadata. Selected films become local records that the group can recommend, vote on, archive and discuss.",
-      detail:
-        "The client uses bounded HTTP timeouts and handles upstream failures. API credentials are read from the environment. Search and metadata completion connect to the group’s existing movie records; identity checks look for duplicate active or archived films within that group. The group workflow remains distinct from the external catalogue.",
+      label: "Film search",
+      headline: "When two people recommend the same film",
+      summary: "The search screenshot shows The Grand Budapest Hotel with its poster, synopsis and an Add to watchlist button. I used TMDB so a member can recognize the right film before adding it.",
+      paragraphs: [
+        "The catalogue knows which film this is. Only the club’s watchlist knows whether someone has already suggested it. When a member adds a title, I check for a matching TMDB ID or title and year in that group. If the film is already on the list, the recommendation counts as a vote on the existing entry, subject to the daily limit. If it was archived, I ask whether to bring it back. The earlier discussion stays with the film.",
+      ],
+      detail: "I store the chosen film and its metadata locally so votes and comments have a stable record. The search screenshot uses cached TMDB metadata for the demonstration.",
       tags: ["TMDB API", "Async HTTP", "Movie identity"],
       media: ["friday-night/movie-search"],
     },
     {
       id: "security-tests",
-      label: "Security & delivery",
-      headline: "Permission-boundary tests & deployment",
-      summary:
-        "Focused tests exercise missing and invalid CSRF tokens, guessed movie IDs, stale membership cookies, and permissions across group boundaries. The public application is served over HTTPS.",
-      detail:
-        "The current test source includes cross-group trash operations, member-only restrictions, owner-role protection and login-failure throttling. Production configuration rejects a missing or development signing key and requires secure cookies. The application separates the Java web service from the Python media worker.",
-      tags: ["Permission-boundary tests", "Production configuration", "HTTPS"],
+      label: "Backend migration",
+      headline: "Moving the backend while keeping existing accounts",
+      summary: "The desktop and phone screenshots show the public sign-in page. When I moved Friday Night from Python and SQLite to Spring Boot and PostgreSQL, members already had passwords, sessions and film lists they expected to find on the other side.",
+      paragraphs: [
+        "I kept the existing URLs, password format and signed sessions compatible, then imported the accounts and group data. To check the move, I compared the imported tables with a read-only snapshot and opened the watchlists and rooms in a browser using the imported data.",
+        "I moved accounts, votes and room state into the Java service. I kept the video resolver and relay in Python because they already handled the different streaming formats. Java checks that a viewer belongs to the room before authorizing the media request.",
+      ],
+      detail: "The migration check compared 17 tables from a local snapshot, including group memberships, movie records, comments and avatar images. The public login captures show the entry point after deployment.",
+      tags: ["Spring Boot", "PostgreSQL", "SQLite migration"],
       media: ["friday-night/desktop", "friday-night/mobile"],
     },
   ],
