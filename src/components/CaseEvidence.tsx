@@ -57,10 +57,10 @@ export function AvatarExamples() {
 }
 
 const modelPaths = [
-  {label:"Explicit content", features:"Frozen SigLIP vision features from the avatar crop", classifier:"Linear support vector classifier", why:"The decision depends on what remains visible after cropping. We fitted a separate classifier to reviewed crops so its boundary could be adjusted independently of the injury check."},
+  {label:"Explicit content", features:"Frozen SigLIP vision features from the avatar crop", classifier:"Linear support vector classifier", why:"The decision depends on what remains visible after cropping. I fitted a separate classifier to reviewed crops so its boundary could be adjusted independently of the injury check."},
   {label:"Violence or injury", features:"Frozen visual features and signals from the injury detector", classifier:"Linear support vector classifier", why:"An uncovered abrasion and a bandaged knee share a subject. Labels follow the visible injury. On the evaluation set this branch caught all three positive cases and incorrectly flagged three negatives."},
   {label:"Referral or QR", features:"SigLIP 2 image features, RapidOCR text and QR decoding", classifier:"Visual and text classifiers plus decoded-code evidence", why:"The ad and the travel poster both have prominent lettering. Reading the invitation and checking for a machine-readable code supplies evidence that their visual layout alone cannot give. The text model uses character n-grams and logistic regression."},
-  {label:"Listed identities", features:"InsightFace reference matches and SigLIP 2 image–text similarity", classifier:"A separate support vector classifier for each listed person", why:"We kept face matching for photographs. For drawings and edits, we also compare the full avatar and four overlapping corner crops with name prompts for listed people and likely lookalikes. Several people can be present in the same image."},
+  {label:"Listed identities", features:"InsightFace reference matches and SigLIP 2 image–text similarity", classifier:"A separate support vector classifier for each listed person", why:"I kept face matching for photographs. For drawings and edits, I also compare the full avatar and four overlapping corner crops with name prompts for listed people and likely lookalikes. Several people can be present in the same image."},
 ];
 
 export function AvatarModels() {
