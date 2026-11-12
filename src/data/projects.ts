@@ -33,7 +33,7 @@ export type Project = {
 const riveringGroups: SystemGroup[] = [
   {
     id: "world-generation",
-    label: "Procedural environments",
+    label: "Street layout & utilities",
     systems: [
       {
         id: "pcg-urban-village",
@@ -64,6 +64,25 @@ const riveringGroups: SystemGroup[] = [
         diagram: "pcg",
       },
       {
+        id: "street-cables",
+        label: "Street cables",
+        headline: "Routing cables between buildings",
+        summary: "Look up from the shop entrance in both pictures. In the first build, a few thin wires cross the sky while a dense bundle runs under the eaves. In the second, the overhead strands fan out from the racks and hang at slightly different heights.",
+        paragraphs: [
+          "I used the generated building fronts to decide where a main line could run, where it could cross the alley, and where a smaller line should drop to a wall box. For overhead wires, the rack slots set the attachment points. The length I leave between them determines how far each strand sags.",
+          "The first pass stopped each eaves bundle at the end of its building. That left a visible break where neighbouring shops shared a frontage. I joined nearby endpoints directly where there was clearance. Where a wall projected into the route, I took the bundle around its outside corner. The last two photos show that turn and a separate drop to a distribution box.",
+        ],
+        detail: "The saved District60 scene contains ten eaves connections between buildings, including two around corners. Four street runs use 32 strands each and six entrance crossings use 24 each. I combined procedurally shaped overhead strands with existing AsiaMarket and Saigon cable meshes for the bundled runs. These captures show static dressing from the Unreal Editor.",
+        tags: ["Native PCG", "Catenary curves", "Modular facades"],
+        media: ["rivering/district-cables-early", "rivering/district-cables-crossing", "rivering/district-cables-corner", "rivering/district-cables-box"],
+      },
+    ],
+  },
+  {
+    id: "landscape-systems",
+    label: "Terrain & vegetation",
+    systems: [
+      {
         id: "terrain",
         label: "Terrain foundations",
         headline: "Terrain foundations in western Sichuan, the Three Gorges and Guilin",
@@ -79,6 +98,56 @@ const riveringGroups: SystemGroup[] = [
           "rivering/terrain-chuanxi-foothills", "rivering/terrain-chuanxi-valley", "rivering/terrain-gentle-lowland",
           "rivering/guilin-overview", "rivering/guilin-local",
         ],
+      },
+      {
+        id: "three-gorges-mountains",
+        label: "Three Gorges mountains",
+        headline: "Growing a mountain from its ridges and valleys",
+        summary: "These offline renders show the Three Gorges mountain generator. On the isolated mountain, shorter ridges descend from the crest towards the foot. The next views show a regional example in Wu Gorge, the lines I supplied, and the measured terrain from the same camera.",
+        paragraphs: [
+          "An early problem was that small gullies lined up like the barbs of a feather. I used elevation data to study where real ridges divide and where gullies join. For an isolated mountain I start with the main crest and its footprint. The generator grows the smaller branches and fills the slopes between them.",
+          "For the Wu Gorge example I took 28 large ridge lines and 26 valley lines from a 12 × 9 km elevation survey. Keeping those landmarks gave me a direct comparison with the real valley. The generator supplied the finer network. Some slopes still have more regularly spaced grooves than the reference. I have yet to test parameter changes or spline editing for these mountains in Unreal.",
+        ],
+        detail: "The height fields use a 30 m grid. The regional views use the same camera, lighting and elevation scale. In the Wu Gorge run the generator added 1,570 ridges and 1,568 valleys around the supplied network.",
+        tags: ["Procedural terrain", "Elevation data", "Ridge networks"],
+        media: ["rivering/three-gorges-mountain", "rivering/wu-gorge-generated", "rivering/wu-gorge-guides", "rivering/wu-gorge-reference"],
+      },
+      {
+        id: "limestone-cliffs",
+        label: "Limestone cliffs",
+        headline: "Shaping a Three Gorges limestone wall",
+        summary: "At 200 m, the grooves divide the wall into tall pillars with broad faces. At 50 m, shallow horizontal beds are visible across those faces. Some continue over a pillar and others break at its edge.",
+        paragraphs: [
+          "I built the vertical grooves and the horizontal beds at different scales. When the cuts were equally deep and evenly spaced, the face looked like stacked blocks. I concentrated the deepest cuts into fewer channels, curved them along the face, and varied where each bed thins or breaks. The broad faces between cuts give the finer ledges and chips room to read.",
+        ],
+        detail: "Both images show the same generated wall in the Unreal cliff lab. I inspected the wall in isolation. Blending a cliff shell into a surrounding mountain is a separate, ongoing study.",
+        tags: ["Procedural geometry", "Rock strata", "Unreal Editor"],
+        media: ["rivering/cliff-limestone-face", "rivering/cliff-limestone-detail"],
+      },
+      {
+        id: "landscape-materials",
+        label: "Landscape materials",
+        headline: "Where grass, litter and exposed rock meet",
+        summary: "The first two views show the same slope. One displays the finished surface. The other colours the ground by material family, revealing why patches of grass occupy the gentler ground and rock shows through the steep faces.",
+        paragraphs: [
+          "I use slope, elevation, moisture and canopy cover to decide which ground materials meet at a point. I wanted patches that could be read across a hillside without seeing a repeating tile up close. Within each family I break up the dominant texture across hexagonal cells and blend in the next variant using texture height.",
+          "Under trees, the ground needs to agree with the plants growing from it. I use the estimated light reaching the forest floor to shift from litter to grass as the canopy opens. I also expose ground-cover weights to the placement system so its grass can follow the same boundary the material draws.",
+        ],
+        detail: "The overview, family view and slope detail come from the same Unreal material lab. The forest-edge close-up comes from the later litter-to-grass study. The material reuses the project’s surface functions and texture arrays. Ground-cover weights are available to vegetation placement through a runtime virtual texture.",
+        tags: ["Landscape materials", "Height blending", "Runtime virtual textures"],
+        media: ["rivering/terrain-material-surface", "rivering/terrain-material-families", "rivering/terrain-material-near", "rivering/terrain-material-forest-edge"],
+      },
+      {
+        id: "biomes",
+        label: "Biome placement",
+        headline: "Planting the same hillside in three regions",
+        summary: "The rock outcrops stay in place across all three views. Around them, the dense Three Gorges canopy gives way to conifers in the western Sichuan preset and a more open stand in the Guilin preset. I kept the camera and test slope fixed so the planting is easy to compare.",
+        paragraphs: [
+          "I use the region to set the available species and elevation band. Within that region, slope, moisture and the shape of the ground help decide where each community can grow. After placing the trees, I use their canopy coverage to vary the ground vegetation. This lets the shaded floor and a nearby opening on the same hillside support different amounts of grass.",
+        ],
+        detail: "The comparisons use Unreal PCG Biome Core for the trees and shrubs. The western Sichuan preset offsets the test elevation by 2,900 m to reach its subalpine habitat. The regional vegetation tests are independent of the Three Gorges mountain generator.",
+        tags: ["PCG Biome Core", "Habitat maps", "Vegetation placement"],
+        media: ["rivering/biome-three-gorges", "rivering/biome-west-sichuan", "rivering/biome-guilin", "rivering/biome-ground-grass"],
       },
       {
         id: "large-river",

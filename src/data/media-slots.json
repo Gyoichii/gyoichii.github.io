@@ -272,6 +272,132 @@
       "hint": "Guilin · gentle lowlands",
       "art": "world",
       "fit": "contain"
+    },
+    "three-gorges-mountain": {
+      "title": "Three Gorges mountain from crest to foot",
+      "caption": "Isolated mountain, seed 1991. The gentler flank faces the camera. The summit rises 1,011 m above the base. Offline height field, equal horizontal and vertical scale.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "wu-gorge-generated": {
+      "title": "Generated ridges in Wu Gorge",
+      "caption": "Generated terrain. Smaller ridges and gullies fill the spaces between the supplied lines in a 12 × 9 km window. Offline relief rendering with colours assigned by slope and elevation.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "wu-gorge-guides": {
+      "title": "Wu Gorge ridge and valley inputs",
+      "caption": "Input to the regional example. Red traces the 28 major ridges and blue traces the 26 major valleys. The grey surface spans those lines before the smaller landforms are grown.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "wu-gorge-reference": {
+      "title": "Wu Gorge elevation reference",
+      "caption": "Reference terrain. The measured elevation grid is rendered from the same camera with the same light and colour rules as the generated Wu Gorge view.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "biome-three-gorges": {
+      "title": "Three Gorges vegetation",
+      "caption": "Three Gorges preset. Tall trees close over the foreground and leave patches of exposed ground farther up the slope.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "biome-west-sichuan": {
+      "title": "Western Sichuan vegetation",
+      "caption": "Western Sichuan preset. At the same camera position, conifers occupy much of the foreground. This preset places the test slope at a higher elevation.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "biome-guilin": {
+      "title": "Guilin vegetation",
+      "caption": "Guilin preset. The same hillside has more open ground between trees and a different mix of broadleaf crowns.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "cliff-limestone-face": {
+      "title": "Three Gorges limestone wall",
+      "caption": "About 200 m from the test wall. Deep vertical grooves divide the face into broad pillars. Horizontal beds cross several of them.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "cliff-limestone-detail": {
+      "title": "Limestone bedding and grooves",
+      "caption": "About 50 m from the same wall. Some beds end against a groove while others continue across it. Thin rock edges break the outline inside the deeper cuts.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-material-surface": {
+      "title": "Textured terrain in the material lab",
+      "caption": "Rendered surface. Follow the pale exposed rock down to the brown and green patches on the lower slope.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-material-families": {
+      "title": "Terrain material families",
+      "caption": "Material-family view from the same camera. The green grass regions and brown ground cover can be compared directly with the textured slope.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-material-near": {
+      "title": "Ground materials at slope level",
+      "caption": "Slope-level view. Grass, bare ground and exposed rock meet along irregular boundaries. The relief beyond the test patch belongs to the lab terrain.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "terrain-material-forest-edge": {
+      "title": "Forest-floor transition",
+      "caption": "Forest-edge material test. Leaf litter gives way to scattered grasses as more light reaches the ground. Vegetation meshes are omitted in this surface view.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "district-cables-early": {
+      "title": "Early overhead crossing",
+      "caption": "Earlier District60 build. From the shop entrance, only a few strands cross the gap between the buildings.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "district-cables-crossing": {
+      "title": "Denser overhead crossing",
+      "caption": "Revised crossing, same camera. Multiple hanging arcs are visible against the sky. The shop-entrance bundle uses 24 strands.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "district-cables-corner": {
+      "title": "Cable bundle around a facade corner",
+      "caption": "The bundled run continues around the projecting corner under the eaves. Its endpoints meet the neighbouring facade runs.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "district-cables-box": {
+      "title": "Facade distribution box",
+      "caption": "A thin service line leaves the eaves and drops to the wall-mounted box beside the doorway.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
+    },
+    "biome-ground-grass": {
+      "title": "Ground vegetation at grass height",
+      "caption": "Near-ground view in the Unreal biome lab. Individual blades and flowering stems are visible below the scale of the tree-placement comparisons.",
+      "hint": "Project study",
+      "art": "world",
+      "fit": "contain"
     }
   },
   "friday-night": {

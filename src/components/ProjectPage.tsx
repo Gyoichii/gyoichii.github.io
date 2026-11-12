@@ -18,7 +18,7 @@ const scope: Record<string, { title: string; text: string }> = {
 
 function ProjectChapter({ system, slug }: { system: System; slug: string }) {
   const gallery = system.media.length > 0 && <Gallery items={system.media.map(id => data[id])} />;
-  const footageFirst = slug === "friday-night" || system.id === "melee-sweep";
+  const footageFirst = slug === "friday-night" || ["melee-sweep", "street-cables", "three-gorges-mountains", "limestone-cliffs", "landscape-materials", "biomes"].includes(system.id);
   return <section className="project-chapter" id={system.id} tabIndex={-1}>
     <h3>{system.headline}</h3>
     <p className="chapter-summary">{system.summary}</p>
