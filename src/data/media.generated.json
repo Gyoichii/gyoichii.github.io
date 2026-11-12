@@ -35,13 +35,18 @@
   },
   "rivering/skill-vfx": {
     "id": "rivering/skill-vfx",
-    "title": "Skills & VFX",
-    "caption": "Spin attack and follow-up strikes with synchronized weapon trails and impact feedback.",
-    "hint": "Gameplay capture",
+    "title": "Spin attack",
+    "caption": "At normal speed, the silver crescents turn outward with the blade. Dust lingers at the character’s feet as the trail fades.",
+    "hint": "Spin skill in Unreal",
     "art": "effects",
     "fit": "contain",
     "project": "rivering",
     "sources": [
+      {
+        "src": "/media/rivering/skill-vfx.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      },
       {
         "src": "/media/rivering/skill-vfx.gif",
         "type": "gif",
@@ -49,6 +54,23 @@
       }
     ],
     "poster": "/media/rivering/skill-vfx-poster.webp"
+  },
+  "rivering/skill-displacement": {
+    "id": "rivering/skill-displacement",
+    "title": "Displacement attack",
+    "caption": "A sprint leads into the displacement attack. The curved flashes and dust mark successive positions along the path of travel.",
+    "hint": "Displacement skill in Unreal",
+    "art": "effects",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/skill-displacement.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/skill-displacement-poster.webp"
   },
   "rivering/combat-contact": {
     "id": "rivering/combat-contact",
@@ -87,7 +109,7 @@
   "rivering/melee-r22-trace": {
     "id": "rivering/melee-r22-trace",
     "title": "Server trace replay",
-    "caption": "Slowed top view of a recorded 116.6 ms server interval. The fitted blade turns 230.1°. The attack window opens at 22.8 ms, and the server accepts contact at 46.7 ms. Times are relative to the first pose.",
+    "caption": "Separate server trace, slowed down. The black blade turns 230.1° in 116.6 ms. Its path changes from grey to orange when the attack window opens at 22.8 ms. At 46.7 ms the red marker shows where the blade met the teal collider. Times are relative to the first pose.",
     "hint": "Recorded R22 query",
     "art": "sweep",
     "fit": "contain",
@@ -104,7 +126,7 @@
   "rivering/melee-r22-pie": {
     "id": "rivering/melee-r22-pie",
     "title": "Melee collision from above",
-    "caption": "A fixed overhead camera records two attacks in Unreal at normal speed. Cyan marks the sampled blade poses, orange the fitted path inside the attack window, and yellow the geometric hit. The runtime accepted a contact in both windows.",
+    "caption": "Unreal recording at normal speed. Dark teal shows the previous blade pose and cyan the next. Orange traces the active sweep. The first swing registered contact 9.35 ms into its sample interval. The second registered contact 2.80 ms into its own interval.",
     "hint": "R22 runtime debug view",
     "art": "sweep",
     "fit": "contain",
@@ -120,9 +142,9 @@
   },
   "rivering/cr-facing": {
     "id": "rivering/cr-facing",
-    "title": "Vertical aiming",
-    "caption": "Control Rig-based vertical aim correction during attacks toward the elevated target. Character facing uses the existing GASP / Mover system.",
-    "hint": "Aim-height capture",
+    "title": "High sphere",
+    "caption": "The character locks onto the high sphere and plays the three-cut combo. The sphere flashes red when the blade makes contact.",
+    "hint": "High target in the saved melee test facility",
     "art": "motion",
     "fit": "contain",
     "project": "rivering",
@@ -134,6 +156,23 @@
       }
     ],
     "poster": "/media/rivering/cr-facing-poster.webp"
+  },
+  "rivering/cr-low": {
+    "id": "rivering/cr-low",
+    "title": "Low sphere",
+    "caption": "The same combo starts at the same horizontal distance from the low sphere. Each red flash is the test target’s own contact feedback.",
+    "hint": "Low target in the saved melee test facility",
+    "art": "motion",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cr-low.mp4",
+        "type": "video",
+        "mime": "video/mp4"
+      }
+    ],
+    "poster": "/media/rivering/cr-low-poster.webp"
   },
   "rivering/material-sphere": {
     "id": "rivering/material-sphere",
@@ -444,7 +483,7 @@
   "rivering/lightning-pie": {
     "id": "rivering/lightning-pie",
     "title": "Niagara discharge",
-    "caption": "Play In Editor recording. The main channel reaches the selected point, flashes back up, then lights again on subsequent strokes.",
+    "caption": "Watch the faint upper leader during branching. The main channel stays connected to its source, then brightens along its length at contact. Fixed endpoints, seed 4, normal-speed Unreal playback.",
     "hint": "Niagara discharge",
     "art": "motion",
     "fit": "contain",

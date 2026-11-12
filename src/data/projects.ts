@@ -40,9 +40,12 @@ const riveringGroups: SystemGroup[] = [
         label: "Urban village",
         headline: "Street layout and modular building generation",
         summary:
-          "A Python planner selects a commercial street within a fixed layout of 231 buildings. In a separate 23-building Unreal scene, shops face the street and residential entrances open onto side or rear paths. All 57 tested entrances had room for the character capsule and a supporting floor.",
+          "At street level the window cages and air conditioners hang out over a narrow alley. In the editor recording, adding a floor gives the pink building another row of windows and raises the roof. The windows need to keep their size as the envelope changes, and the alley below still has to be wide enough to walk through.",
+        paragraphs: [
+          "We build each floor from fixed-size modules and let infill pieces take up the remaining width. Shops open onto the commercial street, while residents enter from side or rear paths. We tested those paths against the generated geometry. At one building, low air conditioners and window cages blocked the route, so we adjusted those fittings. All 57 entry routes in the 23-building Unreal scene then cleared the character capsule and had floor support.",
+        ],
         detail:
-          "The C++ plugin exposes width, depth, floor count, entrances, stairs, seed, window options, and weighted material patterns. Layout combines fixed modules with adaptable infill. PCG owns the generated components; a binding component registers completed output with building visibility and releases it during cleanup. Circulation and visual refinement are ongoing.",
+          "The plan shows a separate Python study that selects a commercial street in a fixed layout of 231 buildings. In Unreal, the native PCG element exposes footprint, floor count, entrances, stairs, windows, seed and material weights. It registers generated components with building visibility and releases them during cleanup.",
         tags: [
           "Native PCG element",
           "Deterministic generation",
@@ -64,8 +67,11 @@ const riveringGroups: SystemGroup[] = [
         id: "terrain",
         label: "Terrain foundations",
         headline: "Terrain foundations in western Sichuan, the Three Gorges and Guilin",
-        summary: "These nine Unreal Landscape presets shape terrain at regional scale. Compare the eroded relief of the Three Gorges with the gentler Guilin lowlands, then look across the western Sichuan studies to see how the ridges, foothills and valleys change.",
-        detail: "Each preset uses seed 185 on an 8.064 km square. Camera position, lighting and grey material are fixed, and each recipe keeps its own relief. The last two figures isolate a separate Guilin experiment. Each row keeps the seed and layout fixed while relief increases from 15% to 30%.",
+        summary: "The Three Gorges slopes have narrow grooves that run down their faces. The Guilin lowlands roll into broad, smooth hollows. Both landscapes fill the same 8.064 km square. The difference we wanted to control was the shape of the ground at that scale.",
+        paragraphs: [
+          "The Three Gorges recipe starts with winding valleys and erodes their banks. Guilin starts with broad hills and lowlands. To see what the recipes contribute, we rendered all nine presets with the same seed, grey material, lighting and camera. The western Sichuan studies show the range from ridge shoulders to valley floors. The final Guilin pairs isolate a smaller edit. Increasing relief from 15% to 30% deepens the folds while the hills stay in place.",
+        ],
+        detail: "The nine regional views use seed 185 and preserve each preset’s own elevation range. The separate Guilin relief experiment uses seeds 185, 741 and 2026, with regional and close views for each pair.",
         tags: ["Terrain authoring", "Regional presets"],
         media: [
           "rivering/terrain-chuanxi-mountains", "rivering/terrain-three-gorges", "rivering/terrain-rounded-hills",
@@ -78,8 +84,11 @@ const riveringGroups: SystemGroup[] = [
         id: "large-river",
         label: "Large River mode",
         headline: "Spline-based river and bank generation",
-        summary: "Moving a spline control point updates the river channel and adjoining banks. In the 4.608 × 4.608 km editor scene, a 320 m lateral edit took 4.56 seconds to rebuild.",
-        detail: "The spline has 11 control points. A script moves one point through the editor API with discharge set to 2,500 cubic metres per second. The recording shows the full map, the rebuild at normal speed, and a close-up of the edited bank.",
+        summary: "In the full-map recording, a green control point moves 320 m sideways. From that distance the edit looks like a small bend. Down at the shoreline it changes where the water meets the foot of the valley slope.",
+        paragraphs: [
+          "We use the edited spline to rebuild the channel and the adjoining banks together. Otherwise an author moving the river would also have to reshape the old shoreline by hand. The recording keeps the wait in real time. On this 4.608 km square map, the editor reported 4.56 seconds for the rebuild before the camera moved down to the new bank.",
+        ],
+        detail: "The editor script moves the sixth of 11 spline points. Discharge stays fixed at 2,500 cubic metres per second throughout the edit. The editor publishes the result as revision 10.",
         tags: ["Unreal Editor", "Spline authoring", "Water"],
         media: ["rivering/large-river", "rivering/river-bank"],
       },
@@ -97,19 +106,23 @@ const riveringGroups: SystemGroup[] = [
         paragraphs: [
           "We wanted the forks to stay legible as the bolt spread into a triangular silhouette. The generator spaces two to four branches around their parent’s direction. Early forks open wide. Deeper forks grow at shorter intervals and narrower angles, so fine branches fill out the shape without obscuring the main channel.",
           "The strike has to land where the effect is placed. At each fork on the main channel, the child aimed closest to that point inherits 69–80% of the remaining charge budget. Its final approach steers into the exact endpoint. Side branches slow down near the ground and stop above it. That makes the chosen point the first and only ground contact.",
+          "An early version let the upper channel fade while the tips were still growing. The branches looked detached from their source. We now keep a thin core visible along the main leader throughout the competition. Watch that line in the Unreal recording just before it widens and brightens on contact.",
         ],
         detail: "The C++ generator computes the contact time and stores a birth time for each segment. Niagara plays those timestamps, flashes the connected channel from the ground up, then reuses it for later strokes. Ground is the horizontal plane through the supplied endpoint. If a seed fails to connect, the effect does not spawn.",
         tags: ["Niagara", "C++", "Seeded generation"],
-        media: ["rivering/lightning-growth", "rivering/lightning-pie"],
+        media: ["rivering/lightning-pie", "rivering/lightning-growth"],
       },
       {
         id: "material-sphere",
         label: "Wall tiles & glass",
         headline: "Wall weathering and glass materials",
         summary:
-          "Wall materials blend intact and weathered surfaces with height-driven boundaries. Glass instances expose separate controls for dirt, rain streaks, tint, and surface response.",
+          "On the tiled wall, wear gathers near the base and breaks up along the tile surface. In the glass comparison, a dark pane dims the character behind it while streaks catch the light on another pane. The placement of a mark and the amount of light that passes through are different things to control.",
+        paragraphs: [
+          "For the wall, a coverage mask places the weathered area. Height information from the surfaces breaks up the transition along the tile relief. For the glass, separate material-instance controls let us change dust, rain streaks and tint independently. The panels share the same lighting so the effect of those edits stays visible.",
+        ],
         detail:
-          "An A/B wall-surface blend supports optional height-based coverage. A Substrate glass material separates dust, rain streaks, mud, and transmission parameters. Material instances expose these controls for look development.",
+          "The wall instance exposes surface rotation, colour variation, coverage and displacement. The Substrate glass instance exposes transmission and surface treatments, including dust, mud and rain streaks.",
         tags: ["Substrate", "Material instances", "Surface blending"],
         media: [
           "rivering/wall-weathering",
@@ -124,9 +137,12 @@ const riveringGroups: SystemGroup[] = [
         label: "Camera & occlusion",
         headline: "Camera occlusion in buildings",
         summary:
-          "Camera-to-character geometry queries decide when walls and roofs need a visibility window. Material clipping reveals the character while retaining the original collision geometry used for obstruction checks.",
+          "Follow the character from the street into the stairwell. From this camera angle, a foreground wall can cover the character and the floor above can hide the next flight. The cutaway needs to follow the character while leaving enough of the building visible to tell which floor they are on.",
+        paragraphs: [
+          "The camera checks sightlines to several points across the character capsule. Those checks identify obstructing geometry, while the building’s floor boundaries determine which storey to reveal indoors. We clip the rendered material and keep the wall’s collision in place. On the next frame the camera can still detect the same wall, so opening the view does not cause it to close again immediately.",
+        ],
         detail:
-          "The component samples a bounded silhouette across the character capsule and traces against the original structure. Separate classification handles walls, roofs, props and exclusions. Because material clipping does not remove the collision body used by the query, revealing an obstruction does not immediately make the visibility test lose that obstruction. Generated buildings also have an explicit PCG-to-occlusion lifecycle binding.",
+          "Walls, roofs, props and excluded components have distinct visibility rules. Generated buildings register their components with the system when PCG finishes and release them when their generated output is cleared.",
         tags: ["Geometry queries", "Material clipping", "Collision preserved"],
         media: ["rivering/occlusion-walkthrough", "rivering/occlusion"],
         diagram: "occlusion",
@@ -134,13 +150,16 @@ const riveringGroups: SystemGroup[] = [
       {
         id: "skill-vfx",
         label: "Weapon effects",
-        headline: "Weapon trails and impact effects",
+        headline: "Spin and displacement attack effects",
         summary:
-          "Animation notify windows drive the Spin 360 trail lifecycle. Impact feedback consumes resolved contact direction and result data to orient Niagara effects around the interaction.",
+          "In the spin, a silver crescent follows the blade around the character. In the displacement attack, arcs appear in succession along the route the character travels. The first effect needs to read as a turn. The second needs to show how far the character has moved.",
+        paragraphs: [
+          "During the spin, Niagara reads the same effective blade span the game uses for the move. The base-to-tip direction keeps the crescents facing outward, and an animation window stops new emission as the swing ends. For the displacement attack, ground dust follows the distance actually travelled. It fills the path behind the character and fades in place.",
+        ],
         detail:
-          "A dedicated notify state starts, updates, and ends the trail through the combat component. Impact presentation passes the contact normal and weapon-sweep direction to Niagara. These hooks control effect timing and orientation; visual tuning is ongoing.",
-        tags: ["Niagara", "Animation notifies", "Impact feedback"],
-        media: ["rivering/skill-vfx"],
+          "The trail component passes the blade midpoint and effective span to Niagara during the active spin. The effect waits for the reach override before spawning, which keeps its width consistent when the animation notifies arrive in a different order.",
+        tags: ["Niagara", "Animation notifies", "Ground dust"],
+        media: ["rivering/skill-vfx", "rivering/skill-displacement"],
       },
     ],
   },
@@ -153,9 +172,12 @@ const riveringGroups: SystemGroup[] = [
         label: "Combat interaction",
         headline: "Combat state & action arbitration",
         summary:
-          "Attacks, blocks, dashes and targeting share a combat state and input policy. The same decisions govern what can start, what can be buffered, and when movement or facing input is accepted.",
+          "As the characters close the distance, a swing gives way to a hit reaction and one character goes down. A movement or attack input can arrive while that reaction is still playing. The game needs to decide whether to act on it now, queue it or ignore it.",
+        paragraphs: [
+          "The server makes that decision from the current combat state. A guard can keep accepting grounded movement, a dash holds its facing, and an attack phase can accept a turn while suppressing ordinary movement. Movement and animation use the same decision, so a buffered command starts when the current phase allows that transition.",
+        ],
         detail:
-          "Enhanced Input commands enter server-side combat handlers. The combat component tracks active actions, block phases, and hit-reaction state; GAS attributes and effects handle stamina spending and recovery. Blocking retains grounded movement input. Dashes lock facing. Attack phases can accept facing intent while suppressing ordinary translation.",
+          "Enhanced Input sends commands to the combat handlers. The combat component tracks the active action, block phase and hit reaction. Gameplay Ability System attributes and effects handle stamina spending and recovery.",
         tags: ["Action arbitration", "GAS attributes", "Input policy"],
         media: ["rivering/combat-interaction", "rivering/combat-contact"],
         diagram: "combat",
@@ -165,9 +187,13 @@ const riveringGroups: SystemGroup[] = [
         label: "Melee hit detection",
         headline: "Continuous melee hit detection",
         summary:
-          "Two sampled blade poses can represent a short turn or a longer swing. The server uses the weapon’s authored cutting direction to select an arc, then checks when the moving blade first contacts a target collider inside the animation’s attack window.",
+          "In the overhead recording, the teal and cyan outlines show two consecutive blade poses. During the first swing, the blade turns 127.4° between samples just 33.3 ms apart. The orange fan shows its fitted path in between. The blade reaches the dummy before the second pose is sampled.",
+        paragraphs: [
+          "A short turn and a longer turn in the opposite direction can connect the same poses while passing on different sides of the dummy. We choose the arc whose initial motion at the middle of the blade best matches the cutting direction marked on the weapon. The base and tip rotate together about a fitted axis and can travel along it. That keeps the blade rigid and gives us its position at any time between samples.",
+          "We evaluate the blade and the dummy’s moving colliders at the same instant. For a capsule, the surfaces meet when the distance from the blade segment to the capsule’s centerline reaches the sum of their radii. The solver finds the earliest valid entry in the animation’s active window and returns the surface point and normal. For the first swing, the recorded entry was 28.05% of the way through the sample interval, or 9.35 ms after the first pose. A target can register once per attack window.",
+        ],
         detail:
-          "The R22 solver fits the full blade segment for swings. Thrusts use the tip’s motion relative to each target collider. At contact, the server evaluates the collider surface and its normal at the same instant. A target can be accepted once per attack window.",
+          "The orange lines are samples drawn for the debug view. The server isolates candidate contact times, checks the gap on the finite shapes at each candidate and keeps the earliest eligible contact across the target’s colliders. When the blade points in the same direction at both samples, the fit uses translation. Thrusts use a separate query for the tip’s motion relative to the collider.",
         tags: ["Continuous collision detection", "Time of impact", "Unreal Engine"],
         media: ["rivering/melee-r22-pie", "rivering/melee-r22-trace"],
         diagram: "sweep",
@@ -177,9 +203,12 @@ const riveringGroups: SystemGroup[] = [
         label: "Katana guard turns",
         headline: "Katana guard locomotion",
         summary:
-          "The character raises a katana, stays in guard and changes facing. Motion Matching selects the turn while the support foot stays planted through the pivot. Guarding also supports grounded movement.",
+          "Watch the feet as the character turns with the katana raised. The support foot holds through the pivot while the other foot steps around. Rotating the character independently of that step would make the planted foot slide.",
+        paragraphs: [
+          "Guard sets the desired facing and allows grounded movement. Mover turns toward that facing at a bounded rate, and GASP Motion Matching selects the step for the changing direction. The combat system supplies the guard state through entry, hold and release, so walking and turning can continue with the katana raised.",
+        ],
         detail:
-          "GASP / Mover supplies the underlying locomotion and character-facing system. Rivering integrates block entry, loop and ending with that existing path, selecting movement and facing policies for combat. The walking integration consumes a desired facing and applies a bounded yaw response during blocking. The contribution shown here is combat-state integration with GASP / Mover.",
+          "Rivering’s guard integration chooses the movement and facing policy for each block phase. GASP and Mover provide the underlying locomotion and character orientation.",
         tags: ["GASP", "Mover", "Block state"],
         media: ["rivering/gasp-block"],
       },
@@ -188,11 +217,14 @@ const riveringGroups: SystemGroup[] = [
         label: "Vertical aiming / Control Rig",
         headline: "Vertical aiming with Control Rig",
         summary:
-          "Control Rig adds up-and-down aim correction to the animated pose. Character facing follows the existing GASP / Mover orientation system; Rivering connects the aiming layer to target data and combat state.",
+          "The two recordings start the character the same distance from a white ball. The high ball sits above the usual swing and the low ball is near the floor. Watch the ball flash on contact. Facing it solves the horizontal alignment, but each cut still has to reach the right height.",
+        paragraphs: [
+          "During preparation, we evaluate the authored swing against the target and choose a chest and upper-arm correction for the whole arc. Control Rig holds that correction through release so the pose does not chase the target halfway through the swing. GASP and Mover continue to handle facing. In each recording the ball flashes three times, once for each cut in the combo.",
+        ],
         detail:
-          "The dedicated melee Control Rig consumes a target offset relative to the character root and adds bounded corrections to the authored animation. Body-part settings control the correction range and weight. Rivering supplies combat state and target data; the base character-facing path remains in GASP / Mover.",
+          "The extra chest rotation ranges from −15° to +25° and the upper-arm rotation from −20° to +30°. The wrist follows the authored animation. The target logs record contact for each of the three distinct attack montages at both heights.",
         tags: ["Control Rig", "Vertical aiming", "Animation integration"],
-        media: ["rivering/cr-facing"],
+        media: ["rivering/cr-facing", "rivering/cr-low"],
       },
     ],
   },

@@ -9,6 +9,8 @@ const data = manifest as Record<string, MediaItem>;
 
 function ProjectChapter({ system, slug, index }: { system: System; slug: string; index?: number }) {
   const Heading = index === undefined ? "h3" : "h2";
+  const gallery = system.media.length > 0 && <Gallery items={system.media.map((id) => data[id])} />;
+  const opensWithFootage = slug === "rivering" && system.id === "melee-sweep";
   return (
     <section className="project-chapter" id={system.id} tabIndex={-1}>
       {index !== undefined && (
@@ -18,6 +20,7 @@ function ProjectChapter({ system, slug, index }: { system: System; slug: string;
       )}
       <Heading>{system.headline}</Heading>
       <p className="chapter-summary">{system.summary}</p>
+      {opensWithFootage && gallery}
       {system.paragraphs?.map((paragraph) => <p className="chapter-explanation" key={paragraph}>{paragraph}</p>)}
       {slug === "avatar-review" && system.id === "visible-crop" && <AvatarExamples />}
       {slug === "avatar-review" && system.id === "four-checks" && <AvatarMetrics />}
@@ -34,9 +37,7 @@ function ProjectChapter({ system, slug, index }: { system: System; slug: string;
         </summary>
         <p>{system.detail}</p>
       </details>
-      {system.media.length > 0 && (
-        <Gallery items={system.media.map((id) => data[id])} />
-      )}
+      {!opensWithFootage && gallery}
     </section>
   );
 }
