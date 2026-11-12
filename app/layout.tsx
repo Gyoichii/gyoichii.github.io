@@ -44,9 +44,11 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Navigation />
-        {children}
-        <Footer />
+        <div className="desktop-window">
+          <Navigation />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

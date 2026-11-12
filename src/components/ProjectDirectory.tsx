@@ -1,61 +1,76 @@
 "use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import { type Project, projects } from "../data/projects";
+import { useSyncExternalStore } from "react";
+import { projects } from "../data/projects";
 import manifest from "../data/media.generated.json";
 import { MediaPreview, type MediaItem } from "./MediaViewer";
+import { Icon } from "./Navigation";
 
-const groups = [
+const folders = [
   { name: "Unreal Engine", slugs: ["rivering"] },
   { name: "Software & ML", slugs: ["friday-night", "avatar-review", "disaster-chatbot"] },
   { name: "Games", slugs: ["wayjia"] },
 ];
-
+function subscribe(callback: () => void) {
+  window.addEventListener("popstate", callback);
+  window.addEventListener("projectselect", callback);
+  return () => {
+    window.removeEventListener("popstate", callback);
+    window.removeEventListener("projectselect", callback);
+  };
+}
+function selectProject(slug: string) {
+  const url = new URL(window.location.href);
+  if (url.searchParams.get("project") === slug) return;
+  url.searchParams.set("project", slug);
+  window.history.pushState(null, "", url);
+  window.dispatchEvent(new Event("projectselect"));
+}
 export function ProjectDirectory() {
-  const [selected, setSelected] = useState<Project>(projects[0]);
-  const item = (manifest as Record<string, MediaItem>)[selected.hero];
-  return (
-    <section className="directory wrap" id="work" aria-label="Project directory">
-      <div className="directory-bar"><span className="folder-icon" aria-hidden="true" />Project directory</div>
-      <div className="directory-layout">
-        <nav className="directory-tree" aria-label="Browse projects">
-          {groups.map((group) => (
-            <div className="tree-group" key={group.name}>
-              <h2><span className="folder-icon" aria-hidden="true" />{group.name}</h2>
-              {group.slugs.map((slug) => {
-                const project = projects.find((p) => p.slug === slug)!;
-                return <button key={slug} type="button" aria-pressed={selected.slug === slug}
-                  aria-controls="project-preview" onClick={() => setSelected(project)}>
-                  {project.title}
-                </button>;
-              })}
-            </div>
-          ))}
-        </nav>
-        <div id="project-preview" className="directory-preview" key={selected.slug}>
-          <Link href={`/projects/${selected.slug}/`} className="directory-image" aria-label={`Open ${selected.title}`}>
-            <MediaPreview item={item} paused priority />
-          </Link>
-          <div className="preview-description">
-            <h2>{selected.title}</h2>
-            <p>{selected.cardSummary}</p>
-            <Link className="classic-button" href={`/projects/${selected.slug}/`}>Open project <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
-      </div>
-      <nav className={selected.groups ? "directory-status grouped-links" : "directory-status"} aria-label="Project contents">
-        {selected.groups ? selected.groups.map((group) => (
-          <div key={group.id}>
-            <Link className="group-link" href={`/projects/${selected.slug}/#${group.id}`}>{group.label}</Link>
-            <ul>{group.systems.map((system) => (
-              <li key={system.id}><Link href={`/projects/${selected.slug}/#${system.id}`}>{system.label}</Link></li>
-            ))}</ul>
-          </div>
-        )) : selected.systems.map((section) => (
-          <Link key={section.id} href={`/projects/${selected.slug}/#${section.id}`}>{section.label}</Link>
-        ))}
+  const slug = useSyncExternalStore(subscribe, () => new URLSearchParams(window.location.search).get("project"), () => null);
+  const selected = projects.find(p => p.slug === slug) ?? projects[0];
+  const base = `/projects/${selected.slug}/`;
+  const media = (manifest as Record<string, MediaItem>)[selected.hero];
+  const groups = selected.groups ?? [{ id: "systems", label: "Chapters", systems: selected.systems }];
+  return <section className="home-browser" id="work" aria-label="Project directory">
+    <aside className="folder-pane">
+      <div className="pane-label"><Icon name="folder" />Project folders</div>
+      <nav className="project-folders" aria-label="Browse projects">
+        {folders.map(group => <details open key={group.name}>
+          <summary><Icon name="folder" />{group.name}</summary>
+          <ul>{group.slugs.map(id => {
+            const p = projects.find(project => project.slug === id)!;
+            return <li key={id}><button type="button" aria-pressed={selected.slug === id}
+              aria-controls="project-preview" onClick={() => selectProject(id)}>{p.title}</button></li>;
+          })}</ul>
+        </details>)}
       </nav>
-    </section>
-  );
+      <div className="folder-count">{projects.length} projects</div>
+      <label className="mobile-projects">Project
+        <select value={selected.slug} onChange={e => selectProject(e.target.value)}>
+          {folders.map(group => <optgroup key={group.name} label={group.name}>{group.slugs.map(id =>
+            <option key={id} value={id}>{projects.find(p => p.slug === id)!.title}</option>)}</optgroup>)}
+        </select>
+      </label>
+    </aside>
+    <div className="preview-pane" id="project-preview">
+      <div className="preview-head">
+        <div><p className="category">{selected.category}</p><h1>{selected.title}</h1></div>
+        <Link className="command primary-command" href={base}>Open project →</Link>
+      </div>
+      <p className="project-summary">{selected.cardSummary}</p>
+      <div className="preview-content">
+        <figure className="project-preview-image" key={selected.slug}>
+          <Link href={base} aria-label={`Open ${selected.title} overview`}><MediaPreview item={media} paused priority /></Link>
+          <figcaption><Icon name={media.sources[0]?.type === "video" ? "film" : "computer"} />{media.title}</figcaption>
+        </figure>
+        <nav className="contents-list" aria-label={`${selected.title} chapters`}>
+          {groups.map(group => <div key={group.id}><h2><Icon name="folder" />{group.label}</h2>
+            <ul>{group.systems.map(s => <li key={s.id}><Link href={base + "#" + s.id}>{s.label}</Link></li>)}</ul>
+          </div>)}
+        </nav>
+      </div>
+      <div className="preview-meta"><span>{selected.role}</span><span>{selected.period}</span></div>
+    </div>
+  </section>;
 }

@@ -28,6 +28,7 @@ const types = {
   ".txt": "text/plain; charset=utf-8",
   ".webp": "image/webp",
   ".png": "image/png",
+  ".svg": "image/svg+xml",
   ".jpg": "image/jpeg",
   ".gif": "image/gif",
   ".mp4": "video/mp4",

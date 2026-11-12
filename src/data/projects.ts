@@ -269,6 +269,15 @@ export const friday: Project = {
   hero: "friday-night/watch-together",
   systems: [
     {
+      id: "visual-styles",
+      label: "Seven watchlist styles",
+      headline: "One watchlist, seven interfaces",
+      summary: "Switch between seven English views of the Friday Film Club’s list. Each opens on the same group with the same orange palette and dark appearance.",
+      detail: "Visual style, palette and light or dark appearance are independent settings. The styles keep the same group, films and votes while changing how members browse them.",
+      tags: ["Interface design", "Appearance settings"],
+      media: [],
+    },
+    {
       id: "choosing-a-film",
       label: "DVD shelf & screening room",
       headline: "Picking a film off the shelf",
