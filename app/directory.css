@@ -68,3 +68,14 @@
   .avatar-pair h3 { font-size: 15px; }
   .avatar-pair p { font-size: 13px; }
 }
+.cable-study h4 { font-size: 1.1rem; margin: 1.6rem 0 .5rem; }
+.cable-study p { line-height: 1.55; max-width: 76ch; }
+.cable-layers { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin: 1rem 0; }
+.cable-layers label { padding: .3rem 0; cursor: pointer; }
+.cable-roles { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; gap: .6rem 1rem; }
+.cable-roles dt { font-weight: 650; }
+.cable-roles dd { margin: 0; }
+@media (max-width: 520px) {
+  .cable-roles { grid-template-columns: 1fr; gap: .15rem; }
+  .cable-roles dd { margin-bottom: .65rem; }
+}

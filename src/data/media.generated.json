@@ -973,6 +973,142 @@
     ],
     "poster": "/media/rivering/biome-ground-grass.webp"
   },
+  "rivering/cable-plan-power": {
+    "id": "rivering/cable-plan-power",
+    "title": "Overhead power mains",
+    "caption": "Four power routes advance along the alleys in 16 spans. Dots mark successive facade supports.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-plan-power.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-plan-power.webp"
+  },
+  "rivering/cable-plan-cross": {
+    "id": "rivering/cable-plan-cross",
+    "title": "Shop-front crossings",
+    "caption": "Six communication crossings link facing entrances. Dots mark their attachment points. Each crossing is selected separately from the power mains.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-plan-cross.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-plan-cross.webp"
+  },
+  "rivering/cable-plan-eaves": {
+    "id": "rivering/cable-plan-eaves",
+    "title": "Under-eave bundles",
+    "caption": "Thin lines follow 29 frontage runs. Heavy links join nearby ends across ten gaps. Two links turn around a projecting wall.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-plan-eaves.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-plan-eaves.webp"
+  },
+  "rivering/cable-plan-box": {
+    "id": "rivering/cable-plan-box",
+    "title": "Building power feeds",
+    "caption": "Power feeds follow the building perimeter to a box beside a residential entrance. Squares mark all 21 box locations. Vertical drops project to a point in this plan.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-plan-box.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-plan-box.webp"
+  },
+  "rivering/cable-detail-split": {
+    "id": "rivering/cable-detail-split",
+    "title": "Split and rejoin",
+    "caption": "Four strands take a separate support and return to the same terminal rack. Each keeps its identity through the detour.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-detail-split.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-detail-split.webp"
+  },
+  "rivering/cable-detail-rack": {
+    "id": "rivering/cable-detail-rack",
+    "title": "Wrap a waypoint",
+    "caption": "A continuous strand arrives at a rack, wraps its assigned slot and leaves towards the next span.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-detail-rack.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-detail-rack.webp"
+  },
+  "rivering/cable-detail-coil": {
+    "id": "rivering/cable-detail-coil",
+    "title": "Store spare length",
+    "caption": "One strand winds five turns on its support before continuing. The other strands pass underneath.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-detail-coil.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-detail-coil.webp"
+  },
+  "rivering/cable-detail-cross": {
+    "id": "rivering/cable-detail-cross",
+    "title": "Cross another bundle",
+    "caption": "A coloured route wraps across an independent bundle. Both routes retain their own endpoints.",
+    "hint": "Cable routing study",
+    "art": "world",
+    "fit": "contain",
+    "project": "rivering",
+    "sources": [
+      {
+        "src": "/media/rivering/cable-detail-cross.webp",
+        "type": "image",
+        "mime": "image/webp"
+      }
+    ],
+    "poster": "/media/rivering/cable-detail-cross.webp"
+  },
   "friday-night/movie-search": {
     "id": "friday-night/movie-search",
     "title": "TMDB movie search",

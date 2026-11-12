@@ -6,6 +6,7 @@ import { ChapterNav, Icon } from "./Navigation";
 import { Diagram } from "./Diagrams";
 import { AvatarErrors, AvatarExamples, AvatarMetrics, AvatarModels, BulletinExercise } from "./CaseEvidence";
 import { FridayStyles } from "./FridayStyles";
+import { CableRoutes } from "./CableRoutes";
 
 const data = manifest as Record<string, MediaItem>;
 const scope: Record<string, { title: string; text: string }> = {
@@ -24,6 +25,7 @@ function ProjectChapter({ system, slug }: { system: System; slug: string }) {
     <p className="chapter-summary">{system.summary}</p>
     {footageFirst && gallery}
     {system.paragraphs?.map(paragraph => <p className="chapter-explanation" key={paragraph}>{paragraph}</p>)}
+    {system.id === "street-cables" && <CableRoutes />}
     {slug === "friday-night" && system.id === "visual-styles" && <FridayStyles />}
     {slug === "avatar-review" && system.id === "visible-crop" && <AvatarExamples />}
     {slug === "avatar-review" && system.id === "model-selection" && <AvatarModels />}
