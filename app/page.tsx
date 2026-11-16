@@ -6,10 +6,10 @@ export default function Home() {
     <ProjectDirectory />
     <div className="profile-grid">
       <section id="about" className="profile-panel">
-        <h2 className="pane-label"><Icon name="computer" />About Weihan</h2>
+        <h2 className="pane-label"><Icon name="computer" />About Me</h2>
         <div className="profile-copy">
-          <p>I’m a Computational Media student at Georgia Tech. I develop gameplay systems and procedural worlds in Unreal Engine, build web applications, and evaluate machine learning models. I was the sole programmer and producer on the three-person WayJia team.</p>
-          <dl><dt>Georgia Tech</dt><dd>B.S. Computational Media · Expected Dec 2027 · GPA 3.83</dd>
+          <p>I’m a Computer Science student at Georgia Tech. I develop gameplay systems and procedural worlds in Unreal Engine, build web applications, and evaluate machine learning models. I was the sole programmer and producer on the three-person WayJia team.</p>
+          <dl><dt>Georgia Tech</dt><dd>B.S. in Computer Science · Expected Dec 2027 · GPA 3.83</dd>
           <dt>University of Utah</dt><dd>Previous undergraduate study in Games · GPA 4.00</dd></dl>
           <details className="profile-skills"><summary>Skills &amp; tools</summary>
             <dl><dt>Gameplay</dt><dd>C++ · UE5 · GAS · Mover · Control Rig · Enhanced Input</dd>
