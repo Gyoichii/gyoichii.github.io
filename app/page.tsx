@@ -24,7 +24,7 @@ export default function Home() {
           <p>For gameplay, tools, and software engineering opportunities.</p>
           <a href="mailto:weihan.chen.dev@outlook.com">weihan.chen.dev@outlook.com</a>
           <div className="contact-actions"><a href="https://github.com/Gyoichii" target="_blank" rel="noopener noreferrer"><Icon name="network" />GitHub ↗</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">View résumé ↗</a></div>
+          <a href={process.env.NEXT_PUBLIC_RESUME_URL} target="_blank" rel="noopener noreferrer">View résumé ↗</a></div>
         </div>
       </section>
     </div>

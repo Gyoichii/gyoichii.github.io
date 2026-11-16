@@ -29,7 +29,7 @@ export function Navigation() {
       <Link href="/#work"><Icon name="folder" />Projects</Link>
       <Link href="/#about"><Icon name="computer" />About</Link>
       <Link href="/#contact"><Icon name="mail" />Contact</Link>
-      <a className="resume-link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+      <a className="resume-link" href={process.env.NEXT_PUBLIC_RESUME_URL} target="_blank" rel="noopener noreferrer">Résumé ↗</a>
     </nav>
     <nav className="address" aria-label="Breadcrumb">
       <span>Address</span><ol><li><Icon name="computer" /><Link href="/">Portfolio</Link></li>

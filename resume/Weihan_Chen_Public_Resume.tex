@@ -36,9 +36,10 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \href{https://fridaynight.love}{\textbf{Friday Night}} \enspace|\enspace Synchronized watch parties \hfill Jun 2026 -- Present
 \begin{itemize}
 \item Independently built and launched a web app where groups vote on films, watch together, and meet in shared Three.js rooms. It had \textbf{122 registered users} as of Nov 10, 2026.
-\item Kept viewers on the same timeline while letting each choose a playback quality. A Java/Spring Boot service orders playback commands with PostgreSQL row locks and broadcasts updates over WebSockets.
+\item Serialized competing playback commands with PostgreSQL row locks in a Java/Spring Boot service. Sequence numbers keep late heartbeats from rewinding playback. Each WebSocket retains only the latest pending snapshot so slow viewers do not fall further behind.
 \item Load-tested 500 WebSocket connections across 100 rooms on loopback. When all hosts paused at once, all 400 simulated viewers received their room's update. Latency from HTTP request start to client-side parsing was \textbf{40.6 ms at p95}.
 \item Migrated accounts and shared movie lists across 17 tables in one PostgreSQL transaction. The importer compared row counts and SHA-256 hashes of normalized records before committing.
+\item Fixed production WebSocket 403 errors by configuring Spring to honor the HTTPS scheme forwarded by Nginx. Verified that watch parties and shared 3D rooms received live updates after the fix.
 \end{itemize}
 
 \par\addvspace{6pt}
@@ -46,7 +47,7 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \begin{itemize}
 \item Built C++ procedural tools that regenerate individual buildings from a saved district plan. Checked entrances against the player collision capsule and verified all 34 street access routes after an in-place rebuild.
 \item Profiled a 23-building district with 133,592 instances. Skipping redundant decal and cutaway updates and simplifying curtain meshes cut mean frame time \textbf{33\%} (20.86 to 14.04 ms) in two 300-frame Play-in-Editor captures at $1792\times746$.
-\item Implemented server-side melee hit detection with Unreal's Gameplay Ability System. Sweeps between weapon poses register each target once per attack, even when contact spans multiple frames.
+\item Swept between weapon poses in C++ to detect each melee target once per attack. In a dedicated-server test, three hits each applied damage once and both clients played all three hit reactions.
 \end{itemize}
 
 \par\addvspace{6pt}
