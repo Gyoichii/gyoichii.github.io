@@ -1,0 +1,70 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,enumitem,titlesec}
+\usepackage[hidelinks,unicode]{hyperref}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\hypersetup{pdftitle={Weihan Chen - Resume},pdfauthor={Weihan Chen}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1.5em}
+\raggedright
+\urlstyle{same}
+\titleformat{\section}{\fontsize{12}{14}\selectfont\bfseries}{}{0pt}{}[\vspace{0.5pt}\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{5pt}
+\setlist[itemize]{leftmargin=13pt,label=\textbullet,itemsep=4pt,topsep=4pt,parsep=0pt,partopsep=0pt}
+\begin{document}
+\fontsize{11}{13.8}\selectfont
+\begin{center}
+{\fontsize{20}{23}\selectfont\bfseries Weihan Chen}\\[3pt]
+{\fontsize{10}{12}\selectfont Atlanta, GA \enspace|\enspace
+\href{mailto:weihan.chen.dev@outlook.com}{weihan.chen.dev@outlook.com} \enspace|\enspace
+\href{https://github.com/Gyoichii}{github.com/Gyoichii} \enspace|\enspace
+\href{https://gyoichii.github.io/}{gyoichii.github.io}}
+\end{center}
+\vspace{-7pt}
+\section*{Education}
+\textbf{Georgia Institute of Technology} \hfill Expected Dec 2027\\
+B.S. in Computational Media (transfer to Computer Science approved) \enspace|\enspace GPA 3.83/4.00\\
+\textbf{University of Utah} --- Previous undergraduate study in Games \enspace|\enspace GPA 4.00/4.00\\
+\textbf{Coursework} \enspace Data Structures \& Algorithms, Computer Organization, Linear Algebra
+
+\section*{Projects}
+\href{https://fridaynight.love}{\textbf{Friday Night}} \enspace|\enspace Synchronized watch parties \hfill Jun 2026 -- Present
+\begin{itemize}
+\item Independently built and launched a web app where groups vote on films, watch together, and meet in shared Three.js rooms. It had \textbf{122 registered users} as of Nov 10, 2026.
+\item Kept viewers on the same timeline while letting each choose a playback quality. A Java/Spring Boot service orders playback commands with PostgreSQL row locks and broadcasts updates over WebSockets.
+\item Load-tested 500 WebSocket connections across 100 rooms on loopback. When all hosts paused at once, all 400 simulated viewers received their room's update. Latency from HTTP request start to client-side parsing was \textbf{40.6 ms at p95}.
+\item Migrated accounts and shared movie lists across 17 tables in one PostgreSQL transaction. The importer compared row counts and SHA-256 hashes of normalized records before committing.
+\end{itemize}
+
+\par\addvspace{6pt}
+\href{https://gyoichii.github.io/projects/rivering/}{\textbf{Project Rivering}} \enspace|\enspace Independent Unreal Engine 5 action game \hfill Apr 2026 -- Present
+\begin{itemize}
+\item Built C++ procedural tools that regenerate individual buildings from a saved district plan. Checked entrances against the player collision capsule and verified all 34 street access routes after an in-place rebuild.
+\item Profiled a 23-building district with 133,592 instances. Skipping redundant decal and cutaway updates and simplifying curtain meshes cut mean frame time \textbf{33\%} (20.86 to 14.04 ms) in two 300-frame Play-in-Editor captures at $1792\times746$.
+\item Implemented server-side melee hit detection with Unreal's Gameplay Ability System. Sweeps between weapon poses register each target once per attack, even when contact spans multiple frames.
+\end{itemize}
+
+\par\addvspace{6pt}
+\href{https://gyoichii.github.io/projects/disaster-chatbot/}{\textbf{Disaster Relief Chatbot}} \enspace|\enspace Georgia Tech team project \hfill Nov 2026
+\begin{itemize}
+\item Integrated chat, location-based alerts, and evacuation routes into the team's Django app. Built a validator that retains alert claims only when their quotes match documents from two distinct sources.
+\item Used a database lease to keep concurrent workers from generating the same bulletin twice. In a local test, eight competing workers triggered one simulated model call for a bulletin revision.
+\end{itemize}
+
+\par\addvspace{6pt}
+\href{https://gyoichii.github.io/projects/avatar-review/}{\textbf{Avatar Image Moderation}} \enspace|\enspace Offline computer vision project \hfill Oct -- Nov 2026
+\begin{itemize}
+\item Trained a linear SVM on frozen SigLIP features from 16,765 images to detect explicit content in avatars. On a separate set of 4,152 source-labeled images, it achieved \textbf{96.3\% precision and 97.8\% recall}.
+\item Added lookalike examples to an identity classifier's training set. On the same offline comparison, false blocks fell from 19 to 2 across 41 lookalikes, while misses rose from 4 to 8 across 26 positive examples.
+\end{itemize}
+
+\section*{Technical Skills}
+\textbf{Languages} \enspace Java, C++, Python, JavaScript, SQL, C\\
+\textbf{Web \& data} \enspace Spring Boot, Django, PostgreSQL, WebSockets, Three.js\\
+\textbf{Tools} \enspace Unreal Engine 5, scikit-learn, Git, JUnit, Nginx
+\end{document}
