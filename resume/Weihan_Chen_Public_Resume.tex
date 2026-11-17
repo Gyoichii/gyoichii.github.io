@@ -35,7 +35,7 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \section*{Projects}
 \href{https://fridaynight.love}{\textbf{Friday Night}} \enspace|\enspace Synchronized watch parties \hfill Jun 2026 -- Present
 \begin{itemize}
-\item Built and launched a site where friends vote on films, watch together, and meet in interactive Three.js rooms. It reached \textbf{122 registered users} by November 10, 2026.
+\item Built and launched a site where friends vote on films, watch together, and meet in interactive Three.js rooms. It reached \textbf{126 registered users} by November 17, 2026.
 \item Kept shared playback in order with per-room PostgreSQL locks and discarded stale client reports. Slow WebSocket connections retain only the newest pending update.
 \item Load-tested simultaneous pauses across \textbf{100 rooms} on a single machine. Every simulated viewer received the correct update, with \textbf{40.6 ms at p95} from the host's HTTP request to the viewer parsing the update.
 \item Moved accounts and shared watchlists from SQLite to PostgreSQL in one transaction. Verified that the records matched in both databases before committing the migration.
