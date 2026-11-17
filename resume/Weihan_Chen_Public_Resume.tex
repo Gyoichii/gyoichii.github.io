@@ -13,11 +13,11 @@
 \setlength{\emergencystretch}{1.5em}
 \raggedright
 \urlstyle{same}
-\titleformat{\section}{\fontsize{12}{14}\selectfont\bfseries}{}{0pt}{}[\vspace{0.5pt}\titlerule]
-\titlespacing*{\section}{0pt}{8pt}{5pt}
-\setlist[itemize]{leftmargin=13pt,label=\textbullet,itemsep=4pt,topsep=4pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\fontsize{12}{14}\selectfont\bfseries}{}{0pt}{}[\vspace{2pt}\titlerule]
+\titlespacing*{\section}{0pt}{9pt}{6pt}
+\setlist[itemize]{leftmargin=13pt,label=\textbullet,itemsep=4.6pt,topsep=4pt,parsep=0pt,partopsep=0pt}
 \begin{document}
-\fontsize{11}{13.8}\selectfont
+\fontsize{11}{14.3}\selectfont
 \begin{center}
 {\fontsize{20}{23}\selectfont\bfseries Weihan Chen}\\[3pt]
 {\fontsize{10}{12}\selectfont Atlanta, GA \enspace|\enspace
@@ -35,33 +35,33 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \section*{Projects}
 \href{https://fridaynight.love}{\textbf{Friday Night}} \enspace|\enspace Synchronized watch parties \hfill Jun 2026 -- Present
 \begin{itemize}
-\item Independently built and launched a web app where groups vote on films, watch together, and meet in shared Three.js rooms. It had \textbf{122 registered users} as of Nov 10, 2026.
-\item Serialized competing playback commands with PostgreSQL row locks in a Java/Spring Boot service. Sequence numbers keep late heartbeats from rewinding playback. Each WebSocket retains only the latest pending snapshot so slow viewers do not fall further behind.
-\item Load-tested 500 WebSocket connections across 100 rooms on loopback. When all hosts paused at once, all 400 simulated viewers received their room's update. Latency from HTTP request start to client-side parsing was \textbf{40.6 ms at p95}.
-\item Migrated accounts and shared movie lists across 17 tables in one PostgreSQL transaction. The importer compared row counts and SHA-256 hashes of normalized records before committing.
-\item Fixed production WebSocket 403 errors by configuring Spring to honor the HTTPS scheme forwarded by Nginx. Verified that watch parties and shared 3D rooms received live updates after the fix.
+\item Built and launched a site where friends vote on films, watch together, and meet in interactive Three.js rooms. It reached \textbf{122 registered users} by November 10, 2026.
+\item Kept shared playback in order with per-room PostgreSQL locks and discarded stale client reports. Slow WebSocket connections retain only the newest pending update.
+\item Load-tested simultaneous pauses across \textbf{100 rooms} on a single machine. Every simulated viewer received the correct update, with \textbf{40.6 ms at p95} from the host's HTTP request to the viewer parsing the update.
+\item Moved accounts and shared watchlists from SQLite to PostgreSQL in one transaction. Verified that the records matched in both databases before committing the migration.
+\item Restored live updates in watch parties and 3D rooms after WebSocket connections failed in production. Configured Spring to recognize HTTPS requests forwarded by Nginx.
 \end{itemize}
 
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/rivering/}{\textbf{Project Rivering}} \enspace|\enspace Independent Unreal Engine 5 action game \hfill Apr 2026 -- Present
 \begin{itemize}
-\item Built C++ procedural tools that regenerate individual buildings from a saved district plan. Checked entrances against the player collision capsule and verified all 34 street access routes after an in-place rebuild.
-\item Profiled a 23-building district with 133,592 instances. Skipping redundant decal and cutaway updates and simplifying curtain meshes cut mean frame time \textbf{33\%} (20.86 to 14.04 ms) in two 300-frame Play-in-Editor captures at $1792\times746$.
-\item Swept between weapon poses in C++ to detect each melee target once per attack. In a dedicated-server test, three hits each applied damage once and both clients played all three hit reactions.
+\item Built C++ procedural tools that let a designer regenerate one building from a saved street plan. Its interior can change while the surrounding parcels and entrances stay in place.
+\item Cut average frame time \textbf{33\%} in matched Unreal Editor captures of a city district by skipping redundant rendering updates and simplifying geometry.
+\item Prevented an attack from damaging the same target on successive animation frames. The server tracks hits in C++, and connected clients play the corresponding reaction.
 \end{itemize}
 
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/disaster-chatbot/}{\textbf{Disaster Relief Chatbot}} \enspace|\enspace Georgia Tech team project \hfill Nov 2026
 \begin{itemize}
-\item Integrated chat, location-based alerts, and evacuation routes into the team's Django app. Built a validator that retains alert claims only when their quotes match documents from two distinct sources.
-\item Used a database lease to keep concurrent workers from generating the same bulletin twice. In a local test, eight competing workers triggered one simulated model call for a bulletin revision.
+\item Integrated chat, evacuation routes, and local alerts in the team's Django app. Built a citation check that keeps an alert claim only when its quotes match documents from two sources.
+\item Coordinated workers generating the same emergency bulletin with a database lease. In a local concurrency test, the workers made one simulated model call per bulletin revision.
 \end{itemize}
 
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/avatar-review/}{\textbf{Avatar Image Moderation}} \enspace|\enspace Offline computer vision project \hfill Oct -- Nov 2026
 \begin{itemize}
-\item Trained a linear SVM on frozen SigLIP features from 16,765 images to detect explicit content in avatars. On a separate set of 4,152 source-labeled images, it achieved \textbf{96.3\% precision and 97.8\% recall}.
-\item Added lookalike examples to an identity classifier's training set. On the same offline comparison, false blocks fell from 19 to 2 across 41 lookalikes, while misses rose from 4 to 8 across 26 positive examples.
+\item Built an offline classifier to flag explicit profile pictures for Friday Night. An SVM using frozen SigLIP image features achieved \textbf{96.3\% precision and 97.8\% recall} on 4,152 source-labeled test images.
+\item Taught a separate identity classifier to distinguish lookalikes by including them in training. On the same offline test set, false blocks fell from \textbf{19 to 2} at the cost of four additional missed matches.
 \end{itemize}
 
 \section*{Technical Skills}
