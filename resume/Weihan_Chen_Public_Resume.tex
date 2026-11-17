@@ -35,7 +35,7 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \section*{Projects}
 \href{https://fridaynight.love}{\textbf{Friday Night}} \enspace|\enspace Synchronized watch parties \hfill Jun 2026 -- Present
 \begin{itemize}
-\item Built and launched a site where friends vote on films, watch together, and meet in interactive Three.js rooms. It reached \textbf{126 registered users} by November 17, 2026.
+\item Independently built and launched a web app where groups vote on films, watch together, and meet in shared Three.js rooms. It reached \textbf{126 registered users} by November 17, 2026.
 \item Kept shared playback in order with per-room PostgreSQL locks and discarded stale client reports. Slow WebSocket connections retain only the newest pending update.
 \item Load-tested simultaneous pauses across \textbf{100 rooms} on a single machine. Every simulated viewer received the correct update, with \textbf{40.6 ms at p95} from the host's HTTP request to the viewer parsing the update.
 \item Moved accounts and shared watchlists from SQLite to PostgreSQL in one transaction. Verified that the records matched in both databases before committing the migration.
@@ -45,7 +45,7 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/rivering/}{\textbf{Project Rivering}} \enspace|\enspace Independent Unreal Engine 5 action game \hfill Apr 2026 -- Present
 \begin{itemize}
-\item Built C++ procedural tools that let a designer regenerate one building from a saved street plan. Its interior can change while the surrounding parcels and entrances stay in place.
+\item Built C++ procedural tools that let a designer regenerate one building from a saved district plan. Its interior can change while the surrounding parcels and entrances stay in place.
 \item Cut average frame time \textbf{33\%} in matched Unreal Editor captures of a city district by skipping redundant rendering updates and simplifying geometry.
 \item Prevented an attack from damaging the same target on successive animation frames. The server tracks hits in C++, and connected clients play the corresponding reaction.
 \end{itemize}
@@ -53,14 +53,14 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/disaster-chatbot/}{\textbf{Disaster Relief Chatbot}} \enspace|\enspace Georgia Tech team project \hfill Nov 2026
 \begin{itemize}
-\item Integrated chat, evacuation routes, and local alerts in the team's Django app. Built a citation check that keeps an alert claim only when its quotes match documents from two sources.
+\item Integrated chat, location-based alerts, and evacuation routes in the team's Django app. Built a validator that excludes bulletin claims unless their quotes match documents from two distinct sources.
 \item Coordinated workers generating the same emergency bulletin with a database lease. In a local concurrency test, the workers made one simulated model call per bulletin revision.
 \end{itemize}
 
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/avatar-review/}{\textbf{Avatar Image Moderation}} \enspace|\enspace Offline computer vision project \hfill Oct -- Nov 2026
 \begin{itemize}
-\item Built an offline classifier to flag explicit profile pictures for Friday Night. An SVM using frozen SigLIP image features achieved \textbf{96.3\% precision and 97.8\% recall} on 4,152 source-labeled test images.
+\item Built an offline classifier to flag explicit profile pictures for Friday Night. It achieved \textbf{96.3\% precision and 97.8\% recall} on 4,152 source-labeled test images.
 \item Taught a separate identity classifier to distinguish lookalikes by including them in training. On the same offline test set, false blocks fell from \textbf{19 to 2} at the cost of four additional missed matches.
 \end{itemize}
 
