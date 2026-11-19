@@ -57,10 +57,10 @@ export function AvatarExamples() {
 }
 
 const modelPaths = [
-  {label:"Explicit content", features:"Frozen SigLIP vision features from the avatar crop", classifier:"Linear support vector classifier", why:"The decision depends on what remains visible after cropping. I fitted a separate classifier to reviewed crops so its boundary could be adjusted independently of the injury check."},
-  {label:"Violence or injury", features:"Frozen visual features and signals from the injury detector", classifier:"Linear support vector classifier", why:"An uncovered abrasion and a bandaged knee share a subject. Labels follow the visible injury. On the evaluation set this branch caught all three positive cases and incorrectly flagged three negatives."},
-  {label:"Referral or QR", features:"SigLIP 2 image features, RapidOCR text and QR decoding", classifier:"Visual and text classifiers plus decoded-code evidence", why:"The ad and the travel poster both have prominent lettering. Reading the invitation and checking for a machine-readable code supplies evidence that their visual layout alone cannot give. The text model uses character n-grams and logistic regression."},
-  {label:"Listed identities", features:"InsightFace reference matches and SigLIP 2 image–text similarity", classifier:"A separate support vector classifier for each listed person", why:"I kept face matching for photographs. For drawings and edits, I also compare the full avatar and four overlapping corner crops with name prompts for listed people and likely lookalikes. Several people can be present in the same image."},
+  {label:"Explicit content", features:"Original visual score and similarity to descriptions of actions and poses", classifier:"Original classifier plus a calibrated logistic regression", why:"Either classifier can flag the crop. I kept the original decisions and calibrated the artwork check on normal artwork, including figure studies that could otherwise trigger it."},
+  {label:"Violence or injury", features:"Frozen visual features and signals from the injury detector", classifier:"Linear support vector classifier", why:"An uncovered abrasion and a bandaged knee share a subject. Labels follow the visible injury. On the original evaluation set this branch caught all three positive cases and incorrectly flagged three negatives."},
+  {label:"Referral or QR", features:"Image features, QR detections, OCR words and their positions", classifier:"Visual classifier, offer rules and a fitted text classifier", why:"The QR check can flag a code on its own. For signs without one, I join vertically stacked heading words and score character n-grams alongside clues such as an offer to buy used goods."},
+  {label:"Listed identities", features:"LVFace portrait matches and SigLIP 2 image–text similarity", classifier:"Reference gallery and a classifier for each listed person", why:"I use a portrait gallery to match detected faces in photographs. For drawings and edits, I also compare the full avatar and four overlapping corner crops with name prompts for listed people and likely lookalikes. Several people can be present in the same image."},
 ];
 
 export function AvatarModels() {
@@ -109,8 +109,8 @@ export function AvatarErrors() {
 
 export function AvatarMetrics() {
   return <div className="avatar-results">
-    <table className="case-table outcome-table"><caption>Final decisions on 140 fully labeled crops</caption>
-      <thead><tr><th scope="col">Human review</th><th scope="col">Model allowed</th><th scope="col">Model blocked</th></tr></thead>
+    <table className="case-table outcome-table"><caption>Original pipeline decisions on 140 fully labeled crops</caption>
+      <thead><tr><th scope="col">Reference label</th><th scope="col">Model allowed</th><th scope="col">Model blocked</th></tr></thead>
       <tbody><tr><th scope="row">Should allow · 82</th><td>75</td><td className="outcome-error">7 false blocks</td></tr>
         <tr><th scope="row">Should block · 58</th><td className="outcome-error">9 missed blocks</td><td>49</td></tr></tbody>
     </table>
