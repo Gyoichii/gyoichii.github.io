@@ -39,7 +39,7 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \item Kept shared playback in order with per-room PostgreSQL locks and discarded stale client reports. Slow WebSocket connections retain only the newest pending update.
 \item Load-tested simultaneous pauses across \textbf{100 rooms} on a single machine. Every simulated viewer received the correct update, with \textbf{40.6 ms at p95} from the host's HTTP request to the viewer parsing the update.
 \item Moved accounts and shared watchlists from SQLite to PostgreSQL in one transaction. Verified that the records matched in both databases before committing the migration.
-\item Restored live updates in watch parties and 3D rooms after WebSocket connections failed in production. Configured Spring to recognize HTTPS requests forwarded by Nginx.
+\item Used Redis to prevent duplicate Douban watchlist reads. In a local test, 500 concurrent requests from one user triggered one read while another user's preview completed.
 \end{itemize}
 
 \par\addvspace{6pt}
@@ -66,6 +66,6 @@ B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 
 \section*{Technical Skills}
 \textbf{Languages} \enspace Java, C++, Python, JavaScript, SQL, C\\
-\textbf{Web \& data} \enspace Spring Boot, Django, PostgreSQL, WebSockets, Three.js\\
+\textbf{Web \& data} \enspace Spring Boot, Django, PostgreSQL, Redis, WebSockets, Three.js\\
 \textbf{Tools} \enspace Unreal Engine 5, scikit-learn, Git, JUnit, Nginx
 \end{document}
