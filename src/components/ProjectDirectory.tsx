@@ -8,7 +8,7 @@ import { Icon } from "./Navigation";
 
 const folders = [
   { name: "Unreal Engine", slugs: ["rivering"] },
-  { name: "Software & ML", slugs: ["friday-night", "avatar-review", "disaster-chatbot"] },
+  { name: "Software & ML", slugs: ["friday-night", "avatar-review", "material-recognition", "disaster-chatbot"] },
   { name: "Games", slugs: ["wayjia"] },
 ];
 function subscribe(callback: () => void) {

@@ -73,6 +73,15 @@
 .cable-layers { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin: 1rem 0; }
 .cable-layers label { padding: .3rem 0; cursor: pointer; }
 #street-cables > .gallery h4 { margin: 0 0 .5rem; font-size: 1rem; }
+.material-results { min-width: 0; margin: 1.25rem 0; }
+.material-table-scroll { max-width: 100%; overflow-x: auto; }
+.material-table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.material-results .case-table { margin: .4rem 0; font-size: .94rem; }
+.material-results th:not(:first-child), .material-results td { white-space: nowrap; }
+.material-results p { max-width: 76ch; line-height: 1.55; }
+.material-results .material-note { font-size: .9rem; color: var(--muted); }
+.material-downloads { display: flex; flex-wrap: wrap; gap: .4rem 1.3rem; }
+.material-downloads a { text-decoration: underline; text-underline-offset: .15em; }
 @media (min-width: 1000px) {
   #street-cables > .gallery .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

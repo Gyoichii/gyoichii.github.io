@@ -7,9 +7,11 @@ import { Diagram } from "./Diagrams";
 import { AvatarErrors, AvatarExamples, AvatarMetrics, AvatarModels, BulletinExercise } from "./CaseEvidence";
 import { FridayStyles } from "./FridayStyles";
 import { CableRoutes } from "./CableRoutes";
+import { MaterialResults } from "./MaterialResults";
 
 const data = manifest as Record<string, MediaItem>;
 const scope: Record<string, { title: string; text: string }> = {
+  "material-recognition": { title: "Evaluation scope", text: "The initial classifiers use MINC-2500 split 1. Later model choices used its validation images for error analysis, checkpoint selection and budget comparisons. ObjectFolder Real uses held-out physical objects. The timing measurements start with a decoded image and a known query point." },
   rivering: { title: "Development status", text: "The editor recordings show authoring tools. The gameplay and Niagara clips show their respective in-engine test scenes." },
   wayjia: { title: "Team & credits", text: "I was the programmer and producer. The in-game credits list the contributors to art, writing, music and voice acting." },
   "avatar-review": { title: "Evaluation scope", text: "All results come from offline tests. The four demo images were scored on their original center crops before publication redactions. The overall comparison reuses the original labeled crops. The per-check table reports the original evaluation. Later artwork, sign and identity comparisons each use their own labeled samples. An AI assistant reviewed the visible crops for the 85-image follow-up before the models were scored." },
@@ -32,6 +34,7 @@ function ProjectChapter({ system, slug }: { system: System; slug: string }) {
     {slug === "avatar-review" && system.id === "identity-errors" && <AvatarErrors />}
     {slug === "avatar-review" && system.id === "four-checks" && <AvatarMetrics />}
     {slug === "disaster-chatbot" && system.id === "bulletins" && <BulletinExercise />}
+    {slug === "material-recognition" && <MaterialResults section={system.id} />}
     {!footageFirst && gallery}
     {system.diagram && <Diagram type={system.diagram} />}
     <details className="engineering-detail"><summary>Implementation notes</summary>

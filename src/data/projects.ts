@@ -1,3 +1,5 @@
+import { material } from "./material";
+
 export type System = {
   id: string;
   label: string;
@@ -607,4 +609,4 @@ export const disaster: Project = {
     },
   ],
 };
-export const projects = [rivering, friday, wayjia, avatar, disaster];
+export const projects = [rivering, friday, wayjia, avatar, disaster, material];

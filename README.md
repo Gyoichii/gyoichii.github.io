@@ -2,7 +2,7 @@
 
 Live: **https://gyoichii.github.io/**
 
-Static Next.js / React / TypeScript portfolio with five engineering case studies, mixed-media galleries, and a self-hosted font. No database, login, tracking script or runtime server.
+Static Next.js / React / TypeScript portfolio with six engineering case studies, mixed-media galleries, and a self-hosted font. No database, login, tracking script or runtime server.
 
 ## Run
 

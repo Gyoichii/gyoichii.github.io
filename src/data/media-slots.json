@@ -1,4 +1,13 @@
 {
+  "material-recognition": {
+    "review-budget": {
+      "title": "How often a material prediction needs segmentation",
+      "caption": "Each bar counts MINC validation images sent to EfficientSAM. Processing 572 images reproduced every final label from processing all 2,875.",
+      "hint": "Segmentation calls and correct material decisions on the same validation images",
+      "art": "world",
+      "fit": "contain"
+    }
+  },
   "rivering": {
     "hero": {
       "title": "Street-level view of the urban village",
