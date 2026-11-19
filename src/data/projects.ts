@@ -535,9 +535,10 @@ export const avatar: Project = {
     },
     {
       id: "four-checks",
-      label: "Original evaluation",
-      headline: "How the original four checks performed together",
-      summary: "In the original 162-image offline evaluation, 140 had an unambiguous label for all four checks. The final decision matched the reference labels on 124 of those 140 (88.57%). The two orange cells show how the other 16 split between false alarms and missed blocks.",
+      label: "Overall accuracy",
+      headline: "How often did the four checks reach the right decision?",
+      summary: "Of the original 162 crops, 140 had labels for all four checks. The first revision improved the final block-or-allow decision from 109 to 124 correct (77.86% to 88.57%). When I replayed those 140 crops through the current pipeline, accuracy rose to 92.86% (130/140).",
+      paragraphs: ["Against the 88.57% version, the current pipeline corrected 9 errors and introduced 3 new errors. Six of these crops later entered identity training, and part of the original evaluation helped select the injury and referral classifiers. The replay measures how later changes affected these particular images."],
       detail: "Each check uses only images with a usable label for that category. Only 11 crops carried a positive explicit-content label and only 3 carried a positive injury label. The original checks caught all of them. The later artwork test examined a much wider range of explicit scenes. One reviewer labeled the study set.",
       tags: ["Independent labels", "Error analysis"],
       media: [],

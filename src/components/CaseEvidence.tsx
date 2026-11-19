@@ -109,12 +109,15 @@ export function AvatarErrors() {
 
 export function AvatarMetrics() {
   return <div className="avatar-results">
-    <table className="case-table outcome-table"><caption>Original pipeline decisions on 140 fully labeled crops</caption>
-      <thead><tr><th scope="col">Reference label</th><th scope="col">Model allowed</th><th scope="col">Model blocked</th></tr></thead>
-      <tbody><tr><th scope="row">Should allow · 82</th><td>75</td><td className="outcome-error">7 false blocks</td></tr>
-        <tr><th scope="row">Should block · 58</th><td className="outcome-error">9 missed blocks</td><td>49</td></tr></tbody>
+    <table className="case-table"><caption>Final decisions on the same 140 crops</caption>
+      <thead><tr><th scope="col">Pipeline</th><th scope="col">Correct / 140</th><th scope="col">False blocks / 82</th><th scope="col">Misses / 58</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Earlier pipeline</th><td>109 (77.86%)</td><td>25</td><td>6</td></tr>
+        <tr><th scope="row">Identity revision</th><td>124 (88.57%)</td><td>7</td><td>9</td></tr>
+        <tr><th scope="row">Current pipeline (replay)</th><td>130 (92.86%)</td><td>5</td><td>5</td></tr>
+      </tbody>
     </table>
-    <table className="case-table"><caption>Individual checks on the same 162-image set</caption>
+    <table className="case-table"><caption>Individual checks in the original 162-image evaluation</caption>
       <thead><tr><th scope="col">Check</th><th scope="col">Correct</th><th scope="col">False blocks</th><th scope="col">Misses</th></tr></thead>
       <tbody>{[
         ["Explicit content","161 / 161","0","0"],["Violence or injury","148 / 151","3","0"],
