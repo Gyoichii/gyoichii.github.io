@@ -274,9 +274,14 @@ const riveringGroups: SystemGroup[] = [
         paragraphs: [
           "A short turn and a longer turn in the opposite direction can connect the same poses while passing on different sides of the dummy. I choose the arc whose initial motion at the middle of the blade best matches the cutting direction marked on the weapon. The base and tip rotate together about a fitted axis and can travel along it. That keeps the blade rigid and gives me its position at any time between samples.",
           "I evaluate the blade and the dummy’s moving colliders at the same instant. For a capsule, the surfaces meet when the distance from the blade segment to the capsule’s centerline reaches the sum of their radii. The solver finds the earliest valid entry in the animation’s active window and returns the surface point and normal. For the first swing, the recorded entry was 28.05% of the way through the sample interval, or 9.35 ms after the first pose. A target can register once per attack window.",
+          "A long server frame can skip part of a swing. When dedicated-server samples are more than 50 ms apart, an optional path resamples the attack montage at roughly 60 Hz and interpolates each target over the same interval.",
         ],
         detail:
           "The orange lines are samples drawn for the debug view. The server isolates candidate contact times, checks the gap on the finite shapes at each candidate and keeps the earliest eligible contact across the target’s colliders. When the blade points in the same direction at both samples, the fit uses translation. Thrusts use a separate query for the tip’s motion relative to the collider.",
+        sourceLink: {
+          label: "Read the server hitch resampling code (C++)",
+          href: "https://github.com/Gyoichii/gyoichii.github.io/blob/main/samples/rivering/RPGWeaponSweepSubsampling.h",
+        },
         tags: ["Continuous collision detection", "Time of impact", "Unreal Engine"],
         media: ["rivering/melee-r22-pie", "rivering/melee-r22-trace"],
         diagram: "sweep",
@@ -434,6 +439,10 @@ export const friday: Project = {
         "I moved accounts, votes and room state into the Java service. I kept the video resolver and relay in Python because they already handled the different streaming formats. Java checks that a viewer belongs to the room before authorizing the media request.",
       ],
       detail: "The migration check compared 17 tables from a local snapshot, including group memberships, movie records, comments and avatar images. The public login captures show the entry point after deployment.",
+      sourceLink: {
+        label: "Read the SQLite importer (Java)",
+        href: "https://github.com/Gyoichii/gyoichii.github.io/blob/main/samples/friday-night/SQLiteImporter.java",
+      },
       tags: ["Spring Boot", "PostgreSQL", "SQLite migration"],
       media: ["friday-night/desktop", "friday-night/mobile"],
     },
