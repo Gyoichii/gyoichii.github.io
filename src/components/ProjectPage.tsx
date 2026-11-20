@@ -25,6 +25,7 @@ function ProjectChapter({ system, slug }: { system: System; slug: string }) {
   return <section className="project-chapter" id={system.id} tabIndex={-1}>
     <h3>{system.headline}</h3>
     <p className="chapter-summary">{system.summary}</p>
+    {system.sourceLink && <p className="chapter-explanation"><a className="command" href={system.sourceLink.href}>{system.sourceLink.label}</a></p>}
     {footageFirst && gallery}
     {system.paragraphs?.map(paragraph => <p className="chapter-explanation" key={paragraph}>{paragraph}</p>)}
     {system.id === "street-cables" && <CableRoutes />}

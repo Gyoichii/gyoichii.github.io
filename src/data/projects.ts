@@ -9,6 +9,7 @@ export type System = {
   detail: string;
   tags: string[];
   media: string[];
+  sourceLink?: { label: string; href: string };
   diagram?: "combat" | "sweep" | "occlusion" | "pcg" | "auth";
 };
 export type SystemGroup = {
@@ -234,6 +235,21 @@ const riveringGroups: SystemGroup[] = [
     id: "gameplay-animation",
     label: "Gameplay & animation",
     systems: [
+      {
+        id: "traversal-retargeting",
+        label: "Traversal retargeting",
+        headline: "Batch retargeting for traversal animations",
+        summary:
+          "I used this Unreal Editor script to retarget 381 traversal clips from two source skeletons to one character. If I cancel a run, I can pick up with the missing clips and keep the ones already saved.",
+        sourceLink: {
+          label: "View retargeting source on GitHub (Python)",
+          href: "https://github.com/Gyoichii/gyoichii.github.io/blob/main/samples/rivering/retarget_traversal_clips.py",
+        },
+        detail:
+          "In Unreal Engine 5.8.4, I compared each output with the original run. All 381 matched in duration and in the root bone’s translation from the first frame to the last. In a separate 26-clip run, I cancelled after 24 clips, restarted the editor and recovered the final two. The first 24 files stayed byte-for-byte identical.",
+        tags: ["Editor Python", "IK Retargeter"],
+        media: [],
+      },
       {
         id: "combat-interaction",
         label: "Combat interaction",
