@@ -37,23 +37,23 @@ export function MaterialResults({ section }: { section: string }) {
           ["ResNet18 CNN", "Test", "78.07%", "0.7809"],
           ["DeiT-Small vision transformer", "Test", "86.38%", "0.8637"],
         ]}>
-        <p>DeiT correctly labeled 4,967 of 5,750 test images, up from 4,489 with ResNet18. That adds 478 correct answers and 8.31 percentage points of accuracy.</p>
+        <p>DeiT labeled 4,967 test images correctly. ResNet18 got 4,489 right on the same images, a difference of 478.</p>
         <p className="material-note">¹ The team selected MLP checkpoints by validation accuracy. Its results table gives macro-F1 for 12 configurations and leaves the final scoring split and exact top-1 accuracy unspecified.</p>
       </ResultsTable>;
     case "target-point":
-      return <ResultsTable id="refinement-scores" caption="Fine-tuning on the same 2,875 validation images"
+      return <ResultsTable id="refinement-scores" caption="Center crops on 2,875 MINC validation images"
         columns={["DeiT configuration", "Correct", "Top-1", "Fixed", "New errors"]}
         rows={[
-          ["224 px, full image", "2,484", "86.40%", "—", "—"],
-          ["336 px, confusion-directed training", "2,504", "87.10%", "114", "94"],
-          ["Center patch head", "2,512", "87.37%", "34", "26"],
-          ["Full image + learned center crop fusion", "2,537", "88.24%", "43", "18"],
+          ["336 px, full image", "2,504", "87.10%", "—", "—"],
+          ["Full image + center patch classifier", "2,512", "87.37%", "34", "26"],
+          ["Full image + magnified center crop", "2,537", "88.24%", "43", "18"],
         ]}>
-        <p className="material-note">Each row compares individual predictions with the previous row. The first checkpoint also ran on the held-out test set. Later experiments used validation for error analysis and model selection.</p>
-        <p>I also replaced the fixed crop with a YOLO object box while keeping the classifier frozen. It corrected 5 images and introduced 17 errors, leaving 2,525 correct. An object box could contain several surfaces, so I next trained the classifier to use features inside a surface mask.</p>
+        <p className="material-note">Fixes and new errors compare each row with the row above it.</p>
+        <p>I reviewed 105 images where the correct material had ranked fourth or lower. In 43 of them, other materials, occlusion or a nearby object made the target hard to pick out. The magnified crop alone identified 16 of the 105. After combining it with the full image, the model kept only one of those correct answers.</p>
+        <p>I also tried replacing the fixed crop with a YOLO26n object box and kept the classifier frozen. That fixed 5 images and introduced 17 errors, dropping the total from 2,537 to 2,525. A box around a bowl can still include both the ceramic rim and the food inside.</p>
       </ResultsTable>;
     case "selective-segmentation":
-      return <ResultsTable id="mask-scores" caption="Segmentation calls and their effect on the same validation predictions"
+      return <ResultsTable id="mask-scores" caption="Segmenting every image or only low-confidence images"
         columns={["Policy", "Calls / 2,875", "Correct", "Top-1", "Fixed", "New errors"]}
         rows={[
           ["Full image + center crop", "0", "2,537", "88.24%", "—", "—"],
@@ -61,8 +61,9 @@ export function MaterialResults({ section }: { section: string }) {
           ["20% budget", "572", "2,548", "88.63%", "38", "27"],
           ["Always segment", "2,875", "2,548", "88.63%", "38", "27"],
         ]}>
-        <p>The last three rows use the same score fusion. Fixes and new errors are measured against the full-image and center-crop prediction. The 20% policy skipped 80.10% of segmentation calls and matched the always-on label on all 2,875 images.</p>
-        <p>Among the 105 images whose true material originally ranked fourth or lower at 336 px, the center-crop model got one right. Adding segmentation raised that count to three. Most of the overall improvement came from other images.</p>
+        <p>I used the model’s highest class probability to decide whether to run segmentation. At the planned 20% budget, 572 images fell below the threshold. That saved 2,303 mask computations (80.10%) and gave the same label as always segmenting on every image.</p>
+        <p>The 10% budget scored highest on validation. It missed five corrections that always segmenting made, but also avoided seven new errors. On the 105 difficult images from the crop experiment, segmentation raised the number correct from one to three.</p>
+        <p className="material-note">Fixes and new errors in this table are relative to the full-image and center-crop model. The later tuning and segmentation results are development validation scores. The held-out MINC test score is for the original DeiT-Small.</p>
       </ResultsTable>;
     case "runtime":
       return <ResultsTable id="runtime-scores" caption="One image to one label, milliseconds per image"
