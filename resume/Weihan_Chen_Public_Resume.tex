@@ -1,12 +1,16 @@
 \documentclass[letterpaper,11pt]{article}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.55in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern,enumitem,titlesec}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{titlesec}
 \usepackage[hidelinks,unicode]{hyperref}
+\ifdefined\pdfgentounicode
 \input{glyphtounicode}
 \pdfgentounicode=1
-\hypersetup{pdftitle={Weihan Chen - Resume},pdfauthor={Weihan Chen}}
+\fi
+\hypersetup{pdftitle={Weihan Chen - Software Engineering Resume},pdfauthor={Weihan Chen}}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -14,10 +18,11 @@
 \raggedright
 \urlstyle{same}
 \titleformat{\section}{\fontsize{12}{14}\selectfont\bfseries}{}{0pt}{}[\vspace{2pt}\titlerule]
-\titlespacing*{\section}{0pt}{9pt}{6pt}
-\setlist[itemize]{leftmargin=13pt,label=\textbullet,itemsep=4.6pt,topsep=4pt,parsep=0pt,partopsep=0pt}
+\titlespacing*{\section}{0pt}{8pt}{6pt}
+\setlist[itemize]{leftmargin=13pt,label=\textbullet,itemsep=4.5pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+
 \begin{document}
-\fontsize{11}{14.3}\selectfont
+\fontsize{11.5}{14.6}\selectfont
 \begin{center}
 {\fontsize{20}{23}\selectfont\bfseries Weihan Chen}\\[3pt]
 {\fontsize{10}{12}\selectfont Atlanta, GA \enspace|\enspace
@@ -25,47 +30,42 @@
 \href{https://github.com/Gyoichii}{github.com/Gyoichii} \enspace|\enspace
 \href{https://gyoichii.github.io/}{gyoichii.github.io}}
 \end{center}
-\vspace{-7pt}
+\vspace{-8pt}
+
 \section*{Education}
 \textbf{Georgia Institute of Technology} \hfill Expected Dec 2027\\
 B.S. in Computer Science \enspace|\enspace GPA 3.83/4.00\\
 \textbf{University of Utah} --- Previous undergraduate study in Games \enspace|\enspace GPA 4.00/4.00\\
-\textbf{Coursework} \enspace Data Structures \& Algorithms, Computer Organization, Linear Algebra
+\textbf{Coursework} \enspace Data Structures \& Algorithms, Algorithm Analysis, Computer Organization, Linear Algebra
 
 \section*{Projects}
-\href{https://fridaynight.love}{\textbf{Friday Night}} \enspace|\enspace Synchronized watch parties \hfill Jun 2026 -- Present
+\href{https://gyoichii.github.io/projects/isomorph/}{\textbf{Isomorph}} \enspace|\enspace Recommendations across books, films and music \hfill Nov 2026 -- Present
 \begin{itemize}
-\item Independently built and launched a web app where groups vote on films, watch together, and meet in shared Three.js rooms. It reached \textbf{126 registered users} by November 17, 2026.
-\item Kept shared playback in order with per-room PostgreSQL locks and discarded stale client reports. Slow WebSocket connections retain only the newest pending update.
+\item Built a recommender that uses a reader's journal to infer what they liked about a work. It scores new candidates against competing explanations of the reader's taste, then uses integer programming to select a mix of books, films and music.
+\item Moved recommendation generation off the request path. A background worker prepares cards and discards them when the reader's profile changes. With ten cards ready, the first appeared in \textbf{0.39 s}, compared with 172 s on demand.
+\item Shortened the wait for new readers by turning off model reasoning for profiles with fewer than five rated works. Across five runs per setting, median time to the first three recommendations fell from \textbf{146 to 69 s}.
+\end{itemize}
+
+\par\addvspace{6pt}
+\textbf{Friday Night} \enspace|\enspace \href{https://fridaynight.love}{fridaynight.love} \hfill Jun 2026 -- Present
+\begin{itemize}
+\item Independently built and launched a web app where groups vote on films, watch together, and meet in shared Three.js rooms. It reached \textbf{126 registered users}.
+\item Serialized competing playback commands with a PostgreSQL row lock per room. Per-client sequence numbers let the server discard late playback reports before they replace a newer checkpoint.
 \item Load-tested simultaneous pauses across \textbf{100 rooms} on a single machine. Every simulated viewer received the correct update, with \textbf{40.6 ms at p95} from the host's HTTP request to the viewer parsing the update.
-\item Moved accounts and shared watchlists from SQLite to PostgreSQL in one transaction. Verified that the records matched in both databases before committing the migration.
+\item Moved accounts and shared watchlists from SQLite to PostgreSQL in one transaction, comparing row counts and normalized content hashes for every table before committing.
 \item Used Redis to prevent duplicate Douban watchlist reads. In a local test, 500 concurrent requests from one user triggered one read while another user's preview completed.
 \end{itemize}
 
 \par\addvspace{6pt}
 \href{https://gyoichii.github.io/projects/rivering/}{\textbf{Project Rivering}} \enspace|\enspace Independent Unreal Engine 5 action game \hfill Apr 2026 -- Present
 \begin{itemize}
-\item Built C++ procedural tools that let a designer regenerate one building from a saved district plan. Its interior can change while the surrounding parcels and entrances stay in place.
-\item Cut average frame time \textbf{33\%} in matched Unreal Editor captures of a city district by skipping redundant rendering updates and simplifying geometry.
-\item Prevented an attack from damaging the same target on successive animation frames. The server tracks hits in C++, and connected clients play the corresponding reaction.
-\end{itemize}
-
-\par\addvspace{6pt}
-\href{https://gyoichii.github.io/projects/disaster-chatbot/}{\textbf{Disaster Relief Chatbot}} \enspace|\enspace Georgia Tech team project \hfill Nov 2026
-\begin{itemize}
-\item Integrated chat, location-based alerts, and evacuation routes in the team's Django app. Built a validator that excludes bulletin claims unless their quotes match documents from two distinct sources.
-\item Coordinated workers generating the same emergency bulletin with a database lease. In a local concurrency test, the workers made one simulated model call per bulletin revision.
-\end{itemize}
-
-\par\addvspace{6pt}
-\href{https://gyoichii.github.io/projects/avatar-review/}{\textbf{Avatar Image Moderation}} \enspace|\enspace Offline computer vision project \hfill Oct -- Nov 2026
-\begin{itemize}
-\item Built an offline tool to flag explicit imagery and ads in Friday Night profile pictures. Overall block-or-allow accuracy rose from \textbf{77.86\% to 92.86\%} on the same 140 development images.
-\item Combined OCR with a text classifier to catch ads in photographed signs. On signs without a readable QR code, detection rose from \textbf{15 to 39 of 65 ads}. All 31 control signs passed.
+\item Built fast-paced melee combat with Unreal's Gameplay Ability System (GAS) and a C++ state machine. Players queue strikes mid-swing and break enemy combos with timed parries.
+\item Built C++ procedural tools that generate an urban-village-inspired district from a saved plan. A designer can regenerate one building's interior while the surrounding parcels and entrances stay in place.
+\item Traced a load-time hitch to Unreal's Chaos physics resizing a 56,038-entry queue 278 times as it cleared. Patching it to resize once cut the frame from \textbf{135--154 to 15--18 ms}, with collision queries unchanged.
 \end{itemize}
 
 \section*{Technical Skills}
-\textbf{Languages} \enspace Java, C++, Python, JavaScript, SQL, C\\
-\textbf{Web \& data} \enspace Spring Boot, Django, PostgreSQL, Redis, WebSockets, Three.js\\
-\textbf{Tools} \enspace Unreal Engine 5, scikit-learn, Git, JUnit, Nginx
+\textbf{Languages} \enspace Java, C++, Python, SQL, JavaScript, C\\
+\textbf{Backend} \enspace Spring Boot, PostgreSQL, Redis, FastAPI, JDBC, Flyway, WebSockets, Nginx\\
+\textbf{Tools} \enspace Unreal Engine 5, Three.js, Git
 \end{document}
