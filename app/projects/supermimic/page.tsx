@@ -1,7 +1,7 @@
 import { supermimic } from "../../../src/data/supermimic";
 import { ProjectPage } from "../../../src/components/ProjectPage";
 export const metadata = {
-  title: "SuperMimic Body Control",
+  title: "Body Control with SuperMimic",
   description: supermimic.cardSummary,
   alternates: { canonical: "/projects/supermimic/" },
 };

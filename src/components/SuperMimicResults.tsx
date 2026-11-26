@@ -2,7 +2,7 @@ import { ResultsTable } from "./MaterialResults";
 
 export function SuperMimicResults({ section }: { section: string }) {
   switch (section) {
-    case "world-model":
+    case "porting":
       return <ResultsTable id="supermimic-speed" caption="Seconds per training round on one A100 (4,096 bodies)"
         columns={["Configuration", "Collect", "World model", "Policy", "Per round"]}
         rows={[

@@ -2,15 +2,54 @@ import type { Project, SystemGroup } from "./projects";
 
 const groups: SystemGroup[] = [
   {
-    id: "training",
-    label: "Body & training",
+    id: "supermimic",
+    label: "SuperMimic",
+    systems: [
+      {
+        id: "method",
+        label: "What SuperMimic does",
+        headline: "The SuperMimic method",
+        summary:
+          "SuperMimic is a training method by Qiayuan Liao, Yiyang Shao, Junfeng Long, Kevin Zakka, Roberto Horowitz, Pieter Abbeel and Koushil Sreenath at UC Berkeley, accepted at CoRL 2026. It fits one differentiable world model to transitions logged from MuJoCo Warp, then trains a motion-tracking policy by backpropagating through 32-step rollouts imagined inside that model, with a critic estimating the return beyond the horizon. The simulator itself is never differentiated.",
+        sourceLink: { label: "Read the SuperMimic paper (arXiv 2610.28480) ↗", href: "https://arxiv.org/abs/2610.28480" },
+        paragraphs: [
+          "The world model and the policy train together in one loop: the model is updated every iteration and held fixed only inside each policy update. The authors apply it to whole-body motion tracking on a Unitree G1 humanoid robot over 129,514 training motions, and report exceeding SONIC’s return after 3 hours on a single GPU.",
+          "That training design is entirely theirs: the world model and its losses, the 32-step analytic policy gradient, the critic, the way rollouts start from replayed states, and the mjlab environment it runs in. I use the authors’ public code. My part was getting that loop to train a different body for a game and adding what the game needed, described in the chapters that follow.",
+        ],
+        detail:
+          "Project page: supermimic.github.io. The code is released by the SuperMimic authors under Apache 2.0 and builds on mjlab by Zakka et al. The efficiency figures above are the authors’ reported results on their robot; I have not reproduced them.",
+        tags: ["SuperMimic", "Differentiable world model", "mjlab", "Liao et al., CoRL 2026"],
+        media: [],
+        diagram: "worldmodel",
+      },
+      {
+        id: "porting",
+        label: "Running it faithfully",
+        headline: "Running the authors’ loop on my body",
+        summary:
+          "I run the SuperMimic loop on Colab A100s with 4,096 simulated copies of my body at once. The checkpoint used on this page had seen 135 million environment samples. Two things took work: staying faithful to the authors’ training path, and reaching their training speed with a body their settings were not made for.",
+        paragraphs: [
+          "My first adapter called the authors’ training step but replaced code around it. A file-by-file comparison with the authors’ source showed that the replacements changed what the policy learned. The goal window covered 0.02–0.20 s of the reference instead of 0–0.90 s. The policy also saw root states that the paper reserves for the world model, and clip ends were treated as failures. I aligned the inputs and clip handling with the authors’ path and the paper’s settings, including ten frames of sensor history.",
+          "A training round, one control step for all 4,096 bodies plus 0.4 model updates, took 1.08 s. Physics was not the slow part: the model updates ran in full FP32 without compilation. With the authors’ own execution settings, TF32, torch.compile and CUDA graph capture, a round takes 0.34 s. That is close to the paper’s reported rate once H100 and A100 throughput are taken into account, though I have not run both on the same card. 5,000 rounds take about 28 minutes of training, or 45 minutes with evaluation exports and checkpoints.",
+          "The authors’ robot setup also uses a 5 ms physics step. I tried it to save time. With my motors the same policy produced non-finite states and joint velocities up to 76,733, because my motor is an explicit PD loop recomputed every substep, while the reference robot uses MuJoCo’s implicit position actuators. I kept 1 ms substeps, which cost 0.04 s per round.",
+        ],
+        detail:
+          "Control runs at 50 Hz over 20 physics substeps of 1 ms. The policy observes ten frames of a 111-value body sensor and a 760-value goal made of ten reference frames, every fifth frame from the current one. Training runs in mjlab on MuJoCo Warp. Every result below comes from a separate closed-loop harness that reruns the frozen policy under two physics builds, MuJoCo 3.5 and 3.16.",
+        tags: ["Source comparison", "PyTorch", "TF32 + torch.compile"],
+        media: [],
+      },
+    ],
+  },
+  {
+    id: "additions",
+    label: "Added for Rivering",
     systems: [
       {
         id: "body",
         label: "Human-strength body",
         headline: "A body with human strength limits",
         summary:
-          "The simulated body weighs 70.4 kg and has 16 rigid bodies and 34 joint motors. Each motor has its own torque, speed and power ceiling in each direction. At strength 1× the body matches a lightly trained young man of the same weight, with strength defined per kilogram. Superhuman characters use the same body with one capability factor applied to every motor.",
+          "The simulated body weighs 70.4 kg and has 16 rigid bodies and 34 joint motors. Each motor has its own torque, speed and power ceiling in each direction. At strength 1× the body matches a lightly trained young man of the same weight, with strength defined per kilogram. Superhuman characters use the same body with one capability factor applied to every motor. The paper’s robot uses MuJoCo’s position actuators; strength limits matter to this game, so every joint here goes through an explicit finite motor.",
         paragraphs: [
           "The first version used engineering defaults, roughly a half to a third of human strength. A body that weak produced false limits: for a while it looked as if the controller could only catch itself on a straight leg. I rebuilt the ceilings joint by joint and direction by direction from human figures, with one rule: slightly stronger than a person is acceptable, weaker is not. The ankle may exceed dynamometer values because running moments include tendon elasticity, which this motor model folds in.",
           "The same frozen policy, evaluated on the new body with only the motor ranges changed, went from 93.8% to 98.8% on a sweep of 161 stop commands during walking. Every stretch of commands that had failed on the old body passed.",
@@ -21,21 +60,18 @@ const groups: SystemGroup[] = [
         media: [],
       },
       {
-        id: "world-model",
-        label: "Training through a world model",
-        headline: "Training the policy through a learned world model",
+        id: "game-tasks",
+        label: "Stop mode, pushes & test gates",
+        headline: "Adding game tasks and a closed-loop test harness",
         summary:
-          "SuperMimic, a published method with public source code, fits a world model to real simulator transitions. The policy then rolls out 32 steps inside that model and backpropagates the return through the rollout. I train it on Colab A100s with 4,096 simulated bodies at once. The checkpoint used on this page had seen 135 million environment samples.",
+          "SuperMimic’s policy tracks motion clips. A game character also has to stop on command and stay up when hit. I added a second policy mode that stops and holds an idle pose relative to the current heading, and trained with 0.1 s chest pushes applied in the real simulation at different points in the gait. The reference clips are LAFAN1 walks and, later, GASP run and sprint clips, retargeted to this body.",
         paragraphs: [
-          "My first adapter called the author’s training step but replaced code around it. A file-by-file comparison with the author’s source showed that the replacements changed what the policy learned. The goal window covered 0.02–0.20 s of the reference instead of 0–0.90 s. The policy also saw root states that the paper reserves for the world model, and clip ends were treated as failures. I aligned the inputs and clip handling with the author’s path and the paper’s settings, including ten frames of sensor history.",
-          "A training round, one control step for all 4,096 bodies plus 0.4 model updates, took 1.08 s. Physics was not the slow part: the model updates ran in full FP32 without compilation. With the author’s own execution settings, TF32, torch.compile and CUDA graph capture, a round takes 0.34 s. That is close to the paper’s reported rate once H100 and A100 throughput are taken into account, though I have not run both on the same card. 5,000 rounds take about 28 minutes of training, or 45 minutes with evaluation exports and checkpoints.",
-          "The author’s robot setup also uses a 5 ms physics step. I tried it to save time. With my motors the same policy produced non-finite states and joint velocities up to 76,733, because my motor is an explicit PD loop recomputed every substep, while the reference robot uses MuJoCo’s implicit position actuators. I kept 1 ms substeps, which cost 0.04 s per round.",
+          "Training statistics misled me more than once, so every checkpoint I keep goes through a separate closed-loop harness. It reruns the frozen policy on fixed test sets under two physics builds, MuJoCo 3.5 and 3.16: stop commands across the gait cycle, pushes swept across phase, direction and impulse, running and longer walking clips. The test sets and pass criteria stay fixed between checkpoints, and each result is compared case by case with the previous baseline.",
         ],
         detail:
-          "Control runs at 50 Hz over 20 physics substeps of 1 ms. The policy observes ten frames of a 111-value body sensor and a 760-value goal made of ten reference frames, every fifth frame from the current one. It has two modes: follow the reference clip, or stop and hold the idle pose. Training runs in mjlab on MuJoCo Warp. Every result below comes from a separate closed-loop harness that reruns the frozen policy under two physics builds, MuJoCo 3.5 and 3.16.",
-        tags: ["SuperMimic", "World model", "PyTorch", "TF32 + torch.compile"],
+          "The policy outputs 34 position targets relative to neutral joint angles; the finite motors turn them into torques on every 1 ms substep. The walking stop sweep has 161 command ticks, the running stop set 42 and the push set 3,188 cases. The second push-training stage used impulses of 10–65 N·s.",
+        tags: ["Stop mode", "Push training", "Closed-loop evaluation"],
         media: [],
-        diagram: "worldmodel",
       },
       {
         id: "running",
@@ -50,6 +86,21 @@ const groups: SystemGroup[] = [
         detail:
           "Before the fix, the objective scored the real catches at 1.25 and 1.51 and the real failures at 0.53 and 0.59, but ranked them the other way round when scored on world-model predictions. The vertical impulse implied by the model rose from 0.70 and 0.55 of the real value to 1.02 and 0.94. The 5,000-round curriculum used 2,000 model updates, 2,000 policy updates and 20.48 million new samples. Joint tracking error on the running tests fell 12–20% between checkpoints S18000 and S28000.",
         tags: ["World-model calibration", "Running curriculum", "GASP clips"],
+        media: [],
+      },
+      {
+        id: "capability-scale",
+        label: "Scaling strength",
+        headline: "Scaling strength without breaking the motors",
+        summary:
+          "The capability factor first scaled the motor gains along with the ceilings. At 1.5× the body fell over while standing still, with or without the policy. Trunk and hip torques flipped sign on every substep.",
+        paragraphs: [
+          "The explicit PD loop stays stable only while the factor times the substep stays under about 1 ms, so 8× would need 0.125 ms steps and eight times the physics cost. A single-joint estimate allowed 4.4×. The real limit came from a coupled trunk–hip mode and began at 1.3×, so the 1× body already sits near the edge. Two changes stood at 100% from 1× to 8×: shrinking the substep to 1/s ms, or keeping gains at 1× and scaling only the torque, speed and power ceilings. The second one was adopted.",
+          "It has a cost. Position error alone can now request only about the gain times the joint range: roughly 7.6× static strength at the knee, 2.8× at the ankle and 1.3–2× in the trunk. The higher ceilings come into play through damping under fast loading, such as a landing. At 1× nothing changed: three closed-loop test cases end the same way, within 2.5 cm.",
+        ],
+        detail:
+          "Measured with a per-substep torque trace of a still stand. With ceilings-only scaling, 22 of 22 standing tests from 1× to 8× hold at 1 ms, and rerunning the landing grid changed no outcome. Static, weightlifting-style superhuman strength would need this decision revisited.",
+        tags: ["Numerical stability", "Explicit PD", "Capability scaling"],
         media: [],
       },
     ],
@@ -110,21 +161,6 @@ const groups: SystemGroup[] = [
     label: "Superhuman landing",
     systems: [
       {
-        id: "capability-scale",
-        label: "Scaling strength",
-        headline: "Scaling strength without breaking the motors",
-        summary:
-          "The capability factor first scaled the motor gains along with the ceilings. At 1.5× the body fell over while standing still, with or without the policy. Trunk and hip torques flipped sign on every substep.",
-        paragraphs: [
-          "The explicit PD loop stays stable only while the factor times the substep stays under about 1 ms, so 8× would need 0.125 ms steps and eight times the physics cost. A single-joint estimate allowed 4.4×. The real limit came from a coupled trunk–hip mode and began at 1.3×, so the 1× body already sits near the edge. Two changes stood at 100% from 1× to 8×: shrinking the substep to 1/s ms, or keeping gains at 1× and scaling only the torque, speed and power ceilings. The second one was adopted.",
-          "It has a cost. Position error alone can now request only about the gain times the joint range: roughly 7.6× static strength at the knee, 2.8× at the ankle and 1.3–2× in the trunk. The higher ceilings come into play through damping under fast loading, such as a landing. At 1× nothing changed: three closed-loop test cases end the same way, within 2.5 cm.",
-        ],
-        detail:
-          "Measured with a per-substep torque trace of a still stand. With ceilings-only scaling, 22 of 22 standing tests from 1× to 8× hold at 1 ms, and rerunning the landing grid changed no outcome. Static, weightlifting-style superhuman strength would need this decision revisited.",
-        tags: ["Numerical stability", "Explicit PD", "Capability scaling"],
-        media: [],
-      },
-      {
         id: "landing-probe",
         label: "Landing probe",
         headline: "Dropping the untrained controller from height",
@@ -183,15 +219,15 @@ const groups: SystemGroup[] = [
 export const supermimic: Project = {
   slug: "supermimic",
   number: "08",
-  title: "SuperMimic Body Control",
+  title: "Body Control with SuperMimic",
   category: "Physics-based character control / Reinforcement learning",
   period: "Oct 2026 — Present",
   role: "Independent developer",
   team: "Project Rivering · personal project",
-  intro: "A simulated human body with human strength limits, controlled by a learned policy.",
+  intro: "A published world-model training method, applied to a strength-limited human body for an Unreal Engine game.",
   cardSummary:
-    "A 70.4 kg simulated body with strength-limited motors, trained with a world-model method to walk, run, stop and recover from pushes, now running inside Unreal Engine.",
-  deck: "Characters in Project Rivering should stay on their feet when shoved, stop from a run and land from a height, within what their bodies could physically do. I built a simulated human with 34 strength-limited joint motors and trained a policy to drive it with SuperMimic, a published method in which the policy learns by backpropagating through a learned world model. The policy follows reference clips and switches to stopping on command. The frozen controller walks, runs at about 5 m/s, stops and recovers from pushes in closed-loop tests, and runs inside Unreal Engine through a Mover movement mode. Landing with superhuman strength is the current open problem.",
+    "SuperMimic, a published world-model training method, applied to a 70.4 kg strength-limited simulated human that walks, runs, stops and recovers from pushes, now running inside Unreal Engine.",
+  deck: "Characters in Project Rivering should stay on their feet when shoved, stop from a run and land from a height, within what their bodies could physically do. The learning method is SuperMimic by Liao et al. (UC Berkeley, CoRL 2026), in which a policy learns by backpropagating through rollouts imagined in a differentiable world model fitted to simulator data. I applied the authors’ method and code to a simulated human with 34 strength-limited joint motors instead of their robot, and added what the game needed: human strength limits, a stop mode, push training, a strength scale for superhuman characters, closed-loop test gates and an Unreal Engine runtime. In closed-loop tests the frozen controller walks, runs at about 5 m/s, stops and recovers from pushes. Landing with superhuman strength is the current open problem.",
   tags: ["Python", "PyTorch", "MuJoCo", "mjlab", "C++", "Unreal Engine 5", "Mover", "NNE / ONNX Runtime"],
   hero: "supermimic/ue-walk-push",
   groups,

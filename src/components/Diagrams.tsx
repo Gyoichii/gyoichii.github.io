@@ -75,9 +75,9 @@ export function Diagram({
       note: "Clients may read and recommend. They cannot change the journal, ratings or profile.",
     },
     worldmodel: {
-      label: "One SuperMimic training round",
+      label: "One SuperMimic training round (method by Liao et al.)",
       steps: [
-        "4,096 simulated bodies, 1 ms physics",
+        "Parallel bodies in MuJoCo Warp",
         "Replay of real transitions",
         "World model fit on 8-step windows",
         "Policy gradient through 32 imagined steps",
