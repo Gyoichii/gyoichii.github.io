@@ -1,7 +1,7 @@
 export function Diagram({
   type,
 }: {
-  type: "combat" | "sweep" | "occlusion" | "pcg" | "auth" | "recommend" | "memory" | "mcp";
+  type: "combat" | "sweep" | "occlusion" | "pcg" | "auth" | "recommend" | "memory" | "mcp" | "worldmodel" | "bodyruntime";
 }) {
   const config = {
     auth: {
@@ -73,6 +73,26 @@ export function Diagram({
         "Audited, rate-limited tools",
       ],
       note: "Clients may read and recommend. They cannot change the journal, ratings or profile.",
+    },
+    worldmodel: {
+      label: "One SuperMimic training round",
+      steps: [
+        "4,096 simulated bodies, 1 ms physics",
+        "Replay of real transitions",
+        "World model fit on 8-step windows",
+        "Policy gradient through 32 imagined steps",
+      ],
+      note: "Imagined rollouts start from replayed states and end with a critic value. The physics simulator itself is never differentiated.",
+    },
+    bodyruntime: {
+      label: "One control step in Unreal",
+      steps: [
+        "Mover fixed tick",
+        "ONNX policy through NNE",
+        "Finite motors + MuJoCo, 20 × 1 ms",
+        "Pose snapshots → Hermite bones",
+      ],
+      note: "While the mode is active it is the only writer of the pawn transform.",
     },
     pcg: {
       label: "Procedural building generation",

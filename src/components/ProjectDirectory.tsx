@@ -7,7 +7,7 @@ import { MediaPreview, type MediaItem } from "./MediaViewer";
 import { Icon } from "./Navigation";
 
 const folders = [
-  { name: "Unreal Engine", slugs: ["rivering"] },
+  { name: "Unreal Engine", slugs: ["rivering", "supermimic"] },
   { name: "Software & ML", slugs: ["isomorph", "friday-night", "avatar-review", "material-recognition", "disaster-chatbot"] },
   { name: "Games", slugs: ["wayjia"] },
 ];

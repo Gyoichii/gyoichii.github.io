@@ -8,7 +8,7 @@ type ResultsTableProps = {
   children?: ReactNode;
 };
 
-function ResultsTable({ id, caption, columns, rows, children }: ResultsTableProps) {
+export function ResultsTable({ id, caption, columns, rows, children }: ResultsTableProps) {
   return <div className="material-results">
     {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Keyboard users can scroll wide tables within this named region. */}
     <div className="material-table-scroll" role="region" aria-labelledby={id} tabIndex={0}>

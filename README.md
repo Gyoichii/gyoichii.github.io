@@ -2,7 +2,7 @@
 
 Live: **https://gyoichii.github.io/**
 
-Static Next.js / React / TypeScript portfolio with seven engineering case studies, mixed-media galleries, and a self-hosted font. No database, login, tracking script or runtime server.
+Static Next.js / React / TypeScript portfolio with eight engineering case studies, mixed-media galleries, and a self-hosted font. No database, login, tracking script or runtime server.
 
 ## Run
 
@@ -53,6 +53,7 @@ Another host can serve the entire `out/` directory at its domain root, preservin
 - Disaster Chatbot shows the current local Django UI with fictional bulletins, test model responses and a schematic shelter route. The notification delivery benchmark is a separate local simulation.
 - WayJia: three images from the team's final-game press kit and the owner-supplied gameplay recording, compressed for web playback without temporal cuts. Credits and copy preserve collaborators' art, writing, audio and voice contributions. Reference shader algorithms are described as ported and adapted.
 - Isomorph: four captures from the local preview (disposable database, demonstration reader, offline test model): the Taste Atlas, journal, card deck and memory panel. Three journal entries come from the preview’s sample Douban list. The architecture figure is an HTML component drawn from the project’s architecture notes; latency, memory and evaluation figures in the copy come from those notes’ live runs.
+- SuperMimic Body Control: two standalone Unreal Engine 5.8 recordings of the opt-in body-control plugin (normal speed and quarter speed), re-encoded without cuts. The seven research clips are offline replays of saved simulation states from the project's evaluation runs; their Chinese captions were cropped off and replaced with English labels, with no temporal cuts. Figures in the copy come from the project's research reports, including the corrections made during review; training-replay statistics are labelled as such.
 - Manrope: self-hosted Latin variable font under SIL OFL; see `public/fonts/OFL.txt`.
 - Sharing card/favicon: original typography and arrow treatment matching the site.
 

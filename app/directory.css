@@ -115,3 +115,5 @@
 @media (max-width: 740px) {
   .iso-arch-grid { grid-template-columns: minmax(0, 1fr); }
 }
+/* SuperMimic research clips have four labelled columns; they stay legible only at full width. */
+.project-supermimic .project-chapter:not(#ue-runtime) .gallery-grid { grid-template-columns: minmax(0,1fr); }

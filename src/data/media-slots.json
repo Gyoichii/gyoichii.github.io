@@ -731,5 +731,70 @@
       "art": "world",
       "fit": "contain"
     }
+  },
+  "supermimic": {
+    "ue-walk-push": {
+      "title": "Push and stop in Unreal Engine",
+      "caption": "Standalone UE 5.8 run at normal speed. The mannequin walks, takes a 45 N·s chest push from the front at 2.0 s, receives a stop command 0.3 s later and settles. The outcome matches the offline evaluation of the same test case.",
+      "hint": "RiveringBodyControl plugin",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "ue-push-slow": {
+      "title": "The same push at quarter speed",
+      "caption": "The push and recovery steps from the same test case, run at a quarter of real time. Slow motion runs fewer fixed ticks per frame; the physics is unchanged.",
+      "hint": "UE 5.8, slomo 0.25",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "run-stop": {
+      "title": "Run stop: animation and controller",
+      "caption": "From left: two retargeted GASP Run_Stop_F clips and two controller runs, all from 5 m/s and aligned at braking onset. The labels give each center of mass’s braking distance. Replay of saved states at normal speed.",
+      "hint": "Saved-state replay",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "run-stop-edge": {
+      "title": "Stop command at the edge of the test range",
+      "caption": "A stop command at tick 82 ends in a fall; one tick later the controller stops and stands. Tick 82 sits just before the 168-run formal test set and is kept as a diagnostic.",
+      "hint": "Saved-state replay",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "walk-push": {
+      "title": "Walking pushes",
+      "caption": "A 0.1 s, 45 N·s chest push at 2.0 s, beside an unpushed control. Trunk roll is the peak difference from the unpushed walk. All three pushed runs complete their task.",
+      "hint": "Saved-state replay",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "stand-push": {
+      "title": "Measured human pushes replayed on the body",
+      "caption": "Three DeCIMo trials, each force history scaled to 70.4 kg and applied at the chest. The labels compare the person’s final center-of-mass displacement with the controller’s. Only the push from the front makes the controller step.",
+      "hint": "Saved-state replay",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "landing-3m": {
+      "title": "3 m drop at four settings",
+      "caption": "Touchdown at 7.7 m/s. The untrained controller falls at 1× and stands at 4× and 8×. At 8× with the joints locked and no policy, the body falls.",
+      "hint": "MuJoCo C probe, no landing training",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "landing-high": {
+      "title": "Higher drops",
+      "caption": "At 8× the controller holds 5 m and falls from 10 m. The third column used the earlier rule that also scaled the gains, simulated with 0.125 ms substeps. At 1× a 10 m drop ends in a fall.",
+      "hint": "MuJoCo C probe, no landing training",
+      "art": "motion",
+      "fit": "contain"
+    },
+    "landing-horizontal": {
+      "title": "Landing with horizontal speed",
+      "caption": "A 1 m drop with forward speed. At 4× and 3 m/s the controller brakes over several steps and stands. At 6 m/s it falls at every strength, including the earlier gain-scaling rule in the last column.",
+      "hint": "MuJoCo C probe, no landing training",
+      "art": "motion",
+      "fit": "contain"
+    }
   }
 }
