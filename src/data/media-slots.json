@@ -701,5 +701,35 @@
       "art": "world",
       "fit": "contain"
     }
+  },
+  "isomorph": {
+    "atlas": {
+      "title": "Taste Atlas with Stalker selected",
+      "caption": "Sixteen demonstration works on the procedural terrain. The inspector shows Stalker’s elevation profile, its published profile version and three connected works.",
+      "hint": "Three.js taste map",
+      "art": "world",
+      "fit": "contain"
+    },
+    "journal": {
+      "title": "Taste journal and watchlist",
+      "caption": "Nine journal entries, three of them imported from a sample Douban list, and four works saved from the first round of cards.",
+      "hint": "Journal page",
+      "art": "world",
+      "fit": "contain"
+    },
+    "cards": {
+      "title": "Recommendation cards",
+      "caption": "Akira on top of the first hand, with Annihilation and Crash behind it. Pass, Interested and Already seen mirror the drag gestures.",
+      "hint": "Card deck",
+      "art": "world",
+      "fit": "contain"
+    },
+    "memory": {
+      "title": "Memory panel",
+      "caption": "The panel explains what the companion keeps, offers a switch and a search, lists each item with its source and shows the latest change between profile versions.",
+      "hint": "Personalization · Memory",
+      "art": "world",
+      "fit": "contain"
+    }
   }
 }

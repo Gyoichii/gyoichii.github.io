@@ -85,3 +85,33 @@
 @media (min-width: 1000px) {
   #street-cables > .gallery .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Isomorph architecture figure */
+.iso-arch { margin-top: 16px; padding: 12px; background: var(--surface); border: 1px solid var(--line); }
+.iso-arch > figcaption { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.iso-arch > p { font-size: 14px; margin-top: 10px; max-width: 84ch; }
+.iso-arch-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.iso-path { list-style: none; margin: 0; padding: 0; }
+.iso-node, .iso-lane, .iso-store { background: var(--paper); border: 1px solid #8f8f8a; box-shadow: 2px 2px 0 #b9b9b3; padding: 8px 10px; }
+.iso-node-loop { border: 2px solid navy; box-shadow: 3px 3px 0 #9aa3c7; }
+.iso-node-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-size: 14px; }
+.iso-node-head span { font: 12px var(--mono); color: var(--muted); }
+.iso-items { margin: 4px 0 0; padding-left: 16px; font-size: 13px; }
+.iso-edge { margin: 0; padding: 5px 0 5px 14px; font: 12px var(--mono); color: var(--muted); border-left: 2px solid navy; margin-left: 18px; }
+.iso-edge span { color: navy; font-weight: 700; }
+.iso-chips { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.iso-chips li { font-size: 12px; padding: 1px 6px; background: var(--surface-2); border: 1px solid var(--line); }
+.iso-chips code { font: 12px var(--mono); }
+.iso-budgets { margin-top: 6px; }
+.iso-budgets li { background: #fff6d6; border-color: #c8b46a; }
+.iso-tools { display: grid; gap: 4px; margin: 8px 0 0; }
+.iso-tools > div { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 6px; align-items: start; }
+.iso-tools dt { font: 11px/1.9 var(--mono); color: var(--muted); text-transform: uppercase; }
+.iso-tools dd { margin: 0; }
+.iso-lanes { display: grid; gap: 12px; }
+.iso-lane ol { margin: 6px 0 0; padding-left: 20px; font-size: 13px; }
+.iso-lane li + li { margin-top: 2px; }
+.iso-store { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: 14px; }
+@media (max-width: 740px) {
+  .iso-arch-grid { grid-template-columns: minmax(0, 1fr); }
+}

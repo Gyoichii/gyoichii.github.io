@@ -1,7 +1,7 @@
 export function Diagram({
   type,
 }: {
-  type: "combat" | "sweep" | "occlusion" | "pcg" | "auth";
+  type: "combat" | "sweep" | "occlusion" | "pcg" | "auth" | "recommend" | "memory" | "mcp";
 }) {
   const config = {
     auth: {
@@ -43,6 +43,36 @@ export function Diagram({
         "Material clip",
       ],
       note: "Original collision geometry remains available to the next query.",
+    },
+    recommend: {
+      label: "Recommendation steps",
+      steps: [
+        "Ratings, reviews + what was said",
+        "Competing taste hypotheses",
+        "Rate each candidate per hypothesis",
+        "Quality gate + media quotas",
+      ],
+      note: "An adversarial reviewer challenges the hypotheses before a profile version is published.",
+    },
+    memory: {
+      label: "Memory write steps, after the reply",
+      steps: [
+        "Signal from the routing call",
+        "Extractor quotes the reader",
+        "Policy in plain code",
+        "Memory, evidence or nothing",
+      ],
+      note: "Every dropped operation records its reason. Inferred taste stays weaker than a rating.",
+    },
+    mcp: {
+      label: "MCP authorization and access",
+      steps: [
+        "Dynamic registration",
+        "PKCE + reader consent",
+        "Scoped, rotating tokens",
+        "Audited, rate-limited tools",
+      ],
+      note: "Clients may read and recommend. They cannot change the journal, ratings or profile.",
     },
     pcg: {
       label: "Procedural building generation",

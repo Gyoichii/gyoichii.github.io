@@ -8,6 +8,7 @@ import { AvatarErrors, AvatarExamples, AvatarMetrics, AvatarModels, BulletinExer
 import { FridayStyles } from "./FridayStyles";
 import { CableRoutes } from "./CableRoutes";
 import { MaterialResults } from "./MaterialResults";
+import { IsomorphArchitecture } from "./IsomorphArchitecture";
 
 const data = manifest as Record<string, MediaItem>;
 const scope: Record<string, { title: string; text: string }> = {
@@ -16,6 +17,7 @@ const scope: Record<string, { title: string; text: string }> = {
   wayjia: { title: "Team & credits", text: "I was the programmer and producer. The in-game credits list the contributors to art, writing, music and voice acting." },
   "avatar-review": { title: "Evaluation scope", text: "All results come from offline tests. The four demo images were scored on their original center crops before publication redactions. The overall comparison reuses the original labeled crops. The per-check table reports the original evaluation. Later artwork, sign and identity comparisons each use their own labeled samples. An AI assistant reviewed the visible crops for the 85-image follow-up before the models were scored." },
   "disaster-chatbot": { title: "Exercise data", text: "The screenshots come from the local Django project. The exercise supplies fictional bulletins, model replies, shelter listings, road closures and routing responses. The interface, citation validation, closure check, subscription matching and event history run in the app. The delivery chart is a separate local simulation." },
+  isomorph: { title: "Capture details", text: "The screenshots come from a local preview with a disposable database, a demonstration reader and the offline test model, so the taste profile is deliberately thin. The latency, memory and evaluation figures come from separate live runs with DeepSeek for the conversation and Jev for routing, recorded in the project’s architecture notes." },
   "friday-night": { title: "Capture details", text: "The English-language captures use demonstration accounts and a sample film club. The seven watchlist styles share the same group, palette, appearance and desktop viewport. The login screens show the public site." },
 };
 
@@ -36,6 +38,7 @@ function ProjectChapter({ system, slug }: { system: System; slug: string }) {
     {slug === "avatar-review" && system.id === "four-checks" && <AvatarMetrics />}
     {slug === "disaster-chatbot" && system.id === "bulletins" && <BulletinExercise />}
     {slug === "material-recognition" && <MaterialResults section={system.id} />}
+    {slug === "isomorph" && system.id === "turn" && <IsomorphArchitecture />}
     {!footageFirst && gallery}
     {system.diagram && <Diagram type={system.diagram} />}
     <details className="engineering-detail"><summary>Implementation notes</summary>

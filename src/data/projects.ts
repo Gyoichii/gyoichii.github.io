@@ -1,4 +1,5 @@
 import { material } from "./material";
+import { isomorph } from "./isomorph";
 
 export type System = {
   id: string;
@@ -10,7 +11,7 @@ export type System = {
   tags: string[];
   media: string[];
   sourceLink?: { label: string; href: string };
-  diagram?: "combat" | "sweep" | "occlusion" | "pcg" | "auth";
+  diagram?: "combat" | "sweep" | "occlusion" | "pcg" | "auth" | "recommend" | "memory" | "mcp";
 };
 export type SystemGroup = {
   id: string;
@@ -634,4 +635,4 @@ export const disaster: Project = {
     },
   ],
 };
-export const projects = [rivering, friday, wayjia, avatar, disaster, material];
+export const projects = [rivering, friday, wayjia, avatar, disaster, material, isomorph];
